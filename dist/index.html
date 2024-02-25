@@ -5,17 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="stylesheet" href="css/bootstrap-reboot.min.css"/>
     <link rel="stylesheet" href="css/main.css"/><link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>Подбор растений для дома</title>
+    <title>Стартовая страница 2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--script(src="js/bgTestIteration.js")    -->
-    <!--script(src="js/borderAnibate.js")-->
-    <!--script(src="js/sqlite-test.js")-->
-    <!--script(src="js/sqlite-test-bundle.js")-->
-    <!--script(src="js/mysql-test-bundle.js")-->
-    <!--script(src="js/bundle.js")    -->
-    <!--script(src="js/GetDBReq-Test.js")-->
-    <!--script(src="js/plant-cards.js")-->
-    <script src="js/mainTerminal.js"></script>
+    <!--script(src="js/mainTerminal.js")-->
     <header class="header">
       <div class="bg-fone-header"></div>
       <div class="head-title">
@@ -25,266 +17,22 @@
     </header>
   </head>
   <body> 
-    <div class="nav-menu-bar"> 
-      <div class="decr-nav-menu"><span>Меню</span></div>
-      <div class="content-nav-menu"><span class="sp-4">Меню:</span>
-        <div class="nav-nav-menu">
-          <div class="butt-info go-to-page-2"><img src="img/smile/Imf.png"/><span class="go-to-page-2">Информация о проекте и его создателях</span></div>
-          <div class="butt-all-pants go-to-page-3"><img src="img/smile/Plant.png"/><span class="go-to-page-3">Все растения</span></div>
-        </div>
-        <div class="butt-develop-mode"> <span>Параметры разработчика</span>
-          <div class="swither-dev-mode">
-            <div class="circle-dev-mode"></div>
-          </div>
-        </div>
-        <div class="butt-hide-menu"><span>Свернуть меню</span></div>
-      </div>
+    <div class="n_but"> 
+      <p>Редактор знаний</p>
     </div>
-    <!-- Тут будут все элементы с вопросами-->
-    <div class="main-body"> 
-      <!--p.main-counter 0-->
-      <div class="descr-qu-1-grad">
-        <div class="descr-qu-1">
-          <p class="pp1">Этот инструмент подберёт для вас <b>самое <i>лучшее</i> растение</b></p>
-          <p>Вам нужно будет ответить всего на <u><i>несколько</i></u> вопросов</p>
-          <p class="pp3">Ну что, вы готовы <b>начинать?</b> 🚀</p>
-          <div class="butt-start"><span>Запустить </span></div>
-        </div>
-      </div>
-      <div class="block-qu" id="block-a">
-        <p class="qu-answ">Вы будете выращивать растения дома, или на улице?</p>
-        <p class="letter-abbr">a</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 good-button">
-            <p>Дома</p>
-          </div>
-          <div class="butt-answ answ-block-2 gerat-button">
-            <p>На улице</p>
-          </div>
-        </div>
-      </div>
-      <div class="block-qu" id="block-a-1">
-        <p class="qu-answ">Какая наименьшая температура бывает в вашем регионе?</p>
-        <p class="letter-abbr">a-1</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 input-butt good-button">
-            <p>Введите, в ℃</p>
-            <input class="my-input-1" type="text" placeholder="от -20 до 35" inputmode="numeric"/>
-          </div>
-          <div class="butt-answ answ-block-2 gerat-button">
-            <p>Не имеет значения, так как я планирую выращивать растения летом</p>
-          </div>
-        </div>
-        <p class="err-inp-1">Нужно ввести число, от -20 до 35</p>
-      </div>
-      <div class="block-qu" id="block-a-2">
-        <p class="qu-answ">Какая средняя температура в вашем доме?</p>
-        <p class="letter-abbr">a-2</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 good-button" id="block-a-2-butt">
-            <p class="very-long-01">Введите, в ℃</p>
-            <input class="my-input-2" type="text" placeholder="от 15 до 30" inputmode="numeric"/>
-          </div>
-        </div>
-        <p class="err-inp-2">Нужно ввести число, от 15 до 30</p>
-      </div>
-      <div class="block-qu" id="block-a-2-1">
-        <p class="qu-answ tyure">Какая примерная влажность в вашем доме?</p>
-        <div class="add-info add-info-2"><span>i</span></div>
-        <p class="letter-abbr">a-2-1</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-2-s bad-batton">
-            <p>Сухо</p>
-          </div>
-          <div class="butt-answ answ-block-3-s bad-batton">
-            <p>Влажно</p>
-          </div>
-          <div class="butt-answ answ-block-4-s good-button">
-            <p>Умеренная влажность</p>
-          </div>
-          <div class="butt-answ answ-block-1-s input-butt gerat-button">
-            <p>Введите (от 20 до 90)</p>
-            <input class="my-input-3" type="text" inputmode="numeric"/>
-          </div>
-        </div>
-        <p class="err-inp-3">Нужно ввести число, от 20 до 90</p>
-      </div>
-      <div class="block-qu" id="block-b">
-        <p class="qu-answ">Вы хотите подобрать одно растение, или сразу несколько?</p>
-        <p class="letter-abbr">b</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 gerat-button">
-            <p>Одно</p>
-          </div>
-          <div class="butt-answ answ-block-2 good-button">
-            <p>Несколько</p>
-          </div>
-        </div>
-      </div>
-      <div class="block-qu" id="block-c">
-        <p class="qu-answ">Вы хотите, что бы это растение было с цветами, или без?</p>
-        <p class="letter-abbr">c</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 bad-batton">
-            <p>Без цветов</p>
-          </div>
-          <div class="butt-answ answ-block-2 gerat-button">
-            <p>Не важно</p>
-          </div>
-          <div class="butt-answ answ-block-3 good-button">
-            <p>С цветами</p>
-          </div>
-        </div>
-      </div>
-      <div class="block-qu" id="block-c-3">
-        <p class="qu-answ">Выберете желаемый цвет - один или несколько:</p>
-        <p class="letter-abbr">c-3</p>
-        <div class="butt-bar-colors"> 
-          <div class="color-green color-s" id="green"></div>
-          <div class="color-other">
-            <div class="color-s" id="red"></div>
-            <div class="color-s" id="orange"></div>
-            <div class="color-s" id="yellow"></div>
-            <div class="color-s" id="light-blue"></div>
-            <div class="color-s" id="blue"></div>
-            <div class="color-s" id="violet"></div>
-            <div class="color-s" id="pink"></div>
-            <div class="color-s" id="silver"></div>
-            <div class="color-s" id="multicolor"></div>
-          </div>
-        </div>
-        <p class="hhid">Подсказка: Чем больше цветов вы выберете, тем больше будет результатов</p>
-        <!--.butt-bar
-        .butt-answ.answ-block-1
-          p Выбор цветов [...]
-        
-        -->
-      </div>
-      <div class="block-qu" id="block-d">
-        <p class="qu-answ">Вы хотите, что бы это растение было плодоносным?</p>
-        <p class="letter-abbr">d</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 good-button">
-            <p>Да</p>
-          </div>
-          <div class="butt-answ answ-block-2 gerat-button">
-            <p>Не важно</p>
-          </div>
-          <div class="butt-answ answ-block-3 bad-batton">
-            <p>Нет</p>
-          </div>
-        </div>
-      </div>
-      <div class="block-qu" id="block-e">
-        <p class="qu-answ">Вы будете ставить растения на окне?</p>
-        <p class="letter-abbr">e</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 good-button">
-            <p>Да</p>
-          </div>
-          <div class="butt-answ answ-block-2 gerat-button">
-            <p>Нет</p>
-          </div>
-        </div>
-      </div>
-      <div class="block-qu" id="block-e-1">
-        <p class="qu-answ">На ваше окно падает прямой солнечный свет?</p>
-        <p class="letter-abbr">e-1</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 good-button">
-            <p>Да</p>
-          </div>
-          <div class="butt-answ answ-block-2 gerat-button">
-            <p>Иногда</p>
-          </div>
-          <div class="butt-answ answ-block-3 bad-batton">
-            <p>Очень редко</p>
-          </div>
-        </div>
-      </div>
-      <div class="block-qu" id="block-f">
-        <p class="qu-answ">Для вас важно, что бы растение вырабатывало кислород?</p>
-        <p class="letter-abbr">f</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 good-button">
-            <p>Да, важно</p>
-          </div>
-          <div class="butt-answ answ-block-2 gerat-button">
-            <p>Было бы неплохо, но это не очень важно</p>
-          </div>
-          <div class="butt-answ answ-block-3 bad-batton">
-            <p>Мне без разницы на это</p>
-          </div>
-        </div>
-      </div>
-      <div class="block-qu" id="block-g">
-        <p class="qu-answ">Как много пространства под растения, в вашем доме?</p>
-        <p class="letter-abbr">g</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 bad-batton">
-            <p>Очень мало</p>
-          </div>
-          <div class="butt-answ answ-block-2 gerat-button">
-            <p>Средне</p>
-          </div>
-          <div class="butt-answ answ-block-3 good-button">
-            <p>Достаточно много</p>
-          </div>
-        </div>
-      </div>
-      <div class="block-qu" id="block-h">
-        <p class="qu-answ">Насколько вы хотите оставлять растения без присмотра?</p>
-        <div class="add-info"> <span>i</span></div>
-        <p class="letter-abbr">h</p>
-        <div class="butt-bar">
-          <div class="butt-answ answ-block-1 bad-batton">
-            <p>Ненадолго (на 3-5 дней)</p>
-          </div>
-          <div class="butt-answ answ-block-2 gerat-button">
-            <p>На 1-2 недели</p>
-          </div>
-          <div class="butt-answ answ-block-3 good-button">
-            <p>До месяца</p>
-          </div>
-        </div>
-      </div>
-      <div class="butt-final"><span>Подобрать растения</span></div>
-      <div class="loadd"> <img src="img/wave-load.gif"/><span>Подождите...</span></div>
-      <div class="reauest-2-only-color"><span>К сожалению, мы <i><b>не смогли</i> найти</b> растения с таким цветом, и характеристиками, что вы указали. </span><span>Но мы можем показать вам <b>все</b> растения с выбранными вами цветами, <i>вне зависимости</i> от их характеристик:</span></div>
-      <div class="result-cards">  
-        <div class="spsp"><span>Вот растения, которые подойдут вам лучше всего:</span></div>
-        <div class="upper-block-3"> 
-          <div class="card"><img src="img/plant-image/P_01.png"/><span>Название растения</span></div>
-          <div class="card"><img src="img/plant-image/P_02.png"/><span>Название растения</span></div>
-          <div class="card"><img src="img/plant-image/P_03.png"/><span>Название растения</span></div>
-        </div>
-        <div class="down-block-4">
-          <div class="card"><img src="img/plant-image/P_04.png"/><span>Название растения</span></div>
-          <div class="card"><img src="img/plant-image/P_05.png"/><span>Название растения</span></div>
-          <div class="card"><img src="img/plant-image/P_06.png"/><span>Название растения</span></div>
-          <div class="card"><img src="img/plant-image/P_07.png"/><span>Название растения</span></div>
-        </div>
-        <p></p>
-        <div class="spsp sp-23"><span><i>Нажми на карточку, если хочешь узнать больше о растении</i></span></div>
-      </div>
-      <div class="zero-reauest">  
-        <div class="spsp"><span>К сожалению, мы <i>не смогли</i> подобрать для вас растение. Попробуйте указать другие параметры</span></div>
-      </div>
-      <div class="block-request"> 
-        <div class="req"> 
-          <p>Текст запроса: </p>
-        </div>
-        <div class="answ"> 
-          <p>Ответ БД</p>
-        </div>
-      </div>
-      <div class="butt-final-2"><span>Пройти ещё раз</span></div>
+    <div class="n_but"> 
+      <p>Решатель задач</p>
+    </div>
+    <div class="remark">  
+      <p>База знаний отображается в Редакторе знаний. Там-же реализован функционал редактора знаний </p>
+      <p>Система ввода исходных данных, интегрирована в Решатель задач</p>
+      <p>Система объяснения и вывода результата будет отображена, после того, как вользователь введёт необходимые входные данные, в Решателе задач</p>
     </div>
   </body>
   <footer> 
     <div class="version"> 
-      <p>У вас старая версия. Пожалуйста, очистите кеш браузера</p>
+      <p>2.0</p>
     </div>
-    <p> <a href="page_2.html">Кто автор проекта?</a></p>
+    <p> <a href="page_2.html">О проекте</a></p>
   </footer>
 </html>
