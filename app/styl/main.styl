@@ -1,0 +1,1720 @@
+// Шаблон Stylus-стилей v2
+
+*:not(a) {
+  cursor: default;
+}
+
+// --------------------- //
+// 		  Colors:		 //
+// --------------------- // 
+
+bg-1 = gray
+bg-2 = lightgray
+bg-3 = rgb(240, 240, 240)
+
+col-1 = yellow
+col-2 = gray
+col-3 = blue 
+my-orange = #ff9900
+bg-yel = #ffd600
+bg-blue = #00a3ff
+
+// Подборка цветов:
+
+color1 = #197de0;
+color2 = rgb(14, 182, 204);
+color3 = #5d33da;
+color4 = #38ec0f;
+color5 = #e9e51f;
+color6 = #ecbc0c;
+color7 = #e24916;
+color8 = #ec34be;
+color9 = #a619da;
+
+bord() // Для отладки
+	border solid black 1px
+
+// Основные настройки:
+
+html
+	text-align: center
+	p
+		padding: 10px
+		font-size: larger;
+
+body
+	background-color: bg-3
+
+// --------------------- //
+// 		   Image:		 //
+// --------------------- // 
+
+img
+	align middle 
+	width 200px
+	height 200px
+	margin 10px
+	border-radius: 7px
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+
+// --------------------- //
+// 		  Footer:		 //
+// --------------------- // 
+
+.page-footer 
+	padding: 1rem;
+	background: #333;
+	color: #fff;
+	text-align: center;
+
+footer
+	width: 100%
+	background-color: #333;
+	padding: 20px
+	margin-top: auto;
+	// position: fixed;
+	// bottom: 0;
+	// left: 0;
+	p
+		padding: 0px
+		font-size: 19
+		color: #fff;
+		text-align: center;
+	a:hover
+		color: #2f0dec;
+		text-decoration: none
+	a:active
+		color: #7a00cc;
+
+.version
+	position: relative;
+	p	
+		position: absolute;
+		top: 40px;
+		left -15px
+		color gray
+		font-size: 12px
+		//bord()
+
+
+// --------------------- //
+// 		  Header:		 //
+// --------------------- // 
+
+header
+	width: 100%
+	height: 110px
+	// background-color: rgb(184, 184, 184)
+	//background-color: rgb(117, 117, 117)
+	//border-radius 0px 0px 20px 20px
+	// background-image: href="img/Header_Photo/B (1).jpeg"
+	position: relative;
+	overflow: hidden; 
+	//background-size: cover;
+	//background-size: 100%
+	//background-color: rgba(255, 255, 255, 0.2);
+
+
+
+// .bg-fone-header
+// 	background-image: url("img/Header_Photo/B (1).jpeg");
+// 	filter: blur(5px);
+
+// 1, 7, 9, 11, 15, 16
+// 7 9 10 15 16 17 20 
+
+header::before 
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("img/Header_Photo/B (1).jpg");
+	background-position: center;
+	background-size: cover;
+	//background-color: rgba(255, 255, 255, 0.1);
+	filter: blur(3px);
+	z-index: -1; /* Это поместит фоновое изображение под содержимое блока */
+
+.head-bottom-line
+	width: 100%
+	height: 15px
+	background: linear-gradient(to right, #20f00d, #21d111);
+	//background: linear-gradient(to right, #2dff1a, #21c012);
+
+.bg1::before 
+	background-image: url("img/Header_Photo/B (1).jpg");
+// .bg2::before 
+// 	background-image: url("img/Header_Photo/B (2).jpg");
+// .bg3::before 
+// 	background-image: url("img/Header_Photo/B (3).jpg");
+// .bg4::before 
+// 	background-image: url("img/Header_Photo/B (4).jpg");
+// .bg5::before 
+// 	background-image: url("img/Header_Photo/B (5).jpg");
+// .bg6::before 
+// 	background-image: url("img/Header_Photo/B (6).jpg");
+// .bg7::before 
+// 	background-image: url("img/Header_Photo/B (7).jpg");
+// .bg8::before 
+// 	background-image: url("img/Header_Photo/B (8).jpg");
+// .bg9::before 
+// 	background-image: url("img/Header_Photo/B (9).jpg");
+// .bg10::before 
+// 	background-image: url("img/Header_Photo/B (10).jpg");
+// .bg11::before 
+// 	background-image: url("img/Header_Photo/B (11).jpg");
+// .bg12::before 
+// 	background-image: url("img/Header_Photo/B (12).jpg");
+// .bg13::before 
+// 	background-image: url("img/Header_Photo/B (13).jpg");
+// .bg14::before 
+// 	background-image: url("img/Header_Photo/B (14).jpg");
+// .bg15::before 
+// 	background-image: url("img/Header_Photo/B (15).jpg");
+// .bg16::before 
+// 	background-image: url("img/Header_Photo/B (16).jpg");
+// .bg17::before 
+// 	background-image: url("img/Header_Photo/B (17).jpg");
+
+
+
+
+
+.head-title
+	p
+		font-size: 35px
+		color: white
+		font-weight: bold
+		//color black
+		text-align: center
+		margin: 10px
+		padding-top 15px
+		//border: 1px solid black;
+		//text-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		//border: 2px solid black; /* Это добавит черную границу вокруг текста */
+		//padding: 10px;
+
+// Конкретно этот код делает хедер с отступами и закруглёнными углами:
+header
+	margin-top: 10px
+	width: calc(100vw - 15px)
+	border-radius: 10px
+	.head-bottom-line
+		border-radius: 0px 0px 10px 10px
+		margin-top 13px
+
+	.head-title
+		p
+			padding-top 9px
+
+	
+// --------------------- //
+// 		   Body:		 //
+// --------------------- // 
+
+body
+	//bord()
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	//height: 100vh;
+	flex-direction: column;
+	min-height: 100vh;
+
+// -------------------------------------- //
+// 		 Основной родительский блок:	  //
+// -------------------------------------- // 
+
+.main-body
+	//bord()
+	background-color: bg-3
+	width: 90%
+	height: auto
+	margin: 20px
+	border-radius: 15px
+	margin-top: 17px
+	// display: flex;
+	// justify-content: center;
+	// flex-direction: column;
+	//align-items: center;
+	position: relative;
+
+.main-counter
+	position: absolute;
+	top: 0px;
+	left -45px;
+
+
+
+// Широкие экраны (десктоп)
+@media (min-width: 950px) 
+	.main-body
+		width: 870px
+		//color red
+
+// ------------------------------ //
+// 		 Блоки внутри него:	      //
+// ------------------------------ // 
+
+.center-orient
+	width: calc(100% - 15px);
+	height calc(100% - 15px);
+	//margin-left: 5px
+
+.descr-qu-1, .block-qu      // <-- Вот здесь также стили для обычного блока
+	text-align: center
+	background-color: white
+	border-radius: 15px
+	width: 100%
+	height 100%
+	p
+		padding: 20px
+		font-size: larger;
+
+// ------------------------------ //
+// 	     1й блок - описание:      //
+// ------------------------------ // 
+
+.descr-qu-1-grad
+	//background: linear-gradient(to bottom left, #00D9FF, #0066FF);
+	background: linear-gradient(to bottom left, #00aeff, #2078fc);
+
+	width: 100%
+	height: 275px
+	margin-bottom: 25px
+	border-radius: 19px
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+.descr-qu-1
+	//position: relative;
+	width: calc(100% - 15px);
+	height: calc(100% - 15px);
+	//position: relative;
+	p	
+		padding: 3px
+		margin 0px
+	//p, div
+		//bord()
+	.pp1
+		padding-top 10px
+		padding-bottom 3px
+	.pp3
+		padding-top 40px
+
+
+//.block-qu-1
+
+.butt-start	
+	//position: absolute;
+	//bottom: 20px;
+	// background color4
+	background white
+	// width 300px
+	width 95%
+	height 75px
+	border-radius: 12px
+	margin: auto
+	margin-top: 20px
+	//width 50%
+	//bord()
+	//border none
+	//border solid 3px white
+	// border solid 4px #20f00d
+	border dashed 2px black
+	font-style: italic
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	span
+		height 50px
+		padding: 0px
+		padding-top: 6px
+		//font-weight: bold
+		font-size: 25px
+		font-style: normal
+
+
+
+.butt-start	 
+	//border-radius: 15px; /* Закругленные углы */
+	border: 5px solid transparent; /* Ширина границы */
+	background: 
+		linear-gradient(white, white), 
+		repeating-linear-gradient(
+			-45deg, 
+			#20f00d, /* Цвет границы */
+			#20f00d 15px, /* Ширина линии */
+			transparent 5px, 
+			transparent 30.5px /* Расстояние между линиями */
+		);
+	background-clip: padding-box, border-box; 
+	background-origin: padding-box, border-box; 
+	box-sizing: border-box; 
+	background-position: 0 0; /* Добавлено */
+
+	
+.butt-start:hover
+	border solid 5px #20f00d
+	span
+		font-style: italic
+		//letter-spacing: 0.04em
+
+.butt-start:active
+	background #20f00d
+	//font-weight: bold
+	span
+		//letter-spacing: -0.05em
+		//font-weight: bold
+
+// .butt-final:hover, .butt-final-2:hover
+// 	background bg-blue
+// 	font-style: italic 
+// .butt-final:active, .butt-final-2:active
+// 	//font-weight: bold
+// 	border solid 3px black
+// 	letter-spacing: -0.05em 
+
+
+// .butt-start:hover
+// 	//border none
+// .butt-start:active
+// 	border none
+
+// ------------------------------------- //
+// 		 Стили для обычного блока:	     //
+// ------------------------------------- // 
+
+// Нужно создать макет блока с вопросом
+// И сделать все блоки, верно их промаркировав
+
+// Затем перенести в JS логику их появления
+// Там пописать обработку нажатия на кнопки
+
+.block-qu
+	height auto
+	display: grid;
+	//grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto
+	justify-items: center;
+	align-items: center;
+	position: relative;
+	margin-bottom 25px
+	position: relative;
+
+// .block-qu
+// 	display: none
+
+#block-a-2-butt
+	display: grid
+	grid-template-columns: 2fr 3fr
+
+.butt-bar // Блок для кнопок
+	grid-row: 2;
+	//bord()
+	display: grid;
+	width 90%
+	height auto
+	margin-bottom: 25px
+
+// ----------------------------- //
+// 		 Стили для кнопок:	     //
+// ----------------------------- // 
+
+.butt-answ // Стили для всех кнопок
+	//box-sizing: border-box;
+	//box-sizing: content-box;
+	//border solid yellow 1px
+	border-radius: 10px
+	margin: 0px 30px
+	padding: 0px
+	background color4
+	border 3px white solid
+	//width 90%
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	p
+		margin: 10px
+		padding: 0px
+
+//.butt-answ:hover
+	//filter: brightness(135%);
+
+.butt-answ:active
+	font-weight: bold
+	border solid 3px rgb(32, 32, 32)
+	letter-spacing: -0.05em 
+
+.butt-answ.active	// Стиль для JS ----------------------------------------------
+	//font-weight: bold;
+	border: solid 4px rgb(32, 32, 32);
+	letter-spacing: -0.05em;
+
+.butt-answ
+	input
+		width 90%
+		border-radius: 5px
+		margin 12px
+		padding 3px 10px
+		text-align: center
+		font-size: 20px
+		//font-weight: bold
+
+.input-butt
+	display: grid
+	grid-template-rows: auto auto
+	justify-items: center;
+	align-items: center;
+	p
+		margin 0px
+		margin-top 8px
+		padding 0px
+
+// ----------------------------- //
+// 		 Блоки для ответов:	     //
+// ----------------------------- // 
+
+.answ-block-1
+	grid-column: 1;
+
+.answ-block-2
+	grid-column: 2;
+
+.answ-block-3
+	grid-column: 3;
+
+
+// Расположение блоков, если ответов 4
+.answ-block-4-s
+	grid-column: 1;
+	grid-row: 1
+
+.answ-block-2-s
+	grid-column: 1;
+	grid-row: 2
+
+.answ-block-3-s
+	grid-column: 2;
+	grid-row: 1
+
+.answ-block-1-s
+	grid-column: 2;
+	grid-row: 2
+
+
+.letter-abbr
+	color: gray
+	position: absolute;
+	top: -10;
+	left: 0;
+	
+// Стили для хороших и плохих кнопочек
+
+.good-button
+	background rgb(0, 201, 0)
+
+.gerat-button
+	background rgb(226, 226, 0)
+
+.bad-batton
+	background rgb(231, 14, 14)
+
+
+.very-long-01
+	width 95%
+
+// ----------------------------- //
+// 		 Кнопки навигации:	     //
+// ----------------------------- // 
+
+.nav-button
+	width 100%
+
+// Широкие экраны (десктоп)
+@media (min-width: 950px) 
+	.nav-button
+		width: 871px
+
+.nav-button
+	height 65px
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-items: center;
+	align-items: center;
+	//grid-template-columns: auto auto;
+	//bord()
+	margin-top: 15px
+	//padding auto 10px
+
+.butt-info, .butt-all-pants
+	font-style: italic;
+	// width 200px
+	// height 55px
+	width 95%
+	height 80%
+	border-radius: 10px
+	background white
+	border solid 4px bg-3
+	p
+		font-size: 17px
+		text-align: center
+		//bord()
+		//height 100%
+		margin-top 2px
+	span
+		width 70%
+
+.butt-info:hover, .butt-all-pants:hover
+	//letter-spacing: 0.025em;
+	//font-style: italic;
+
+.butt-info:hover
+	border solid 4px #2078fc
+
+.butt-all-pants:hover
+	font-weight: bold
+	border solid 4px #20f00d
+
+.butt-info 	
+	justify-self: start
+	
+.butt-info:active
+	background #2078fc
+
+.butt-all-pants:active
+	background #20f00d
+
+.butt-all-pants 
+	justify-self: end
+	
+.sss
+	font-style: normal
+	font-weight: none
+	display: inline
+	margin 0px
+	padding 0px
+
+.nav-nav-menu
+	img
+		height 32px
+		width auto
+		display: inline-block
+		box-shadow: none
+
+// ----------------------------- //
+// 		 Финальная кнопка:	     //
+// ----------------------------- // 
+
+.butt-final, .butt-final-2, .block-request  
+	width 100%
+	margin: auto
+
+.butt-final, .butt-final-2
+	width 90%
+	height 80px
+	background white
+	margin-bottom 35px
+	margin-top 0px
+	border-radius: 15px
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	//flex-direction: column;
+	border solid 6px bg-blue
+	span	
+		font-size: 26px
+
+	//border-radius: 15px; /* Закругленные углы */
+	border: 6px solid transparent; /* Ширина границы */
+	background: 
+		linear-gradient(white, white), 
+		repeating-linear-gradient(
+			-45deg, 
+			bg-blue, /* Цвет границы */
+			bg-blue 15px, /* Ширина линии */
+			transparent 5px, 
+			transparent 31.2px /* Расстояние между линиями */
+		);
+	background-clip: padding-box, border-box; 
+	background-origin: padding-box, border-box; 
+	box-sizing: border-box; 
+	background-position: 0 0; /* Добавлено */
+
+.butt-final:hover, .butt-final-2:hover
+	background bg-blue
+	font-style: italic 
+.butt-final:active, .butt-final-2:active
+	//font-weight: bold
+	//border solid 3px black
+	//letter-spacing: -0.05em 
+
+// .butt-final:hover, .butt-final-2:hover
+// 	border solid 6px bg-blue
+// .butt-final:active, .butt-final-2:active
+// 	font-weight: bold	
+// 	background bg-blue
+// 	letter-spacing: -0.05em 
+
+.butt-final-2
+	margin-top: 15px
+	margin-bottom: 15px
+
+.block-request  
+	width 90%
+	height auto
+	background white
+	//margin 10px
+	margin-top 0px
+	display: grid
+	grid-template-rows: auto auto
+	border-radius: 15px
+
+.req, .answ 
+	bord()
+	border-radius: 13px
+	margin: 25px
+	padding 5px 7px
+
+// Широкие экраны (десктоп)
+@media (min-width: 950px) 
+	.butt-final, .butt-final-2, .block-request  
+		width: 870px
+		//color red
+
+// ----------------------------- //
+// 		   Ошибки ввода:	     //
+// ----------------------------- // 
+
+.err-inp-1, .err-inp-2, .err-inp-3
+	padding 0px
+	margin 0px
+	color red
+	//font-size: lagrer
+	font-weight: bold
+	margin-bottom 3px
+	display: none
+
+// ----------------------------- //
+// 		  Доп. информация:	     //
+// ----------------------------- // 
+
+.add-info
+	position: absolute;
+	right: 10px;
+	top 10px
+	width 30px
+	height 30px
+	padding: 5px
+	border-radius: 5px
+	background #f0f0f0
+	//position: relative;
+	span
+		font-size: 16px
+
+.add-info:hover
+	background #e6e6e6
+
+.add-info::after 
+	content: 'Сколько дней растения можно не поливать:';
+	display: none;
+
+.add-info-2::after 
+	content: 'Введите относительную влажность. Варианты ответов: Влажно - 80%, Умеренно - 50%, сухо - 30%, либо ввдеите своё значение';
+	display: none;
+
+.add-info:hover::after, .add-info:active::after
+	display: block
+	//color red
+	//bord()
+	position: absolute;
+	top: -45px;
+	right 15px
+	background white
+	border-radius: 7px
+	padding 5px
+	width 300px
+	border solid 2px rgb(175, 175, 175)
+
+// ----------------------------- //
+// 		   Выбор цветов:	     //
+// ----------------------------- // 
+
+.butt-bar-colors 
+	//bord()
+	background bg-3
+	border-radius: 12px
+	height 220px
+	padding 5px
+	margin-bottom 30px
+	display: grid
+	grid-template-columns: 70px 1fr
+	grid-template-rows: 170px
+
+.color-other
+	display: grid
+	grid-template-columns: 1fr 1fr 1fr 1fr
+	grid-template-rows: 1fr 1fr 1fr 
+
+.color-s
+	width 50px
+	height 50px
+	border-radius: 10px
+	background #000
+	margin 10px
+
+.color-green 
+	width 50px
+	height 190px
+	border-radius: 10px
+	background #000
+	margin 10px
+
+.color-s.active-2, .color-s:active	
+	border: solid 4px rgb(32, 32, 32);
+
+
+.hhid
+	color gray
+	padding 0px
+	margin-bottom 7px
+
+#white 
+	background-color: white;
+
+#red 
+	background-color: rgb(236, 51, 51);
+
+#orange 
+	background-color: orange;
+
+#yellow 
+	background-color: rgb(255, 230, 0);
+
+#light-blue 
+	background-color: rgb(0, 191, 255);
+
+#blue 
+	background-color: rgb(64, 64, 245);
+
+#violet 
+	background-color: rgb(195, 0, 255);
+
+#pink 
+	background-color: rgb(241, 100, 211);
+
+#silver 
+	//background-color: rgb(206, 206, 206);
+	background: linear-gradient(to bottom left, rgb(206, 206, 206), rgb(182, 182, 182));
+
+#burgundy 
+	background-color: rgb(161, 67, 13);
+
+#multicolor 
+	background: conic-gradient( red,orange,yellow,green,blue,indigo,violet, red);
+	
+.color-green
+	background-color: rgb(0, 211, 0)
+
+// ----------------------------- //
+// 		     Загрузка:	         //
+// ----------------------------- // 
+
+.loadd 
+	background rgb(250, 250, 250)
+	border-radius: 15px
+	width 90%
+	margin: auto
+	display: grid;
+	grid-template-rows: auto auto
+	justify-items: center;
+	align-items: center;
+	margin-bottom: 35px
+	padding 20px
+	img
+		box-shadow: none
+	span
+		font-size: 22px
+		padding 7px
+		padding-bottom: 2px
+
+
+// Широкие экраны (десктоп)
+@media (min-width: 950px) 
+	.loadd  
+		width: 870px
+
+// ----------------------------- //
+// 		     Карточки:	         //
+// ----------------------------- // 
+
+.result-cards, .zero-reauest
+	//background rgb(255, 255, 255)
+	border-radius: 15px
+	width 80%
+	margin: auto
+	display: grid;
+	grid-template-rows: auto auto
+	justify-items: center;
+	align-items: center;
+	margin-bottom: 20px
+	margin-top 0px
+	padding 20px
+	.spsp		
+		width 105%
+		background white
+		border-radius: 15px
+		//padding 20px 15px
+		display: grid;
+		justify-items: center;
+		align-items: center;
+		grid-template-rows: 90%
+		margin-bottom: 15px
+		span
+			//bord()
+			height 80%
+			font-size: 28px
+			padding 15px
+			padding-bottom: 25px
+			text-align: center
+			padding-top 10px
+			//padding-top 35px
+			
+
+// Широкие экраны (десктоп)
+@media (min-width: 950px) 
+	.result-cards, .zero-reauest, .reauest-2-only-color
+		width: 870px
+
+.zero-reauest 
+	margin 0px
+	.spsp
+		span
+			font-size: 20px
+
+// Узкие экраны
+@media (max-width: 950px) 
+	.spsp
+		span
+			font-size: 2.3vw;
+
+	.reauest-2-only-color
+		span
+			font-size: 2.3vw;
+
+.reauest-2-only-color
+	border-radius: 15px
+	background white
+	width 100%
+	height auto
+	padding 20px
+	margin-bottom 15px
+	span
+		height auto
+		display:  block
+		font-size: 23px
+		padding 10px
+
+.upper-block-3
+	//bord()
+	display: grid
+	grid-template-columns: 1fr 1fr 1fr
+	justify-items: center;
+	align-items: center;
+	width 77%
+	padding-left 10px
+	.card
+		width 190px
+		margin-left 5px
+
+.down-block-4
+	//bord()
+	display: grid
+	grid-template-columns: 1fr 1fr 1fr 1fr
+	justify-items: center;
+	align-items: center;
+	width 100%
+
+.card
+	//bord()
+	// width 200px
+	width 90%
+	height 270px
+	margin 15px
+	margin-bottom 5px
+	padding 10px
+	border-radius: 13px
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25)
+	background white
+	display: grid
+	grid-template-rows: 70% 30%
+	justify-items: center;
+	align-items: center;
+	img	
+		margin-top 20px
+		box-shadow: none
+		width: 95%
+		height 100%
+		// height auto
+		// max-height: 100%
+		//overflow: hidden;
+	span
+		font-size: 21px
+		//bord()
+		width 95%
+		height 90%
+		padding: auto 5px
+		margin auto
+		text-align: center
+		overflow: hidden;
+		line-height: 1;
+		//box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+		//border-radius: 10px
+		vertical-align: middle;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top 15px
+		//bord()
+
+.card:hover
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+
+// .card:active
+// 	border 5px solid #00a3ff
+
+// Узкие экраны
+@media (max-width: 950px) 
+	.card
+		width 90%
+		height 30vw
+		//border red solid 1px
+		span
+			font-size: 2.3vw;
+
+@media (min-width: 650px) 
+	.spsp.sp-23
+		margin-top 15px
+		span
+			font-size 22px
+			//color red
+
+@media (max-width: 650px) 
+	.spsp.sp-23.sp-24
+		margin-top 15px
+		padding 20px
+		text-align: center;
+		span
+			font-size: 16px			
+			text-align: center
+			//bord()
+
+// ----------------------------- //
+// 	   Новое меню навигации:     //
+// ----------------------------- // 
+
+
+.nav-menu-bar
+	width 90%
+	height auto
+	display: grid
+	grid-template-rows: auto auto
+	//background white
+	justify-items: center;
+	align-items: center;
+	margin 25px
+	margin-bottom 0px
+	margin-top 15px
+	padding 5px
+	//border-radius: 10px
+
+
+.decr-nav-menu
+	height auto
+	width 35%
+	background white
+	border-radius: 12.5px
+	padding 10px
+	//margin 5px
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border solid 4px bg-3
+	span
+		font-size: 25px
+		//color red
+
+// Широкие экраны (десктоп)
+@media (min-width: 950px) 
+	.nav-menu-bar, .content-nav-menu
+		width: 870px
+
+.decr-nav-menu:hover
+	border solid 4px #2078fc
+	
+.decr-nav-menu:active
+	background #2078fc
+
+.content-nav-menu
+	border-radius: 12.5px
+	background white
+	display: grid
+	grid-template-columns: 1fr
+	grid-template-rows: auto auto auto
+	justify-items: center;
+	align-items: center;
+	.sp-4 
+		margin-top: 15px
+		font-size: 25px
+	span
+		font-size: 19px
+		//color red
+
+.nav-nav-menu
+	display: grid
+	grid-template-columns: 1fr 1fr
+	justify-items: center;
+	align-items: center;
+
+.butt-info, .butt-all-pants
+	border solid 4px bg-3
+	height 70px
+	width 90%
+	margin 15px
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	span
+		padding 10px
+		text-align: center;
+
+.butt-develop-mode, .butt-hide-menu
+	width 95%
+	height auto
+	padding 10px
+	margin-bottom 15px
+	border solid 4px bg-3
+	border-radius: 10px
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	span
+		padding 0px
+		text-align: center;
+
+.butt-develop-mode:hover, .butt-hide-menu:hover
+	border solid 4px #2078fc
+	
+.butt-develop-mode:active, .butt-hide-menu:active
+	background #2078fc
+
+.butt-develop-mode
+	display: grid
+	grid-template-columns: 4fr 1fr
+	justify-items: center;
+	align-items: center;
+	//bord()
+
+.swither-dev-mode
+	width 50px
+	height 30px
+	background bg-3
+	border-radius: 8px
+	border 2px solid black
+	padding 2px
+
+.circle-dev-mode
+	border-radius: 30%
+	//border 3px solid bg-2
+	//border 2px solid black
+	background rgb(243, 98, 1)
+	width 22px
+	height 22px
+
+.circle-dev-mode-enable-style
+	margin-left 19px
+	background rgb(0, 209, 0)
+
+// .circle-dev-mode:hover
+// 	background #2078fc
+// 	border 3px solid black
+
+// .decr-nav-menu 
+// 	display: none
+
+.content-nav-menu //-----------------------------------------------------<
+	display: none
+
+.none-style
+	display: none
+
+
+
+
+
+// ------------------------------------------------------------------- //
+//																	   //
+//  							PAGE 2								   //
+//																	   //
+// ------------------------------------------------------------------- //
+
+
+
+
+
+.simple-text-block 
+	width 90%
+	background white
+	border-radius: 15px
+	margin 35px
+	margin-bottom 0px
+	padding 15px
+	height auto
+	p
+		margin-bottom 3px
+	a
+		display: inline-block
+		color rgb(140, 0, 255)
+		font-size: 20px
+		margin-left: 10px
+	// a:hover
+	// 	text-decoration: none
+	// 	font-style: italic
+	p.nhh
+		display: inline
+	p.ahh
+		padding 0px
+
+	.aa1
+		color rgb(212, 0, 255)
+	.aa2
+		color blue
+	.aa3
+		color rgb(0, 216, 0)
+	.aa4
+		color rgb(140, 0, 255)
+	.aa5
+		color orange
+		
+.title-page2-01
+	padding 0px
+	margin 0px
+	font-size: 28px
+	padding-top 20px
+
+
+
+
+
+
+// Широкие экраны (десктоп)
+@media (min-width: 950px) 
+	.simple-text-block 
+		width: 870px
+
+.some-height
+	height 35px
+	width 100%
+
+
+
+
+.go-back-to-main 
+	height auto
+	width 60%
+	background white
+	border-radius: 12.5px
+	padding 10px
+	//margin 5px
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border solid 4px bg-3
+	margin-top 25px
+	span
+		font-size: 25px
+		//color red
+
+// Широкие экраны (десктоп)
+@media (min-width: 950px) 
+	.go-back-to-main 
+		width: 870px
+
+
+.go-back-to-main:hover
+	border solid 4px #2078fc
+	
+.go-back-to-main:active
+	background #2078fc
+
+
+
+
+// ------------------------------------------------------------------- //
+//																	   //
+//  							PAGE 3								   //
+//																	   //
+// ------------------------------------------------------------------- //
+
+
+
+
+
+.gray-color-page-3
+	color rgb(207, 207, 207)
+
+// .simple-text-block
+// 	display: grid;
+// 	grid-template-rows: auto auto
+// 	justify-items: center;
+// 	align-items: center;	
+// 	.block-request  
+// 		width 95%
+// 	.load-req 
+// 		width 90%
+// 		height 60px
+// 		margin 15px
+// 		padding 7px
+// 		text-align: center
+// 		//bord()
+// 		display: flex;
+// 		justify-content: center;
+// 		align-items: center;
+// 		border-radius: 12.5px
+// 		border solid 4px bg-2
+// 		span
+// 			font-size: 20px
+
+.load-req:hover
+	border solid 4px #2078fc
+
+.load-req:active
+	background #2078fc
+
+
+// ------------
+
+.card-holder
+	//bord()
+	width 90%
+	margin 20px
+	display: grid
+	//grid-template-columns: 1fr 1fr 1fr 1fr
+	grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+	gap: 15px;
+	grid-row-gap: 0px;
+	justify-items: center;
+	align-items: center;
+	.card
+		margin 10px 0px 
+		height 270px
+		width 195px
+		margin-left: 0px
+		margin-right: 0px
+		img	
+			margin: 5px
+			box-shadow: none
+			width: 93%
+			max-height: 170px
+			align-self: start;
+			//height 100%
+			//overflow: hidden;
+		span	
+			//overflow-wrap: break-word;
+			font-size: 20px
+
+
+@media (min-width: 950px) 
+	.go-back-to-main
+		width: 870px
+
+.please-wait, .load-more
+	width 90%
+	border-radius: 10px
+	background white
+	height 60px
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	span
+		font-size: 21px
+
+@media (min-width: 950px) 
+	.please-wait, .load-more
+		width: 870px
+
+.load-more:hover
+	border solid 4px #20f00d
+	
+.load-more:active
+	background #20f00d
+
+.go-back-to-main
+	margin-top 20px
+	margin-bottom 20px
+	span
+		font-size: 23px
+
+
+
+// ------------------------------------------------------------- //
+//
+// 					Под мобильные телефоны: 
+//
+// ------------------------------------------------------------- //
+
+
+
+// Ультраузкие
+@media (max-width: 500px) 
+	html
+		p, span
+			//color red
+
+// Обычные узкие
+@media (max-width: 650px)
+	html
+		p, span
+			//color green
+
+	.header
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		.head-title
+			margin 35px
+			padding-bottom: 20px
+			// p
+			// 	//font-size: 7vw;
+			// 	font-size: 30px;
+				
+		.head-bottom-line
+			position: absolute;
+			bottom: 0px;
+
+	.nav-menu-bar
+
+		//bord()
+		margin 5px auto
+		.decr-nav-menu
+			width 85%
+			border solid 3px bg-2
+			border-radius: 12.5px
+			span
+				font-size: 20px
+		.content-nav-menu
+			//display: grid
+			.nav-nav-menu
+				grid-template-columns: 1fr
+				.butt-info, .butt-all-pants
+					align-self: center;
+					width 95%
+					margin 15px
+					height 60px
+				.butt-info
+					margin-bottom 0px
+					margin-left 10px
+					height 70px
+				.butt-all-pants
+					margin-right 10px
+				img
+					width 25px
+					height auto
+		span
+			//color red
+			font-size: 18px
+		.sp-4
+			color black
+			font-style: italic
+
+	.descr-qu-1-grad
+		height 350px
+		.descr-qu-1
+			position: relative;
+			.butt-start
+				position: absolute;
+				top: 230;
+				left 2vw
+				//margin-top 40px
+			padding 10px
+			padding-top 5px
+			p
+				//font-size: 4.5vw
+
+	.block-qu
+		p
+			//color red
+		.letter-abbr
+			top: -18;
+			left: -5
+		.qu-answ
+			//bord()
+			// padding-left 15px
+			// padding-right 15px
+		.qu-answ
+			//bord()
+			height auto
+			margin-bottom 0px
+			padding-bottom 10px
+		.butt-bar
+			all: unset
+			width 100%
+			margin-top 0px
+			margin-bottom 7px
+			//bord()
+			.butt-answ
+				width 95%
+				margin-left 0px
+				margin 5px auto
+		.hhid
+			//color red
+			//bord()
+			//padding-top 0px
+			//margin-top 0px
+			padding 10px
+			font-size: 16px
+		.butt-bar-colors 
+			margin-bottom 0px
+		.butt-bar-colors 
+			width 90%
+			.color-green, .color-s
+				width 80%
+				//height 20px
+	.block-qu#block-h
+		.qu-answ
+			//color red
+			//margin-top 500px
+			width 80%
+			//bord()
+	
+	.reauest-2-only-color
+		//color red
+		span
+			font-size: 20px
+
+	.result-cards
+		//color red
+		width 100%
+		//bord()
+		padding 0px
+		.spsp
+			//bord()
+			width 90%
+			span
+				//color red
+				font-size: 20px
+				// margin 0px
+				// padding 0px
+
+		.upper-block-3, .down-block-4
+			all: unset
+			width 90%
+			//bord()
+		.card
+			margin 30px 0px
+			width 100%
+			height 100vw
+			img
+				//bord()
+			span
+				font-size: 6vw
+	.zero-reauest   
+		width 100%
+
+	.simple-text-block
+		p, a
+			font-size: 16px
+			//color red
+
+	.go-back-to-main 
+		width 90%
+
+	// .card-holder
+	// 	grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+	// 	//bord()
+	// 	gap: 3px;
+	// 	grid-row-gap: 0px;
+	// 	padding 0px
+	// 	.card
+	// 		//margin 0px
+	// 		//color red
+	// 		height 170px
+	// 		width 115px
+	// 		span
+	// 			font-size: 14px
+	// 			margin-top 8px
+	// 			//bord()
+
+	.card-holder
+		grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+		//bord()
+		gap: 3px;
+		grid-row-gap: 0px;
+		padding 0px
+		.card
+			//margin 0px
+			//color red
+			height 160px
+			width 115px
+			padding 0px
+			padding-top 5px
+			grid-template-rows: 75% 25%
+			
+			span
+				font-size: 14px
+				margin-top 8px
+				//bord()
+				margin 10px
+				padding-top 0px
+				margin-top 0px
+				height 100%
+			img
+				//bord()
+				margin 0px
+				width 90%
+				height 90%
+
+
+
+
+@media (max-width: 400px)
+	.head-title
+		p
+			//color red
+			font-size: 21px
+	.hhid
+		font-size: 4.5vw
+	.content-nav-menu
+		span
+			font-size: 16px
+	header
+		position: relative;
+		.hhhh2
+			p
+				margin-top 0px
+		.head-bottom-line
+			position: absolute;
+			bottom: 0px;
+		.hhhh2
+			//font-size: 20px
+			p
+				//color red
+				font-size: 26px
+
+	.card-holder
+		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+		//bord()
+		gap: 3px;
+		grid-row-gap: 0px;
+		padding 0px
+		.card
+			//margin 0px
+			//color red
+			height 140px
+			width 100px
+			padding 0px
+			padding-top 5px
+			grid-template-rows: 75% 25%
+			
+			span
+				font-size: 12px
+				margin-top 8px
+				//bord()
+				margin 10px
+				padding-top 0px
+				margin-top 0px
+				height 100%
+			img
+				//bord()
+				margin 0px
+				width 90%
+				height 90%
+	.simple-text-block
+		p, span, a
+			//color red
+			font-size: 3.5vw
+
+
+@media (min-width: 650px) and (max-width: 950px)
+	.result-cards
+		.spsp
+			span
+				font-size: 3vw
+		width 100%
+		//bord()
+		//color red
+		.upper-block-3, .down-block-4
+			width 90%
+			//bord()
+			//gap: 0px;
+			//grid-row-gap: 0px;
+		.upper-block-3
+			width 77%
+		.down-block-4
+			width 100%
+			margin 0px
+		.card
+			width 19vw
+			height 28vw
+			margin 5px
+			//padding 0px
+	.zero-reauest   
+		width 100%
+	.nav-nav-menu
+		span	
+			font-size: 16px
+
+	.go-back-to-main 
+		width 90%
+
+
+	
+@media (min-width: 400px) and (max-width: 650px)
+	html 
+		p, span 
+			//color: blue
+
+	.head-title
+		p
+			font-size: 30px;
+
+	header
+		position: relative;
+		.hhhh2
+			p
+				margin-top 0px
+		.head-bottom-line
+			position: absolute;
+			bottom: 0px;
+
+	.hhhh2
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		p
+			//color red
+			height  100px
+			line-height: 80px;
+			//bord()
+			margin auto
+			padding 0px
+			//display block
+			font-size: 28px
+			text-align: center;
+
+@media (max-width: 535px)
+	p#nhh2
+		display: block
+		//color red
+
+.tyure
+	width 80%
