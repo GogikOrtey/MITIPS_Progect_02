@@ -1351,3 +1351,10 @@ body {
   width: 70%;
   color: #979797;
 }
+.butt_back {
+  background-color: #808080;
+  border: 0px;
+}
+.butt_back p {
+  line-height: 9px;
+}
