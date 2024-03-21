@@ -2,6 +2,7 @@
   cursor: default;
 }
 html {
+  overflow-x: hidden;
   text-align: center;
 }
 html p {
@@ -1357,4 +1358,46 @@ body {
 }
 .butt_back p {
   line-height: 9px;
+}
+.h200 {
+  height: 2000px;
+}
+.pg4-p1 {
+  font-size: 31px;
+  margin-top: 15px;
+}
+.block-vew-pl-list {
+  height: auto;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 10px;
+}
+.block-vew-pl-list p {
+  text-align: center;
+  font-size: 24px;
+}
+.main-pl-list-cont-pg4 {
+  width: 500px;
+  height: 200px;
+  margin: 15px;
+  overflow-y: auto;
+  background-color: #00a3ff;
+  border-radius: 7px;
+  direction: rtl;
+  border: solid #000 4px;
+}
+.el-pl-cont-4 {
+  margin: 10px;
+  height: 50px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+}
+.el-pl-cont-4:hover {
+  background: #ddd;
+  cursor: pointer;
+}
+.el-pl-cont-4:active {
+  background: #f90;
 }
