@@ -1399,6 +1399,10 @@ body {
   background: #ddd;
   cursor: pointer;
 }
+.el-pl-cont-4:hover span,
+.butt-4-1:hover span {
+  cursor: pointer;
+}
 .el-pl-cont-4:active {
   background: #f90;
 }
@@ -1430,4 +1434,24 @@ p.p-4-1 {
   font-size: 15px;
   margin-bottom: 0px;
   color: #949494;
+}
+.p-4-2-add {
+  margin: 30px;
+  padding: 0px;
+  background: #0f0;
+}
+.p-4-2-add p {
+  margin: 10px;
+  font-size: 20px;
+}
+.p-4-2-add:hover {
+  font-style: italic;
+  cursor: pointer;
+  background: #0d0;
+}
+.p-4-2-add:hover p {
+  cursor: pointer;
+}
+.p-4-2-add:active {
+  border: solid #000 4px;
 }
