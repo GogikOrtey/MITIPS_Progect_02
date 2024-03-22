@@ -47,7 +47,10 @@ html
         span Минимальное освещение:
         input(type="text", inputmode="numeric")
         span.add-4-4 int
-      p.aaa4 ...
+      .cont-dooble-4-3
+        span Максимальное освещение:
+        input(type="text", inputmode="numeric")
+        span.add-4-4 int
       .cont-dooble-4-3
         span Переносимость прямого света:
         select#select-light
@@ -56,11 +59,67 @@ html
           option(value="medium") Средне
         span.add-4-4 select
       .cont-dooble-4-3
+        span Влажность min (%):
+        input(type="text", inputmode="numeric")
+        span.add-4-4 int
+      .cont-dooble-4-3
+        span Влажность max (%):
+        input(type="text", inputmode="numeric")
+        span.add-4-4 int
+      .cont-dooble-4-3
+        span Температура min (℃):
+        input(type="text", inputmode="numeric")
+        span.add-4-4 int
+      .cont-dooble-4-3
+        span Температура max (℃):
+        input(type="text", inputmode="numeric")
+        span.add-4-4 int
+      .cont-dooble-4-3
         span Тип растения:
         select#select-home
           option(value="yes", selected) Домашнее
           option(value="no") Уличное
         span.add-4-4 select
+      .cont-dooble-4-3
+        span Плодоносное?
+        select#select-plod
+          option(value="yes", selected) Да
+          option(value="no") Нет
+        span.add-4-4 select
+      .cont-dooble-4-3
+        span Выработка кислорода:
+        input(type="text", inputmode="numeric")
+        span.add-4-4 int
+      .cont-dooble-4-3
+        span Занимаемая площадь растения:
+        input(type="text", inputmode="numeric")
+        span.add-4-4 int
+      .cont-dooble-4-3
+        span Уход за растением (кол-во дней):
+        input(type="text", inputmode="numeric")
+        span.add-4-4 int 
+      .cont-dooble-4-3
+        span Цвет растения
+        select#select-color
+          option(value="1", selected) Зелёный
+        span.add-4-4 n-sel
+      .cont-dooble-4-3
+        span Тип климата
+        select#select-type-cl
+          option(value="1", selected) Тропический
+        span.add-4-4 n-sel
+      .cont-dooble-4-3
+        span Аллелопатия
+        select#select-allel
+          option(value="1", selected) Нейтральная
+        span.add-4-4 n-sel
+      .cont-dooble-4-3
+        span Известное растение?
+        select#select-compl
+          option(value="yes", selected) Да
+          option(value="no") Нет
+        span.add-4-4 select
+
     .block-vew-pl-list.p-4-2-add
       p + Создать новую запись о растении
     .h200
