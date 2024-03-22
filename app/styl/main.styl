@@ -1787,17 +1787,6 @@ body
 //																	   //
 // ------------------------------------------------------------------- //
 
-// Для широкого экрана - сделать его узким
-// Для мобильного - добавить предупреждение о неверном размере экрана
-
-// @media (min-width: 1000px)
-// 	.pg-4
-// 		width 1000px
-// 		align-self: center;
-// 		display: flex;
-// 		justify-content: center;
-// 		//align-items: center;
-
 .h200
 	height 2000px
 	//bord()
@@ -2059,9 +2048,129 @@ p.p-4-1
 	.block-vew-pl-list
 		width: 950px
 
-body.pg-4
+body.pg-4, body.pg-5
 	min-width: 950px
 
 @media (max-width: 950px) 
 	html
 		overflow-x: visible
+
+
+
+
+
+
+
+
+
+
+// ------------------------------------------------------------------- //
+//						 											   //
+//  			        PAGE New 5 Решатель задач        	     	   //
+//																	   //
+// ------------------------------------------------------------------- //
+
+
+
+
+.pg5-block-vew-pl-list
+	//bord()
+	height auto
+	width 90%
+	background-color: white
+	border-radius: 15px
+	padding 10px
+	span
+		font-size: 18px
+		padding 5px
+		margin-left 6px
+
+.pg5-div-triple-rows
+	display: grid
+	grid-template-columns: 1fr 2fr 120px
+	position: relative
+	input
+		margin-right 10px
+	span
+		//bord()
+		margin-top 10px
+
+.pg5-block
+	//bord()
+	margin 4px 10px
+	//border solid black 1px
+	border-radius: 7px
+	background #ffae0d
+	text-align: center
+	span
+		margin 0px
+		margin-top 1px
+		display: inline-block
+		font-size: 16px
+
+
+
+.pg5-input-cont
+	display: grid
+	grid-template-rows: auto auto
+	input
+		//bord()
+		grid-row: 2
+	.pg5-input-hints
+		//bord()
+		span
+			//bord()
+			margin 0px
+			padding 0px
+		.pg5-lvl2-input-right-hint
+			float: right
+			margin-right 10px
+		.pg5-lvl2-input-left-hint
+			float: left
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Широкие экраны (десктоп)
+// Переставить потом в конец !!!
+@media (min-width: 1055px) 
+	.pg5-block-vew-pl-list
+		width: 950px

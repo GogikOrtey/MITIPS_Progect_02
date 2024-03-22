@@ -1619,11 +1619,70 @@ p.p-4-1 {
     width: 950px;
   }
 }
-body.pg-4 {
+body.pg-4,
+body.pg-5 {
   min-width: 950px;
 }
 @media (max-width: 950px) {
   html {
     overflow-x: visible;
+  }
+}
+.pg5-block-vew-pl-list {
+  height: auto;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 10px;
+}
+.pg5-block-vew-pl-list span {
+  font-size: 18px;
+  padding: 5px;
+  margin-left: 6px;
+}
+.pg5-div-triple-rows {
+  display: grid;
+  grid-template-columns: 1fr 2fr 120px;
+  position: relative;
+}
+.pg5-div-triple-rows input {
+  margin-right: 10px;
+}
+.pg5-div-triple-rows span {
+  margin-top: 10px;
+}
+.pg5-block {
+  margin: 4px 10px;
+  border-radius: 7px;
+  background: #ffae0d;
+  text-align: center;
+}
+.pg5-block span {
+  margin: 0px;
+  margin-top: 1px;
+  display: inline-block;
+  font-size: 16px;
+}
+.pg5-input-cont {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+.pg5-input-cont input {
+  grid-row: 2;
+}
+.pg5-input-cont .pg5-input-hints span {
+  margin: 0px;
+  padding: 0px;
+}
+.pg5-input-cont .pg5-input-hints .pg5-lvl2-input-right-hint {
+  float: right;
+  margin-right: 10px;
+}
+.pg5-input-cont .pg5-input-hints .pg5-lvl2-input-left-hint {
+  float: left;
+}
+@media (min-width: 1055px) {
+  .pg5-block-vew-pl-list {
+    width: 950px;
   }
 }
