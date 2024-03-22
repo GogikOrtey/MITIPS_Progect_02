@@ -37,6 +37,30 @@ html
           .butt-4-1 
             span К последней записи
       p.p-4-1 Выберете одно растение из списка, и вы сможете просмотреть все его характеристики, и отредактировать их.
+    .block-vew-pl-list.p-4-3-add
+      p Все характеристики этой записи о растении:
+      .cont-dooble-4-3
+        span Название растения:
+        input(type="text")
+        span.add-4-4 text
+      .cont-dooble-4-3
+        span Минимальное освещение:
+        input(type="text", inputmode="numeric")
+        span.add-4-4 int
+      p.aaa4 ...
+      .cont-dooble-4-3
+        span Переносимость прямого света:
+        select#select-light
+          option(value="yes", selected) Да
+          option(value="no") Нет
+          option(value="medium") Средне
+        span.add-4-4 select
+      .cont-dooble-4-3
+        span Тип растения:
+        select#select-home
+          option(value="yes", selected) Домашнее
+          option(value="no") Уличное
+        span.add-4-4 select
     .block-vew-pl-list.p-4-2-add
       p + Создать новую запись о растении
     .h200

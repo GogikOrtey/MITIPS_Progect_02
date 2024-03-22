@@ -1455,3 +1455,34 @@ p.p-4-1 {
 .p-4-2-add:active {
   border: solid #000 4px;
 }
+.p-4-3-add {
+  margin-top: 31px;
+  background: #f7e300;
+}
+.p-4-3-add p.aaa4 {
+  font-size: 18px;
+  text-align: left;
+  margin-left: 30px;
+}
+.cont-dooble-4-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 50px;
+  grid-gap: 10px;
+  margin: 10px;
+}
+.cont-dooble-4-3 span {
+  font-size: 18px;
+  text-align: left;
+  align-self: center;
+  height: 30px;
+  margin-left: 30px;
+}
+.cont-dooble-4-3 .add-4-4 {
+  color: #979797;
+  text-align: center;
+  margin: 0px;
+}
+.cont-dooble-4-3 input {
+  height: 30px;
+  align-self: center;
+}
