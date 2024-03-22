@@ -1662,10 +1662,11 @@ body.pg-5 {
   bottom: -20px;
 }
 .pg5-block {
-  margin: 4px 10px;
+  margin: auto 10px;
   border-radius: 7px;
   background: #ffae0d;
   text-align: center;
+  height: 37px;
 }
 .pg5-block span {
   margin: 0px;
@@ -1699,6 +1700,26 @@ body.pg-5 {
 }
 .pg5-input-cont .pg5-input-hints .pg5-lvl2-input-left-hint {
   float: left;
+}
+.pg5-input-cont-pointers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+.pg5-input-cont-pointers .input-point-container {
+  margin: 0px 10px;
+  padding: 10px;
+  background: #ececec;
+  border-radius: 7px;
+}
+.input-point-container:hover {
+  cursor: pointer;
+}
+.input-point-container span:hover {
+  cursor: pointer;
+}
+.input-point-container:active {
+  background: #dbdbdb;
 }
 @media (min-width: 1055px) {
   .pg5-block-vew-pl-list {
