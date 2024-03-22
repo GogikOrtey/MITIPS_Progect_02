@@ -1681,7 +1681,7 @@ body.pg-5 {
   cursor: pointer;
 }
 .pg5-block:active {
-  border: solid #000 2px;
+  filter: brightness(80%);
 }
 .pg5-input-cont {
   display: grid;
@@ -1731,6 +1731,17 @@ body.pg-5 {
 .pg5-select-cont select {
   height: 30px;
   width: 98%;
+}
+.pg5-checkbox-cont {
+  overflow-y: auto;
+  height: 100px;
+  padding: 10px;
+  padding-left: 15px;
+  border-radius: 4px;
+  background: #ececec;
+  margin: 0px 5px;
+  margin-left: 0px;
+  margin-right: 10px;
 }
 @media (min-width: 1055px) {
   .pg5-block-vew-pl-list {
