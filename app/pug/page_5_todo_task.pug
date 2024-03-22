@@ -31,13 +31,13 @@ html
         span Переносимость прямого света
         .pg5-input-cont.pg5-input-cont-pointers
           .input-point-container
-            input(type="radio" name="input-point" id="1" checked)
+            input(type="radio" name="first-light" id="1")
             span Да
           .input-point-container
-            input(type="radio" name="input-point" id="2")
+            input(type="radio" name="first-light" id="2")
             span Средне
           .input-point-container
-            input(type="radio" name="input-point" id="3")
+            input(type="radio" name="first-light" id="3")
             span Нет
         .pg5-block
           span Reset
@@ -59,8 +59,28 @@ html
             span.pg5-lvl2-input-right-hint 35 ℃
         .pg5-block
           span Reset
-      p.pg5-p-sep ...
-      p.pg5-p-sep ...
+      .pg5-div-triple-rows
+        span Тип растения
+        .pg5-input-cont.pg5-input-cont-pointers.pg5-cont-2
+          .input-point-container
+            input(type="radio" name="plant-type" id="1")
+            span Домашнее
+          .input-point-container
+            input(type="radio" name="plant-type" id="2")
+            span Уличное
+        .pg5-block
+          span Reset
+      .pg5-div-triple-rows
+        span Плодоносное?
+        .pg5-input-cont.pg5-input-cont-pointers.pg5-cont-2
+          .input-point-container
+            input(type="radio" name="is-plod" id="1")
+            span Да
+          .input-point-container
+            input(type="radio" name="is-plod" id="2")
+            span Нет
+        .pg5-block
+          span Reset
       .pg5-div-triple-rows
         span Выработка кислорода
         .pg5-input-cont
@@ -90,10 +110,27 @@ html
             span.pg5-lvl2-input-right-hint 10]
         .pg5-block
           span Reset
-      p.pg5-p-sep ...
-      p.pg5-p-sep ...
-      p.pg5-p-sep ...
-      p.pg5-p-sep ...
+      .pg5-div-triple-rows
+        span Цвет растения 
+        .pg5-select-cont
+          select#select-color
+            option(value="1") Зелёный
+            option(value="2") Красный
+            option(value="3") Синий
+            option(value="4") ...
+        .pg5-block
+          span Reset
+      .pg5-div-triple-rows
+        span Известное растение?
+        .pg5-input-cont.pg5-input-cont-pointers.pg5-cont-2
+          .input-point-container
+            input(type="radio" name="is-raritet" id="1")
+            span Да
+          .input-point-container
+            input(type="radio" name="is-raritet" id="2")
+            span Нет
+        .pg5-block
+          span Reset
       
 
 

@@ -1712,6 +1712,9 @@ body.pg-5 {
   background: #ececec;
   border-radius: 7px;
 }
+.pg5-cont-2 {
+  grid-template-columns: 1fr 1fr;
+}
 .input-point-container:hover {
   cursor: pointer;
 }
@@ -1720,6 +1723,14 @@ body.pg-5 {
 }
 .input-point-container:active {
   background: #dbdbdb;
+}
+.pg5-select-cont {
+  display: flex;
+  align-items: center;
+}
+.pg5-select-cont select {
+  height: 30px;
+  width: 98%;
 }
 @media (min-width: 1055px) {
   .pg5-block-vew-pl-list {
