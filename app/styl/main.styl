@@ -1807,6 +1807,8 @@ body
 	font-size: 31px
 	margin-top 15px
 
+
+
 .block-vew-pl-list
 	//bord()
 	height auto
@@ -1949,20 +1951,34 @@ p.p-4-1
 
 	table
 		bord()
-		margin 10px
 		margin: 0 auto;
-		text-align: center;
+		height 50%
 	td, th
 		padding 5px
+		bord()
+	tr
+		margin 0px
 	thead
 		//margin: 0 auto;
+		text-align: center;
 		bord()
 	.nt-4-4-1
 		font-size: 17px
 		padding 0px
 		
+	#allelop-butt-add-1
+		position: absolute;
+		bottom: 5;
+		left: 20
+
 	.n-4-4-div-2
-		border rgb(0, 0, 0) solid 2px
+		position: relative;
+		height auto
+		width 90%
+		background-color: white
+		border-radius: 15px
+		padding 10px
+		border rgb(86, 86, 86) solid 2px
 		border-radius: 9px
 		background rgb(107, 169, 255)
 		input
@@ -1982,12 +1998,21 @@ p.p-4-1
 				font-style: italic
 		.butt-add-new-pr:active
 			background #2078fc
-
+	.n-4-4-div-2#allelop
+		background #e400f0
+	.n-4-4-div-2#cl-type
+		background #7cf000
+	.butt-add-new-pr.cl-type
+		background #00bd06
+	
 .n-4-5-1
 	padding-bottom 3px
 
 .h20
 	height 50px
+
+.h21
+	height 300px
 
 .butt-compl-4
 	display: grid
@@ -2026,3 +2051,10 @@ p.p-4-1
 	//font-weight: bold
 	//cursor: pointer;
 	border solid black 4px
+
+
+
+// Широкие экраны (десктоп)
+@media (min-width: 1055px) 
+	.block-vew-pl-list
+		width: 950px

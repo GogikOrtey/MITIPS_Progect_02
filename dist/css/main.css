@@ -1503,23 +1503,38 @@ p.p-4-1 {
 }
 .add-4-4-n table {
   border: solid #000 1px;
-  margin: 10px;
   margin: 0 auto;
-  text-align: center;
+  height: 50%;
 }
 .add-4-4-n td,
 .add-4-4-n th {
   padding: 5px;
+  border: solid #000 1px;
+}
+.add-4-4-n tr {
+  margin: 0px;
 }
 .add-4-4-n thead {
+  text-align: center;
   border: solid #000 1px;
 }
 .add-4-4-n .nt-4-4-1 {
   font-size: 17px;
   padding: 0px;
 }
+.add-4-4-n #allelop-butt-add-1 {
+  position: absolute;
+  bottom: 5;
+  left: 20;
+}
 .add-4-4-n .n-4-4-div-2 {
-  border: #000 solid 2px;
+  position: relative;
+  height: auto;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 10px;
+  border: #565656 solid 2px;
   border-radius: 9px;
   background: #6ba9ff;
 }
@@ -1546,11 +1561,23 @@ p.p-4-1 {
 .add-4-4-n .n-4-4-div-2 .butt-add-new-pr:active {
   background: #2078fc;
 }
+.add-4-4-n .n-4-4-div-2#allelop {
+  background: #e400f0;
+}
+.add-4-4-n .n-4-4-div-2#cl-type {
+  background: #7cf000;
+}
+.add-4-4-n .butt-add-new-pr.cl-type {
+  background: #00bd06;
+}
 .n-4-5-1 {
   padding-bottom: 3px;
 }
 .h20 {
   height: 50px;
+}
+.h21 {
+  height: 300px;
 }
 .butt-compl-4 {
   display: grid;
@@ -1586,4 +1613,9 @@ p.p-4-1 {
 }
 .butt-4-close:active {
   border: solid #000 4px;
+}
+@media (min-width: 1055px) {
+  .block-vew-pl-list {
+    width: 950px;
+  }
 }
