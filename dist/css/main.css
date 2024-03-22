@@ -1647,11 +1647,16 @@ body.pg-5 {
   margin: 20px 0px;
   margin-top: -7px;
 }
+.pg5-div-triple-rows .lab-pg5 {
+  margin: auto 0px;
+  padding-left: 10px;
+}
 .pg5-div-triple-rows input[type="range"] {
   margin-right: 10px;
+  opacity: 0.4;
 }
-.pg5-div-triple-rows input[type="range"]:focus {
-  opacity: 1;
+.pg5-div-triple-rows input[type="range"]::-webkit-slider-thumb {
+  opacity: 0;
 }
 .pg5-div-triple-rows span {
   margin-top: 10px;
@@ -1711,6 +1716,7 @@ body.pg-5 {
   padding: 10px;
   background: #ececec;
   border-radius: 7px;
+  margin-left: 0px;
 }
 .pg5-cont-2 {
   grid-template-columns: 1fr 1fr;
@@ -1742,6 +1748,9 @@ body.pg-5 {
   margin: 0px 5px;
   margin-left: 0px;
   margin-right: 10px;
+}
+.pg5-group-sep {
+  height: 0px;
 }
 @media (min-width: 1055px) {
   .pg5-block-vew-pl-list {

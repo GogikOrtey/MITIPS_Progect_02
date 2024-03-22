@@ -19,16 +19,16 @@ html
     .pg5-block-vew-pl-list
       p Выберете и задайте значения, для одной или нескольких характерисик, и решатель подберёт набор растений на их основе:
       .pg5-div-triple-rows
-        span Освещение
+        span.lab-pg5 Освещение
         .pg5-input-cont
-          input(type="range" min="1" max="10" value="5")
+          input(type="range" min="1" max="10" value="0")
           .pg5-input-hints
             span.pg5-lvl2-input-left-hint 1
             span.pg5-lvl2-input-right-hint 10
         .pg5-block
           span Reset
       .pg5-div-triple-rows
-        span Переносимость прямого света
+        span.lab-pg5 Переносимость прямого света
         .pg5-input-cont.pg5-input-cont-pointers
           .input-point-container
             input(type="radio" name="first-light" id="1")
@@ -41,26 +41,30 @@ html
             span Нет
         .pg5-block
           span Reset
+      
+      .pg5-group-sep
       .pg5-div-triple-rows
-        span Относительная влажность
+        span.lab-pg5 Относительная влажность
         .pg5-input-cont
-          input(type="range" min="1" max="10" value="5")
+          input(type="range" min="1" max="10" value="0")
           .pg5-input-hints
             span.pg5-lvl2-input-left-hint 10%
             span.pg5-lvl2-input-right-hint 90%
         .pg5-block
           span Reset
       .pg5-div-triple-rows
-        span Температура
+        span.lab-pg5 Температура
         .pg5-input-cont
-          input(type="range" min="1" max="10" value="5")
+          input(type="range" min="1" max="10" value="0")
           .pg5-input-hints
             span.pg5-lvl2-input-left-hint -20 ℃
             span.pg5-lvl2-input-right-hint 35 ℃
         .pg5-block
           span Reset
+      
+      .pg5-group-sep
       .pg5-div-triple-rows
-        span Тип растения
+        span.lab-pg5 Тип растения
         .pg5-input-cont.pg5-input-cont-pointers.pg5-cont-2
           .input-point-container
             input(type="radio" name="plant-type" id="1")
@@ -71,7 +75,7 @@ html
         .pg5-block
           span Reset
       .pg5-div-triple-rows
-        span Плодоносное?
+        span.lab-pg5 Плодоносное?
         .pg5-input-cont.pg5-input-cont-pointers.pg5-cont-2
           .input-point-container
             input(type="radio" name="is-plod" id="1")
@@ -81,19 +85,21 @@ html
             span Нет
         .pg5-block
           span Reset
+      
+      .pg5-group-sep
       .pg5-div-triple-rows
-        span Выработка кислорода
+        span.lab-pg5 Выработка кислорода
         .pg5-input-cont
-          input(type="range" min="1" max="10" value="5")
+          input(type="range" min="1" max="10" value="0")
           .pg5-input-hints
             span.pg5-lvl2-input-left-hint [1
             span.pg5-lvl2-input-right-hint 10]
         .pg5-block
           span Reset
       .pg5-div-triple-rows
-        span Занимаемая площадь
+        span.lab-pg5 Занимаемая площадь
         .pg5-input-cont
-          input(type="range" min="1" max="10" value="5") 
+          input(type="range" min="1" max="10" value="0") 
           //, style="background-color: #ff0000;")
           .pg5-input-hints
             span.pg5-lvl2-input-left-hint [1
@@ -101,17 +107,19 @@ html
         .pg5-block
           span Reset
       .pg5-div-triple-rows
-        span Уход за растением 
+        span.lab-pg5 Уход за растением 
         span.pg5-lvl2-line-down-2 (кол-во дней)
         .pg5-input-cont
-          input(type="range" min="1" max="10" value="5")
+          input(type="range" min="1" max="10" value="0")
           .pg5-input-hints
             span.pg5-lvl2-input-left-hint [1
             span.pg5-lvl2-input-right-hint 10]
         .pg5-block
           span Reset
+      
+      .pg5-group-sep
       .pg5-div-triple-rows
-        span Цвет растения 
+        span.lab-pg5 Цвет растения 
         //- .pg5-select-cont
         //-   select#select-color
         //-     option(value="1") Зелёный
@@ -134,7 +142,7 @@ html
         .pg5-block
           span Reset
       .pg5-div-triple-rows
-        span Известное растение?
+        span.lab-pg5 Известное растение?
         .pg5-input-cont.pg5-input-cont-pointers.pg5-cont-2
           .input-point-container
             input(type="radio" name="is-raritet" id="1")

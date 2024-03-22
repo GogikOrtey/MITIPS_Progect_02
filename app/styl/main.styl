@@ -2086,24 +2086,34 @@ body.pg-4, body.pg-5
 		margin-left 6px
 
 .pg5-div-triple-rows
+	//bord()
 	display: grid
 	grid-template-columns: 1.2fr 2fr 120px
 	position: relative
 	margin 20px 0px
 	margin-top -7px
+	.lab-pg5
+		//bord()
+		margin auto 0px
+		padding-left 10px
 	input[type="range"]
 		margin-right 10px
-		//opacity: 0.5  		/// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	input[type="range"]:focus
-		//pointer-events: auto
-		opacity: 1
+		opacity: 0.4  		/// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	input[type="range"]::-webkit-slider-thumb 
+		opacity: 0;
+	// input[type="range"]:focus
+	// 	//pointer-events: auto
+	// 	opacity: 1
 	span
-		//bord()
 		margin-top 10px
 	span.pg5-lvl2-line-down-2
 		grid-row: none
 		position: absolute;
 		bottom: -20px;
+
+// .pg5-input-cont input[type="range"]::-webkit-slider-runnable-track {
+//   opacity: 0;
+// }
 
 .pg5-block
 	//bord()
@@ -2156,11 +2166,12 @@ body.pg-4, body.pg-5
 	grid-template-columns: 1fr 1fr 1fr
 	align-items: center;
 	.input-point-container
-		//bord()
+		//bord()		
 		margin 0px 10px
 		padding 10px
 		background #ececec
 		border-radius: 7px
+		margin-left 0px
 
 .pg5-cont-2
 	grid-template-columns: 1fr 1fr
@@ -2197,6 +2208,13 @@ body.pg-4, body.pg-5
 	margin-left 0px
 	margin-right 10px
 	
+.pg5-group-sep
+	height 0px
+
+
+
+
+
 
 
 
