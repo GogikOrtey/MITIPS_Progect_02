@@ -1642,14 +1642,24 @@ body.pg-5 {
 }
 .pg5-div-triple-rows {
   display: grid;
-  grid-template-columns: 1fr 2fr 120px;
+  grid-template-columns: 1.2fr 2fr 120px;
   position: relative;
+  margin: 20px 0px;
+  margin-top: -7px;
 }
-.pg5-div-triple-rows input {
+.pg5-div-triple-rows input[type="range"] {
   margin-right: 10px;
+}
+.pg5-div-triple-rows input[type="range"]:focus {
+  opacity: 1;
 }
 .pg5-div-triple-rows span {
   margin-top: 10px;
+}
+.pg5-div-triple-rows span.pg5-lvl2-line-down-2 {
+  grid-row: none;
+  position: absolute;
+  bottom: -20px;
 }
 .pg5-block {
   margin: 4px 10px;
