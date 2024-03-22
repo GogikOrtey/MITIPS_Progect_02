@@ -1486,3 +1486,69 @@ p.p-4-1 {
   height: 30px;
   align-self: center;
 }
+.add-4-4-n {
+  border: solid 4px #cecece;
+  background: #e8e8e8;
+  width: 98%;
+  border-radius: 12px;
+  margin: 15px auto;
+}
+.add-4-4-n .n-4-4-1-n {
+  font-size: 24px;
+}
+.add-4-4-n .div-n-4-4-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 15px;
+}
+.add-4-4-n table {
+  border: solid #000 1px;
+  margin: 10px;
+  margin: 0 auto;
+  text-align: center;
+}
+.add-4-4-n td,
+.add-4-4-n th {
+  padding: 5px;
+}
+.add-4-4-n thead {
+  border: solid #000 1px;
+}
+.add-4-4-n .nt-4-4-1 {
+  font-size: 17px;
+  padding: 0px;
+}
+.add-4-4-n .n-4-4-div-2 {
+  border: #000 solid 2px;
+  border-radius: 9px;
+  background: #6ba9ff;
+}
+.add-4-4-n .n-4-4-div-2 input {
+  width: 90%;
+  margin: 0px 20px;
+}
+.add-4-4-n .n-4-4-div-2 .butt-add-new-pr {
+  width: 90%;
+  height: 52px;
+  background: #75ff18;
+  border-radius: 10px;
+  margin: 15px auto;
+}
+.add-4-4-n .n-4-4-div-2 .butt-add-new-pr p {
+  font-size: 20px;
+}
+.add-4-4-n .n-4-4-div-2 .butt-add-new-pr:hover {
+  border: solid 2px #2c2c2c;
+}
+.add-4-4-n .n-4-4-div-2 .butt-add-new-pr:hover p {
+  font-style: italic;
+}
+.add-4-4-n .n-4-4-div-2 .butt-add-new-pr:active {
+  background: #2078fc;
+}
+.n-4-5-1 {
+  padding-bottom: 3px;
+}
+.h20 {
+  height: 50px;
+}
