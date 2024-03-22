@@ -1673,6 +1673,15 @@ body.pg-5 {
   display: inline-block;
   font-size: 16px;
 }
+.pg5-block:hover {
+  cursor: pointer;
+}
+.pg5-block span:hover {
+  cursor: pointer;
+}
+.pg5-block:active {
+  border: solid #000 2px;
+}
 .pg5-input-cont {
   display: grid;
   grid-template-rows: auto auto;
