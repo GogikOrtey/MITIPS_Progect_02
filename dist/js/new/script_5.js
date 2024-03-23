@@ -10,11 +10,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     ProccessingInputActive_onElement(1);
     ProccessingInputActive_onElement(3);
+    ProccessingInputActive_onElement(4);
+    ProccessingInputActive_onElement(7);
+    ProccessingInputActive_onElement(8);
+    ProccessingInputActive_onElement(9);
 });
 
 
 // Было ли изменено значение 
-let arrayOfCange = Array(11).fill(false);
+let arrayOfCange = Array(11).fill(0);
 
 
 
@@ -24,7 +28,7 @@ function ProccessingInputActive_onElement(elementNumber) {
     const inputRange = document.querySelector(`#pg5-el-${elementNumber} input[type="range"]`);
     const resetBlock = document.querySelector('#pg5-el-' + elementNumber + ' .pg5-block');
 
-    console.log("Используем элемент: " + resetBlock);
+    //console.log("Используем элемент: " + resetBlock);
     
     // Скрываем блок сброса при загрузке страницы
     resetBlock.style.opacity = 0;
@@ -36,6 +40,12 @@ function ProccessingInputActive_onElement(elementNumber) {
         // Делаем ползунок прозрачным
         inputRange.style.opacity = 1;
     });
+
+    // будет содержать новое значение элемента range
+    inputRange.addEventListener('input', () => {
+        arrayOfCange[elementNumber] = inputRange.value;
+        //console.log("Записали в массив" + elementNumber + " значение: " + arrayOfCange[elementNumber]);
+    });
     
     // Обработчик события нажатия на блок сброса
     resetBlock.addEventListener('click', () => {
@@ -45,6 +55,8 @@ function ProccessingInputActive_onElement(elementNumber) {
         inputRange.style.opacity = 0.3;
         // Сбрасываем значение ползунка
         inputRange.value = 1;
+        arrayOfCange[elementNumber] = 0;
+        //console.log("Записали в массив" + elementNumber + " значение: " + arrayOfCange[elementNumber]);
     }); 
 }
 
