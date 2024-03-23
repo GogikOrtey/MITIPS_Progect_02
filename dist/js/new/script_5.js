@@ -18,7 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Для всех контейнеров с элементами типа input checked добавляем событие по нажатию (проставление точки)
     InputAllContainersTouchPoc();
 
-    ProccessingInputActive_onCheckboxInput(2);
+    // // Устанавливаем обработчики нажатий для полей, где есть элементы checkbox input
+    // ProccessingInputActive_onCheckboxInput(2);
+    // ProccessingInputActive_onCheckboxInput(5);
+    // ProccessingInputActive_onCheckboxInput(6);
+    // ProccessingInputActive_onCheckboxInput(11);
+
+    AllInputCheckboxes()
 });
 
 
@@ -82,46 +88,153 @@ function InputAllContainersTouchPoc() {
     });
 }
 
-function ProccessingInputActive_onCheckboxInput(elementNumber) {
-    // // Формируем селектор элемента
-    // const inputRange = document.querySelector(`#pg5-el-${elementNumber} .input-point-container`);
-    // const resetBlock = document.querySelector('#pg5-el-' + elementNumber + ' .pg5-block');
+// function ProccessingInputActive_onCheckboxInput(elementNumber) {
+//     // // Формируем селектор элемента
+//     // const inputRange = document.querySelector(`#pg5-el-${elementNumber} .input-point-container`);
+//     // const resetBlock = document.querySelector('#pg5-el-' + elementNumber + ' .pg5-block');
 
-    // Получаем элемент .pg5-block
-    const blockElement = document.querySelector(`.pg5-div-triple-rows#pg5-el-${elementNumber} .pg5-block`);
-    //const blockElementInp = document.querySelectorAll(`.pg5-div-triple-rows#pg5-el-${elementNumber} .input-point-container input`);
-    const blockElementInp = document.querySelectorAll(`.pg5-div-triple-rows#pg5-el-2 input`);
+//     // Получаем элемент .pg5-block
+//     const blockElement = document.querySelector(`.pg5-div-triple-rows#pg5-el-${elementNumber} .pg5-block`);
+//     //const blockElementInp = document.querySelectorAll(`.pg5-div-triple-rows#pg5-el-${elementNumber} .input-point-container input`);
+//     const blockElementInp = document.querySelectorAll(`.pg5-div-triple-rows#pg5-el-${elementNumber} input`);
 
-    console.log(blockElementInp);
+//     //console.log(blockElementInp);
 
-    // Обработчик события нажатия на .pg5-block
-    blockElement.addEventListener('click', () => {
-      // 
-      console.log("Снимаем отметку checked со всех input-radio");
-      //const allRadioInputs = blockElementInp.querySelectorAll('input');
-      //allRadioInputs.forEach(input => input.checked = false);
-        //   blockElementInp.forEach(container => {
-        //     container.checked = false;
-        //     });
-        blockElementInp.forEach((element) => {
+//     // Обработчик события нажатия на .pg5-block
+//     blockElement.addEventListener('click', () => {
+//       // 
+//       console.log("Снимаем отметку checked со всех input-radio");
+//       //const allRadioInputs = blockElementInp.querySelectorAll('input');
+//       //allRadioInputs.forEach(input => input.checked = false);
+//         //   blockElementInp.forEach(container => {
+//         //     container.checked = false;
+//         //     });
+//         blockElementInp.forEach((element) => {
+//             element.checked = false;
+//           });
+//     });
+
+//     // const resetButton = document.querySelector(`.input-point-container#pg5-el-${elementNumber} .pg5-block`);
+
+//     // const allRadioInputs = resetButton.querySelectorAll('input[type="radio"]');
+//     // allRadioInputs.forEach(input => input.checked = false);
+
+//     // // Обработка нажатия на кнопку Reset
+//     // resetButton.addEventListener('click', () => {
+//     //   // Сброс всех чекбоксов
+//     //   console.log("Сброс всех чекбоксов");
+//     //   inputContainers.forEach(container => {
+//     //     container.querySelector('input').checked = false;
+//     //   });
+//     // });
+// }
+
+function AllInputCheckboxes() {
+    resetButton1 = document.querySelector('#pg5-el-2 .pg5-block');
+    resetButton1.style.opacity = 0;
+    resetButton1.addEventListener('click', function() {
+        //console.log("Нажата кнопка reset 2");
+        allInputOfThisPlase = document.querySelectorAll('#pg5-el-2 input');
+        //console.log(allInputOfThisPlase);
+        allInputOfThisPlase.forEach((element) => {
             element.checked = false;
-          });
+        });
+        arrayOfCange[2] = 0;
+        resetButton1.style.opacity = 0;
+    });
+    
+    blockElementInp = document.querySelector('#pg5-el-input-ch-1');
+    //console.log(blockElementInp);
+    blockElementInp.addEventListener('click', function() {
+        //console.log("12313");
+        arrayOfCange[2] = 1;
+        resetButton1.style.opacity = 1;
+    });
+    blockElementInp = document.querySelector('#pg5-el-input-ch-2');
+    blockElementInp.addEventListener('click', function() {
+        arrayOfCange[2] = 2;
+        resetButton1.style.opacity = 1;
+    });
+    blockElementInp = document.querySelector('#pg5-el-input-ch-3');
+    blockElementInp.addEventListener('click', function() {
+        arrayOfCange[2] = 3;
+        resetButton1.style.opacity = 1;
     });
 
-    // const resetButton = document.querySelector(`.input-point-container#pg5-el-${elementNumber} .pg5-block`);
 
-    // const allRadioInputs = resetButton.querySelectorAll('input[type="radio"]');
-    // allRadioInputs.forEach(input => input.checked = false);
+    resetButton2 = document.querySelector('#pg5-el-5 .pg5-block');
+    resetButton2.style.opacity = 0;
+    resetButton2.addEventListener('click', function() {
+        //console.log("Нажата кнопка reset 2");
+        allInputOfThisPlase = document.querySelectorAll('#pg5-el-5 input');
+        //console.log(allInputOfThisPlase);
+        allInputOfThisPlase.forEach((element) => {
+            element.checked = false;
+        });
+        arrayOfCange[5] = 0;
+        resetButton2.style.opacity = 0;
+    });
 
-    // // Обработка нажатия на кнопку Reset
-    // resetButton.addEventListener('click', () => {
-    //   // Сброс всех чекбоксов
-    //   console.log("Сброс всех чекбоксов");
-    //   inputContainers.forEach(container => {
-    //     container.querySelector('input').checked = false;
-    //   });
-    // });
+    blockElementInp = document.querySelector('#pg5-el-input-ch-4');
+    blockElementInp.addEventListener('click', function() {
+        arrayOfCange[5] = 1;
+        resetButton2.style.opacity = 1;
+    });
+    blockElementInp = document.querySelector('#pg5-el-input-ch-5');
+    blockElementInp.addEventListener('click', function() {
+        arrayOfCange[5] = 2;
+        resetButton2.style.opacity = 1;
+    });
+
+
+    resetButton3 = document.querySelector('#pg5-el-6 .pg5-block');
+    resetButton3.style.opacity = 0;
+    resetButton3.addEventListener('click', function() {
+        allInputOfThisPlase = document.querySelectorAll('#pg5-el-6 input');
+        allInputOfThisPlase.forEach((element) => {
+            element.checked = false;
+        });
+        arrayOfCange[6] = 0;
+        resetButton3.style.opacity = 0;
+    });
+
+    blockElementInp = document.querySelector('#pg5-el-input-ch-6');
+    blockElementInp.addEventListener('click', function() {
+        arrayOfCange[6] = 1;
+        resetButton3.style.opacity = 1;
+    });
+    blockElementInp = document.querySelector('#pg5-el-input-ch-7');
+    blockElementInp.addEventListener('click', function() {
+        arrayOfCange[6] = 2;
+        resetButton3.style.opacity = 1;
+    });
+
+
+    resetButton4 = document.querySelector('#pg5-el-11 .pg5-block');
+    resetButton4.style.opacity = 0;
+    resetButton4.addEventListener('click', function() {
+        allInputOfThisPlase = document.querySelectorAll('#pg5-el-11 input');
+        allInputOfThisPlase.forEach((element) => {
+            element.checked = false;
+        });
+        arrayOfCange[11] = 0;
+        resetButton4.style.opacity = 0;
+    });
+
+    blockElementInp = document.querySelector('#pg5-el-input-ch-8');
+    blockElementInp.addEventListener('click', function() {
+        arrayOfCange[11] = 1;
+        resetButton4.style.opacity = 1;
+    });
+    blockElementInp = document.querySelector('#pg5-el-input-ch-9');
+    blockElementInp.addEventListener('click', function() {
+        arrayOfCange[11] = 2;
+        resetButton4.style.opacity = 1;
+    });
 }
+
+
+
 
 
 
