@@ -5,7 +5,7 @@ html
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
 
     //script(src="js/mainTerminal.js")
-    script(src="js/new/script_6.js")
+    script(src="js/new/script_5.js" defer)
     
     header.header
       .bg-fone-header
@@ -18,7 +18,7 @@ html
     p.pg4-p1 Решатель задач
     .pg5-block-vew-pl-list
       p Выберете и задайте значения, для одной или нескольких характерисик, и решатель подберёт набор растений на их основе:
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-1
         span.lab-pg5 Освещение
         .pg5-input-cont
           input(type="range" min="1" max="10" value="0")
@@ -27,7 +27,7 @@ html
             span.pg5-lvl2-input-right-hint 10
         .pg5-block
           span Reset
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-2
         span.lab-pg5 Переносимость прямого света
         .pg5-input-cont.pg5-input-cont-pointers
           .input-point-container
@@ -43,7 +43,7 @@ html
           span Reset
       
       .pg5-group-sep
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-3
         span.lab-pg5 Относительная влажность
         .pg5-input-cont
           input(type="range" min="1" max="10" value="0")
@@ -52,7 +52,7 @@ html
             span.pg5-lvl2-input-right-hint 90%
         .pg5-block
           span Reset
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-4
         span.lab-pg5 Температура
         .pg5-input-cont
           input(type="range" min="1" max="10" value="0")
@@ -63,7 +63,7 @@ html
           span Reset
       
       .pg5-group-sep
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-5
         span.lab-pg5 Тип растения
         .pg5-input-cont.pg5-input-cont-pointers.pg5-cont-2
           .input-point-container
@@ -74,7 +74,7 @@ html
             span Уличное
         .pg5-block
           span Reset
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-6
         span.lab-pg5 Плодоносное?
         .pg5-input-cont.pg5-input-cont-pointers.pg5-cont-2
           .input-point-container
@@ -87,7 +87,7 @@ html
           span Reset
       
       .pg5-group-sep
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-7
         span.lab-pg5 Выработка кислорода
         .pg5-input-cont
           input(type="range" min="1" max="10" value="0")
@@ -96,7 +96,7 @@ html
             span.pg5-lvl2-input-right-hint 10]
         .pg5-block
           span Reset
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-8
         span.lab-pg5 Занимаемая площадь
         .pg5-input-cont
           input(type="range" min="1" max="10" value="0") 
@@ -106,7 +106,7 @@ html
             span.pg5-lvl2-input-right-hint 10]
         .pg5-block
           span Reset
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-9
         span.lab-pg5 Уход за растением 
         span.pg5-lvl2-line-down-2 (кол-во дней)
         .pg5-input-cont
@@ -118,7 +118,7 @@ html
           span Reset
       
       .pg5-group-sep
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-10
         span.lab-pg5 Цвет растения 
         //- .pg5-select-cont
         //-   select#select-color
@@ -141,7 +141,7 @@ html
             label(for="other") ...
         .pg5-block
           span Reset
-      .pg5-div-triple-rows
+      .pg5-div-triple-rows#pg5-el-11
         span.lab-pg5 Известное растение?
         .pg5-input-cont.pg5-input-cont-pointers.pg5-cont-2
           .input-point-container

@@ -1653,10 +1653,7 @@ body.pg-5 {
 }
 .pg5-div-triple-rows input[type="range"] {
   margin-right: 10px;
-  opacity: 0.4;
-}
-.pg5-div-triple-rows input[type="range"]::-webkit-slider-thumb {
-  opacity: 0;
+  opacity: 0.3;
 }
 .pg5-div-triple-rows span {
   margin-top: 10px;

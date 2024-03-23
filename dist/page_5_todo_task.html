@@ -8,7 +8,7 @@
     <title>Решатель задач</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--script(src="js/mainTerminal.js")-->
-    <script src="js/new/script_6.js"></script>
+    <script src="js/new/script_5.js" defer="defer"></script>
     <header class="header">
       <div class="bg-fone-header"></div>
       <div class="head-title">
@@ -21,14 +21,14 @@
     <p class="pg4-p1">Решатель задач</p>
     <div class="pg5-block-vew-pl-list">
       <p>Выберете и задайте значения, для одной или нескольких характерисик, и решатель подберёт набор растений на их основе:</p>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Освещение</span>
+      <div class="pg5-div-triple-rows" id="pg5-el-1"><span class="lab-pg5">Освещение</span>
         <div class="pg5-input-cont">
           <input type="range" min="1" max="10" value="0"/>
           <div class="pg5-input-hints"><span class="pg5-lvl2-input-left-hint">1</span><span class="pg5-lvl2-input-right-hint">10</span></div>
         </div>
         <div class="pg5-block"><span>Reset</span></div>
       </div>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Переносимость прямого света</span>
+      <div class="pg5-div-triple-rows" id="pg5-el-2"><span class="lab-pg5">Переносимость прямого света</span>
         <div class="pg5-input-cont pg5-input-cont-pointers">
           <div class="input-point-container">
             <input type="radio" name="first-light" id="1"/><span>Да</span>
@@ -43,14 +43,14 @@
         <div class="pg5-block"><span>Reset</span></div>
       </div>
       <div class="pg5-group-sep"></div>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Относительная влажность</span>
+      <div class="pg5-div-triple-rows" id="pg5-el-3"><span class="lab-pg5">Относительная влажность</span>
         <div class="pg5-input-cont">
           <input type="range" min="1" max="10" value="0"/>
           <div class="pg5-input-hints"><span class="pg5-lvl2-input-left-hint">10%</span><span class="pg5-lvl2-input-right-hint">90%</span></div>
         </div>
         <div class="pg5-block"><span>Reset</span></div>
       </div>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Температура</span>
+      <div class="pg5-div-triple-rows" id="pg5-el-4"><span class="lab-pg5">Температура</span>
         <div class="pg5-input-cont">
           <input type="range" min="1" max="10" value="0"/>
           <div class="pg5-input-hints"><span class="pg5-lvl2-input-left-hint">-20 ℃</span><span class="pg5-lvl2-input-right-hint">35 ℃</span></div>
@@ -58,7 +58,7 @@
         <div class="pg5-block"><span>Reset</span></div>
       </div>
       <div class="pg5-group-sep"></div>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Тип растения</span>
+      <div class="pg5-div-triple-rows" id="pg5-el-5"><span class="lab-pg5">Тип растения</span>
         <div class="pg5-input-cont pg5-input-cont-pointers pg5-cont-2">
           <div class="input-point-container">
             <input type="radio" name="plant-type" id="1"/><span>Домашнее</span>
@@ -69,7 +69,7 @@
         </div>
         <div class="pg5-block"><span>Reset</span></div>
       </div>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Плодоносное?</span>
+      <div class="pg5-div-triple-rows" id="pg5-el-6"><span class="lab-pg5">Плодоносное?</span>
         <div class="pg5-input-cont pg5-input-cont-pointers pg5-cont-2">
           <div class="input-point-container">
             <input type="radio" name="is-plod" id="1"/><span>Да</span>
@@ -81,14 +81,14 @@
         <div class="pg5-block"><span>Reset</span></div>
       </div>
       <div class="pg5-group-sep"></div>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Выработка кислорода</span>
+      <div class="pg5-div-triple-rows" id="pg5-el-7"><span class="lab-pg5">Выработка кислорода</span>
         <div class="pg5-input-cont">
           <input type="range" min="1" max="10" value="0"/>
           <div class="pg5-input-hints"><span class="pg5-lvl2-input-left-hint">[1</span><span class="pg5-lvl2-input-right-hint">10]</span></div>
         </div>
         <div class="pg5-block"><span>Reset</span></div>
       </div>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Занимаемая площадь</span>
+      <div class="pg5-div-triple-rows" id="pg5-el-8"><span class="lab-pg5">Занимаемая площадь</span>
         <div class="pg5-input-cont">
           <input type="range" min="1" max="10" value="0"/>
           <!--, style="background-color: #ff0000;")-->
@@ -96,7 +96,7 @@
         </div>
         <div class="pg5-block"><span>Reset</span></div>
       </div>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Уход за растением </span><span class="pg5-lvl2-line-down-2">(кол-во дней)</span>
+      <div class="pg5-div-triple-rows" id="pg5-el-9"><span class="lab-pg5">Уход за растением </span><span class="pg5-lvl2-line-down-2">(кол-во дней)</span>
         <div class="pg5-input-cont">
           <input type="range" min="1" max="10" value="0"/>
           <div class="pg5-input-hints"><span class="pg5-lvl2-input-left-hint">[1</span><span class="pg5-lvl2-input-right-hint">10]</span></div>
@@ -104,7 +104,7 @@
         <div class="pg5-block"><span>Reset</span></div>
       </div>
       <div class="pg5-group-sep"></div>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Цвет растения </span>
+      <div class="pg5-div-triple-rows" id="pg5-el-10"><span class="lab-pg5">Цвет растения </span>
         <div class="pg5-checkbox-cont">
           <div class="input-checkbox-container">
             <input type="checkbox" id="green" value="1"/>
@@ -125,7 +125,7 @@
         </div>
         <div class="pg5-block"><span>Reset</span></div>
       </div>
-      <div class="pg5-div-triple-rows"><span class="lab-pg5">Известное растение?</span>
+      <div class="pg5-div-triple-rows" id="pg5-el-11"><span class="lab-pg5">Известное растение?</span>
         <div class="pg5-input-cont pg5-input-cont-pointers pg5-cont-2">
           <div class="input-point-container">
             <input type="radio" name="is-raritet" id="1"/><span>Да</span>
