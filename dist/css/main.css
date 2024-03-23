@@ -1906,6 +1906,23 @@ body.pg-5 {
 .pg5-block-3 .gr {
   margin-bottom: 30px;
 }
+.pg5-block-4 {
+  padding: 20px 45px;
+}
+.pg5-block-4-name-of-palnt {
+  margin-bottom: 30px;
+}
+.pg5-block-4-name-of-palnt span {
+  font-size: 19px;
+}
+.pg5-div-text-descr-charact {
+  overflow: auto;
+  height: 100px;
+  background: #e4e4e4;
+  border-radius: 8px;
+  margin: 8px;
+  margin-bottom: 20px;
+}
 @media (min-width: 978px) {
   .pg5-block-vew-pl-list {
     width: 880px;
