@@ -2256,11 +2256,12 @@ body.pg-4, body.pg-5
 	border solid black 2px
 	display: grid
 	grid-template-rows: 80px auto 80px
+	position: relative;
 
 .pg5-lvl3-block1, .pg5-lvl3-block2, .pg5-lvl3-block3
 	margin 10px
 	border-radius: 10px
-	width 215px
+	width 92.3%
 	overflow: hidden
 
 .pg5-lvl3-block1, .pg5-lvl3-block3
@@ -2300,7 +2301,9 @@ p.ital
 			//border-radius: 12px
 			//background-image: url("img/Растение Кипарис.jpg")
 			display: block
-			//border-radius: 0px		
+			//border-radius: 0px	
+			box-shadow: none	
+			//box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35)
 			
 .pg5-lvl44-name-pl-2
 	display: grid;
@@ -2314,15 +2317,51 @@ p.ital
 .pg5-lvl3-block3
 	background #53ee00
 
+.pg5-p4-block
+	width 94.5%
+	margin auto
+	margin-top 15px
 
+.pg5-fack-block
+	height 55px
+	width 96%
+	//background #ebebeb
+	margin auto
+	display: grid
+	grid-template-columns: 1fr 1fr 1fr
+	margin-top -10px
+	.pg5-req-butt
+		width 80%
+		margin auto
+		height 90%
+		background #ffae0d
+		border-radius: 10px
+		p
+			//bord()
+			margin 0px
+			padding 0px
+			text-align: center
+			font-size: 16px
+			line-height: 22px
+			
+			width 90%
+			margin auto
+			margin-top 3px
+			
 
+.pg5-req-butt:hover
+	filter: brightness(115%);
+	cursor: pointer;
 
+.pg5-req-butt
+	p:hover
+		cursor: pointer;
 
+.pg5-req-butt:active
+	filter: brightness(90%);
 
-
-
-
-
+.pg5-start-button-2
+	margin-top 0px
 
 
 
@@ -2347,7 +2386,7 @@ p.ital
 
 
 // Широкие экраны (десктоп)
-// Переставить потом в конец !!!
-@media (min-width: 1055px) 
+// Для 5й странице чуть-чуть по уже
+@media (min-width: 978px) 
 	.pg5-block-vew-pl-list
-		width: 950px
+		width: 880px
