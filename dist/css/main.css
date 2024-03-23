@@ -1895,6 +1895,16 @@ body.pg-5 {
 .pg5-start-button-2 {
   margin-top: 0px;
 }
+.gr {
+  color: #c2c2c2;
+}
+.pg5-block-3 p {
+  width: 90%;
+  margin: 10px auto;
+}
+.pg5-block-3 .gr {
+  margin-bottom: 30px;
+}
 @media (min-width: 978px) {
   .pg5-block-vew-pl-list {
     width: 880px;
