@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() { 
     
     // Задаём событие по клику, на элемент на Редактор знаний
-    document.querySelector('.n_but').addEventListener('click', function() {
+    document.querySelector('.n_but.n_but_3').addEventListener('click', function() {
         window.location.href = 'page_4_editor_learn.html';
     });
 
