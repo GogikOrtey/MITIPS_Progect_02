@@ -8,16 +8,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    ProccessingInputActive_onElement1();
+    ProccessingInputActive_onElement(1);
+    ProccessingInputActive_onElement(3);
 });
 
 
 // Было ли изменено значение 
 let arrayOfCange = Array(11).fill(false);
 
-function ProccessingInputActive_onElement1() {
-    const inputRange = document.querySelector('#pg5-el-1 input[type="range"]');
-    const resetBlock = document.querySelector('#pg5-el-1 .pg5-block');
+
+
+function ProccessingInputActive_onElement(elementNumber) {
+
+    // Формируем селектор элемента
+    const inputRange = document.querySelector(`#pg5-el-${elementNumber} input[type="range"]`);
+    const resetBlock = document.querySelector('#pg5-el-' + elementNumber + ' .pg5-block');
+
+    console.log("Используем элемент: " + resetBlock);
     
     // Скрываем блок сброса при загрузке страницы
     resetBlock.style.opacity = 0;
@@ -28,34 +35,17 @@ function ProccessingInputActive_onElement1() {
         resetBlock.style.opacity = 1;
         // Делаем ползунок прозрачным
         inputRange.style.opacity = 1;
-        // Делаем "палец" ползунка невидимым
-        //inputRange.style['-webkit-slider-thumb'] = 'opacity: 0';
-        //inputRange.style['-webkit-slider-thumb'].opacity = 0;
     });
     
     // Обработчик события нажатия на блок сброса
     resetBlock.addEventListener('click', () => {
-    // Скрываем блок сброса
-    resetBlock.style.opacity = 0;
-    // Снижаем прозрачность ползунка
-    inputRange.style.opacity = 0.3;
-    // Делаем "палец" ползунка невидимым
-    //inputRange.style['-webkit-slider-thumb'] = 'opacity: 0';
-    //inputRange.style['-webkit-slider-thumb'].opacity = 1;
-    // Сбрасываем значение ползунка
-    inputRange.value = 1;
-  });
-
-
-    // // Обработчик события потери фокуса с input
-    // inputRange.addEventListener('blur', () => {
-    //     // Скрываем блок сброса
-    //     resetBlock.style.opacity = 0;
-    //     // Возвращаем ползунку непрозрачность
-    //     inputRange.style.opacity = 1;
-    //     // Возвращаем "пальцу" ползунка видимость
-    //     inputRange.style['-webkit-slider-thumb'] = '';
-    // });    
+        // Скрываем блок сброса
+        resetBlock.style.opacity = 0;
+        // Снижаем прозрачность ползунка
+        inputRange.style.opacity = 0.3;
+        // Сбрасываем значение ползунка
+        inputRange.value = 1;
+    }); 
 }
 
 
