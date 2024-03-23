@@ -18,18 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Для всех контейнеров с элементами типа input checked добавляем событие по нажатию (проставление точки)
     InputAllContainersTouchPoc();
 
-    // // Устанавливаем обработчики нажатий для полей, где есть элементы checkbox input
-    // ProccessingInputActive_onCheckboxInput(2);
-    // ProccessingInputActive_onCheckboxInput(5);
-    // ProccessingInputActive_onCheckboxInput(6);
-    // ProccessingInputActive_onCheckboxInput(11);
-
+    // Устанавливаем обработчики нажатий для полей, где есть элементы checkbox input
     AllInputCheckboxes()
+
+    // Обработчик для выбора цвета
+    ColorLabelInput()
 });
 
 
 // Хранит значения, для каждого элемента
-let arrayOfCange = Array(11).fill(0);
+let arrayOfCange = Array(12).fill(0);
 
 
 
@@ -87,47 +85,6 @@ function InputAllContainersTouchPoc() {
         });
     });
 }
-
-// function ProccessingInputActive_onCheckboxInput(elementNumber) {
-//     // // Формируем селектор элемента
-//     // const inputRange = document.querySelector(`#pg5-el-${elementNumber} .input-point-container`);
-//     // const resetBlock = document.querySelector('#pg5-el-' + elementNumber + ' .pg5-block');
-
-//     // Получаем элемент .pg5-block
-//     const blockElement = document.querySelector(`.pg5-div-triple-rows#pg5-el-${elementNumber} .pg5-block`);
-//     //const blockElementInp = document.querySelectorAll(`.pg5-div-triple-rows#pg5-el-${elementNumber} .input-point-container input`);
-//     const blockElementInp = document.querySelectorAll(`.pg5-div-triple-rows#pg5-el-${elementNumber} input`);
-
-//     //console.log(blockElementInp);
-
-//     // Обработчик события нажатия на .pg5-block
-//     blockElement.addEventListener('click', () => {
-//       // 
-//       console.log("Снимаем отметку checked со всех input-radio");
-//       //const allRadioInputs = blockElementInp.querySelectorAll('input');
-//       //allRadioInputs.forEach(input => input.checked = false);
-//         //   blockElementInp.forEach(container => {
-//         //     container.checked = false;
-//         //     });
-//         blockElementInp.forEach((element) => {
-//             element.checked = false;
-//           });
-//     });
-
-//     // const resetButton = document.querySelector(`.input-point-container#pg5-el-${elementNumber} .pg5-block`);
-
-//     // const allRadioInputs = resetButton.querySelectorAll('input[type="radio"]');
-//     // allRadioInputs.forEach(input => input.checked = false);
-
-//     // // Обработка нажатия на кнопку Reset
-//     // resetButton.addEventListener('click', () => {
-//     //   // Сброс всех чекбоксов
-//     //   console.log("Сброс всех чекбоксов");
-//     //   inputContainers.forEach(container => {
-//     //     container.querySelector('input').checked = false;
-//     //   });
-//     // });
-// }
 
 function AllInputCheckboxes() {
     resetButton1 = document.querySelector('#pg5-el-2 .pg5-block');
@@ -234,54 +191,71 @@ function AllInputCheckboxes() {
 }
 
 
+function ColorLabelInput() {
 
+    document.querySelector('#pg5-el-10 .pg5-block').style.opacity = 0;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Просто устанавливает состояние checked, по нажатию на ролительский блок
-function ProccessingInputActive_onCheckboxInput_old(elementNumber) {
-    const inputContainers = document.querySelectorAll('.input-point-container');
-    const resetButton = document.querySelector('.input-point-container .pg5-block');
-    
-    // Функция для установки checked нажатому input
-    function setChecked(container) {
-        const input = container.querySelector('input');
-        input.checked = true;
+    function isChecked() {
+      const checkboxes = document.querySelectorAll('#pg5-el-10 .pg5-checkbox-cont input[type="checkbox"]');
+      //console.log(checkboxes);
+      for (const checkbox of checkboxes) {
+        if (checkbox.checked == true) {
+          return true;
+        }
       }
-      
-      // Обработка нажатий на контейнеры с точками
-      inputContainers.forEach(container => {
-        container.addEventListener('click', () => {
-          setChecked(container);
-        });
-      });
-    
-    // Обработка нажатия на кнопку Reset
-    resetButton.addEventListener('click', () => {
-      // Сброс всех чекбоксов
-      console.log("Сброс всех чекбоксов");
-      inputContainers.forEach(container => {
-        container.querySelector('input').checked = false;
+      return false;
+    }
+
+    function uncheckAll() {
+      const checkboxes = document.querySelectorAll('#pg5-el-10 .pg5-checkbox-cont input[type="checkbox"]');
+      for (const checkbox of checkboxes) {
+        checkbox.checked = false;
+      }
+    }
+
+    document.querySelectorAll('#pg5-el-10 .pg5-checkbox-cont input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        if (isChecked()) {
+            arrayOfCange[10] = 1;
+          document.querySelector('#pg5-el-10 .pg5-block').style.opacity = 1;
+        } else {
+            arrayOfCange[10] = 0;
+            document.querySelector('#pg5-el-10 .pg5-block').style.opacity = 0;
+        }
+        //console.log(arrayOfCange);
       });
     });
+
+    document.querySelector('#pg5-el-10 .pg5-block').addEventListener('click', () => {
+        arrayOfCange[10] = 0;
+      document.querySelector('#pg5-el-10 .pg5-block').style.opacity = 0;
+      uncheckAll();
+    });
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
