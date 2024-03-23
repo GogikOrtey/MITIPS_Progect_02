@@ -1793,7 +1793,7 @@ body.pg-5 {
 }
 .pg5-lvl2-block {
   width: 90%;
-  height: 360px;
+  height: 370px;
   border-radius: 15px;
   border: solid #000 2px;
   display: grid;
@@ -1804,6 +1804,8 @@ body.pg-5 {
 .pg5-lvl3-block3 {
   margin: 10px;
   border-radius: 10px;
+  width: 215px;
+  overflow: hidden;
 }
 .pg5-lvl3-block1,
 .pg5-lvl3-block3 {
@@ -1824,11 +1826,26 @@ body.pg-5 {
   margin: 0px 10px;
   border: 3px solid #afafaf;
 }
+.pg5-lvl3-block2 .pg5-lvl4-name-pl {
+  margin: 0px;
+  padding: 0px;
+  margin-top: -10px;
+  text-align: center;
+  align-self: center;
+  line-height: 22px;
+}
 .pg5-lvl3-block2 .pg5-lvl4-block1-img img {
   width: 90%;
   height: 130px;
   margin: 10px auto;
   display: block;
+}
+.pg5-lvl44-name-pl-2 {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 50px;
+  margin-top: 0px;
 }
 .pg5-lvl3-block3 {
   background: #53ee00;
