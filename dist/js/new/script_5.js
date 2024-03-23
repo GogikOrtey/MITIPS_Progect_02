@@ -7,17 +7,22 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'index.html';
     });
 
-
+    // Обработка элементов типа input range:
     ProccessingInputActive_onElement(1);
     ProccessingInputActive_onElement(3);
     ProccessingInputActive_onElement(4);
     ProccessingInputActive_onElement(7);
     ProccessingInputActive_onElement(8);
     ProccessingInputActive_onElement(9);
+
+    // Для всех контейнеров с элементами типа input checked добавляем событие по нажатию (проставление точки)
+    InputAllContainersTouchPoc();
+
+    ProccessingInputActive_onCheckboxInput(2);
 });
 
 
-// Было ли изменено значение 
+// Хранит значения, для каждого элемента
 let arrayOfCange = Array(11).fill(0);
 
 
@@ -60,7 +65,110 @@ function ProccessingInputActive_onElement(elementNumber) {
     }); 
 }
 
+function InputAllContainersTouchPoc() {
+    const inputContainers = document.querySelectorAll('.input-point-container');
 
+    // Функция для установки checked нажатому input
+    function setChecked(container) {
+        const input = container.querySelector('input');
+        input.checked = true;
+    }
+      
+      // Обработка нажатий на контейнеры с точками
+    inputContainers.forEach(container => {
+        container.addEventListener('click', () => {
+          setChecked(container);
+        });
+    });
+}
+
+function ProccessingInputActive_onCheckboxInput(elementNumber) {
+    // // Формируем селектор элемента
+    // const inputRange = document.querySelector(`#pg5-el-${elementNumber} .input-point-container`);
+    // const resetBlock = document.querySelector('#pg5-el-' + elementNumber + ' .pg5-block');
+
+    // Получаем элемент .pg5-block
+    const blockElement = document.querySelector(`.pg5-div-triple-rows#pg5-el-${elementNumber} .pg5-block`);
+    //const blockElementInp = document.querySelectorAll(`.pg5-div-triple-rows#pg5-el-${elementNumber} .input-point-container input`);
+    const blockElementInp = document.querySelectorAll(`.pg5-div-triple-rows#pg5-el-2 input`);
+
+    console.log(blockElementInp);
+
+    // Обработчик события нажатия на .pg5-block
+    blockElement.addEventListener('click', () => {
+      // 
+      console.log("Снимаем отметку checked со всех input-radio");
+      //const allRadioInputs = blockElementInp.querySelectorAll('input');
+      //allRadioInputs.forEach(input => input.checked = false);
+        //   blockElementInp.forEach(container => {
+        //     container.checked = false;
+        //     });
+        blockElementInp.forEach((element) => {
+            element.checked = false;
+          });
+    });
+
+    // const resetButton = document.querySelector(`.input-point-container#pg5-el-${elementNumber} .pg5-block`);
+
+    // const allRadioInputs = resetButton.querySelectorAll('input[type="radio"]');
+    // allRadioInputs.forEach(input => input.checked = false);
+
+    // // Обработка нажатия на кнопку Reset
+    // resetButton.addEventListener('click', () => {
+    //   // Сброс всех чекбоксов
+    //   console.log("Сброс всех чекбоксов");
+    //   inputContainers.forEach(container => {
+    //     container.querySelector('input').checked = false;
+    //   });
+    // });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Просто устанавливает состояние checked, по нажатию на ролительский блок
+function ProccessingInputActive_onCheckboxInput_old(elementNumber) {
+    const inputContainers = document.querySelectorAll('.input-point-container');
+    const resetButton = document.querySelector('.input-point-container .pg5-block');
+    
+    // Функция для установки checked нажатому input
+    function setChecked(container) {
+        const input = container.querySelector('input');
+        input.checked = true;
+      }
+      
+      // Обработка нажатий на контейнеры с точками
+      inputContainers.forEach(container => {
+        container.addEventListener('click', () => {
+          setChecked(container);
+        });
+      });
+    
+    // Обработка нажатия на кнопку Reset
+    resetButton.addEventListener('click', () => {
+      // Сброс всех чекбоксов
+      console.log("Сброс всех чекбоксов");
+      inputContainers.forEach(container => {
+        container.querySelector('input').checked = false;
+      });
+    });
+}
 
 
 
