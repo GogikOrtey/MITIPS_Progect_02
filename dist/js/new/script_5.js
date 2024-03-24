@@ -7,25 +7,31 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'index.html';
     });
 
-    // Обработка элементов типа input range:
-    ProccessingInputActive_onElement(1);
-    ProccessingInputActive_onElement(3);
-    ProccessingInputActive_onElement(4);
-    ProccessingInputActive_onElement(7);
-    ProccessingInputActive_onElement(8);
-    ProccessingInputActive_onElement(9);
+    // Функции для обработки фокуса и нажатий на input элементы формы
+    // Здесь прописана логика, как ведут себя элементы, когда они не выбраны, и когда выбраны
+    {
+        // Обработка элементов типа input range:
+        ProccessingInputActive_onElement(1);
+        ProccessingInputActive_onElement(3);
+        ProccessingInputActive_onElement(4);
+        ProccessingInputActive_onElement(7);
+        ProccessingInputActive_onElement(8);
+        ProccessingInputActive_onElement(9);
 
-    // Для всех контейнеров с элементами типа input checked добавляем событие по нажатию (проставление точки)
-    InputAllContainersTouchPoc();
+        // Для всех контейнеров с элементами типа input checked добавляем событие по нажатию (проставление точки)
+        InputAllContainersTouchPoc();
 
-    // Устанавливаем обработчики нажатий для полей, где есть элементы checkbox input
-    AllInputCheckboxes()
+        // Устанавливаем обработчики нажатий для полей, где есть элементы checkbox input
+        AllInputCheckboxes()
 
-    // Обработчик для выбора цвета
-    ColorLabelInput()
+        // Обработчик для выбора цвета
+        ColorLabelInput()
+    }
 
-    // Проверка массива
-    //EndTextTest1()
+    // Скрывает или показывает кнопку начала подбора
+    EndTextTest2()
+
+
 });
 
 
@@ -34,6 +40,7 @@ let arrayOfCange = Array(12).fill(0);
 // Важно: отсчёт начинается с 1го элемента, а не с 0го
 
 
+// Обработка элементов типа input range:
 function ProccessingInputActive_onElement(elementNumber) {
 
     // Формируем селектор элемента
@@ -72,6 +79,7 @@ function ProccessingInputActive_onElement(elementNumber) {
     }); 
 }
 
+// Для всех контейнеров с элементами типа input checked добавляем событие по нажатию (проставление точки)
 function InputAllContainersTouchPoc() {
     const inputContainers = document.querySelectorAll('.input-point-container');
 
@@ -89,6 +97,7 @@ function InputAllContainersTouchPoc() {
     });
 }
 
+// Устанавливаем обработчики нажатий для полей, где есть элементы checkbox input
 function AllInputCheckboxes() {
     resetButton1 = document.querySelector('#pg5-el-2 .pg5-block');
     resetButton1.style.opacity = 0;
@@ -193,7 +202,7 @@ function AllInputCheckboxes() {
     });
 }
 
-
+// Обработчик для выбора цвета
 function ColorLabelInput() {
 
     document.querySelector('#pg5-el-10 .pg5-block').style.opacity = 0;
@@ -238,17 +247,42 @@ function ColorLabelInput() {
 }
 
 
-// function EndTextTest1() {
-//     document.querySelector('p.pg5-add-p-1#pg5-el-6').textContent = arrayOfCange;
+// Эта функция просматривает все события нажатия на элементы, в блоке ввода характеристик
+// И если выбран хоть один элемент - она показывает синюю кнопку, по которой можно начать подбор растений
+function EndTextTest2() {
+    //document.querySelector('p.pg5-add-p-1#pg5-el-6').textContent = arrayOfCange;
 
-//     allInputs =  document.querySelectorAll("input");
-//     //console.log(allInputs);
-//     allInputs.forEach(elemINp => {
-//         elemINp.addEventListener('click', () => {
-//             document.querySelector('p.pg5-add-p-1#pg5-el-6').textContent = arrayOfCange;
-//         });
-//     });
-// }
+    // Возвращает true, если нашёлся хотя бы один элемент отличный от 0
+    function CheckArrayFull(mass) {
+        return mass.some(element => element > 0);
+    }
+
+    allInputs =  document.querySelectorAll("input");
+    //console.log(allInputs);
+
+    allRadioButtons =  document.querySelectorAll(".input-checkbox-container");
+    allPointButtons =  document.querySelectorAll(".input-point-container");
+    allResetButtons =  document.querySelectorAll(".pg5-block");
+
+    //allElements = allInputs + allRadioButtons
+    allElements = [...allInputs, ...allRadioButtons, ...allPointButtons, ...allResetButtons];
+    //console.log(allElements);
+
+    allElements.forEach(elemINp => {
+        elemINp.addEventListener('click', () => {
+            //document.querySelector('p.pg5-add-p-1#pg5-el-6').textContent = arrayOfCange;
+
+            //console.log(CheckArrayFull(arrayOfCange));
+
+            if(CheckArrayFull(arrayOfCange) == true) {
+                console.log("Хотя бы один элемент выбран");
+            } else {
+                console.log("Ни один элемент не выбран");
+            }
+        });
+    });
+
+}
 
 
 
