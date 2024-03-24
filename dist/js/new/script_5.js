@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Добавляет обработчик для скрытия ввода характеристик, и показа блока результатов
     DisplayAnswerForPodbor()
+
+    // Добавляет обработчик событий на оранжевые кнопки "Почему это растение попало в набор?"
+    OrangeButonActive()
 });
 
 
@@ -287,7 +290,7 @@ function EndTextTest2() {
             }
         });
     });
-
+ 
 }
 
 
@@ -295,11 +298,15 @@ function EndTextTest2() {
 // Важно: Ответ также должен содержать 3 или больше растений !!!!!
 boolisRequestGood = true;
 
+MainState = 0
+
 // !!! Тут нужно будет допилить - собрать характеристики, отправить их в php на сервер
 // На сервере - собрать запрос, и прислать ответ
 // Код разбора ответа можно взять из старого скрипта
 // И только потом запускать эту функцию
 // А пока ответ идёт - показать только иконку загрузки
+
+// Это - шаблон! Не рабочая функция
 
 // Добавляет обработчик для скрытия ввода характеристик, и показа блока результатов
 function DisplayAnswerForPodbor() {
@@ -311,18 +318,61 @@ function DisplayAnswerForPodbor() {
 
     blockExplanation  = document.querySelector("#expl-block");
 
+    // С курсором мышки проверить дополнительно
+
+    // Видны все элементы
     // blockElementLoad.style.display = "grid";
     // blockCurrentAnswer.style.display = "block";
     // blockNotCurrentAnswer.style.display = "block";
     // blockExplanation.style.display = "block";
+    // document.body.style.cursor = 'default';
+    // blockElementLoad.style.cursor = 'default';
 
+    // Видна только загрузка
+    // blockMainInputCharact.style.display = "none";
+    // blockCurrentAnswer.style.display = "none";
+    // blockNotCurrentAnswer.style.display = "none";
+    // blockExplanation.style.display = "none";
+    // document.body.style.cursor = 'wait';
+    // blockElementLoad.style.cursor = 'wait';
+
+    // Результаты с 3мя карточками
     blockMainInputCharact.style.display = "none";
-    blockCurrentAnswer.style.display = "none";
     blockNotCurrentAnswer.style.display = "none";
+    blockElementLoad.style.display = "none";
     blockExplanation.style.display = "none";
+
+    // Показывается модуль объяснения результата
+    //blockExplanation.style.display = "block";
+
 }
 
+// Добавляет обработчик событий на оранжевые кнопки "Почему это растение попало в набор?"
+function OrangeButonActive() {
+    // //.pg5-req-butt
+    // reqButt = document.querySelectorAll(".pg5-req-butt");
+    // //console.log(reqButt);
 
+    // reqButt.forEach(elem => {
+    //     elem.addEventListener('click', () => {
+    //         //console.log("123");
+    //     })
+    // })
+
+    // Получаем все кнопки
+    let buttons = document.querySelectorAll('.pg5-req-butt');
+
+    // Добавляем обработчик событий для каждой кнопки
+    buttons.forEach(function(button, index) {
+        button.addEventListener('click', function() {
+            // Получаем название растения
+            var plantName = document.querySelector('.pg5-lvl2-cont-1 .pg5-lvl2-block:nth-child(' + (index + 1) + ') .pg5-lvl4-name-pl').textContent;
+            // Выводим название растения в консоль
+            console.log(plantName);
+        });
+    });
+    
+}
 
 
 
