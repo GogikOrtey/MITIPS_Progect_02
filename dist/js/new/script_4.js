@@ -1,24 +1,105 @@
 
 // Ждём, пока DOM-модель загрузится
 document.addEventListener('DOMContentLoaded', function() { 
-    
-    // Задаём событие по клику, на элемент на Редактор знаний
-    document.querySelector('.n_but.n_but_3').addEventListener('click', function() {
-        window.location.href = 'page_4_editor_learn.html';
+
+    // Задаём событие по клику, на элемент на Кнопка назад
+    document.querySelector('.butt_back.n_but').addEventListener('click', function() {
+        window.location.href = 'index.html';
     });
 
-    // Задаём событие по клику, на элемент на Решатель задач
-    document.querySelector('.n_but.n_but_2').addEventListener('click', function() {
-        window.location.href = 'page_5_todo_task.html';
-    });
-
-    // ---
-
-    // // Задаём событие по клику, на элемент на Кнопка назад
-    // document.querySelector('.butt_back.n_but').addEventListener('click', function() {
-    //     window.location.href = 'index.html';
-    // });
+    // Получаю все названия растений, и вывожу их в консоль
+    SQL_RQ_FromSwever("select * from Allelopathy")
 });
+
+// Запрос к БД растений:
+function SQL_RQ_FromSwever(sql_2) {
+    // Используем асинхронную функцию для запроса-ответа к серверу
+    $.ajax({
+
+        // Подключаемся к php файлу на сервере
+        type: "POST",
+        url: "https://gogortey.ru/res/getdata_2.php",
+        
+        // Отправляем туда наш SQL-запрос
+        data: { sql: sql_2 },
+
+        // Когда получим ответ:
+        success: function(data_inp) {
+            //console.log(data_inp);
+            let decodeData = JSON.parse(data_inp); // Преобразуем строку JSON в объект JavaScript
+            //console.log(decodeData);
+            console.log(ConvertJSON_to_massiv(decodeData, "allelopathy_description"))
+        }
+    })
+}
+
+// Автоматическая функция, которая извлекает из каждой записи в JSON формате, данные
+// по одному (указанному) полю
+// response - ответ в формате JSON, selector - то поле, из которого мы извлекаем данные в массив
+function ConvertJSON_to_massiv(response, selector) {
+    const result = response.map(item => item[selector]);
+    return result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*

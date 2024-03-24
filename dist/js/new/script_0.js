@@ -1,47 +1,24 @@
 
 // Ждём, пока DOM-модель загрузится
 document.addEventListener('DOMContentLoaded', function() { 
-
-    // Задаём событие по клику, на элемент на Кнопка назад
-    document.querySelector('.butt_back.n_but').addEventListener('click', function() {
-        window.location.href = 'index.html';
+    
+    // Задаём событие по клику, на элемент на Редактор знаний
+    document.querySelector('.n_but.n_but_3').addEventListener('click', function() {
+        window.location.href = 'page_4_editor_learn.html';
     });
+
+    // Задаём событие по клику, на элемент на Решатель задач
+    document.querySelector('.n_but.n_but_2').addEventListener('click', function() {
+        window.location.href = 'page_5_todo_task.html';
+    });
+
+    // ---
+
+    // // Задаём событие по клику, на элемент на Кнопка назад
+    // document.querySelector('.butt_back.n_but').addEventListener('click', function() {
+    //     window.location.href = 'index.html';
+    // });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
