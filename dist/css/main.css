@@ -1920,6 +1920,9 @@ body.pg-5 {
   margin: 8px;
   margin-bottom: 20px;
 }
+#plant-name-expl-module {
+  font-weight: bold;
+}
 @media (min-width: 978px) {
   .pg5-block-vew-pl-list {
     width: 880px;

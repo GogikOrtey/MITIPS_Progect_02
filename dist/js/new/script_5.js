@@ -342,22 +342,29 @@ function DisplayAnswerForPodbor() {
     blockElementLoad.style.display = "none";
     blockExplanation.style.display = "none";
 
+    // Пустой результат
+    blockMainInputCharact.style.display = "none";
+    blockElementLoad.style.display = "none";
+    blockExplanation.style.display = "none";
+    blockCurrentAnswer.style.display = "none";
+    blockNotCurrentAnswer.style.display = "block";
+
     // Показывается модуль объяснения результата
     //blockExplanation.style.display = "block";
+
+    // По нажатию на кнопку "Пройти езё раз" - страница перезагружается
+    buttRestart = document.querySelectorAll("#butt-restart");
+
+    buttRestart.forEach(elem => {
+        elem.addEventListener('click', () => {
+            location.reload();
+        })
+    })
 
 }
 
 // Добавляет обработчик событий на оранжевые кнопки "Почему это растение попало в набор?"
 function OrangeButonActive() {
-    // //.pg5-req-butt
-    // reqButt = document.querySelectorAll(".pg5-req-butt");
-    // //console.log(reqButt);
-
-    // reqButt.forEach(elem => {
-    //     elem.addEventListener('click', () => {
-    //         //console.log("123");
-    //     })
-    // })
 
     // Получаем все кнопки
     let buttons = document.querySelectorAll('.pg5-req-butt');
@@ -368,13 +375,24 @@ function OrangeButonActive() {
             // Получаем название растения
             var plantName = document.querySelector('.pg5-lvl2-cont-1 .pg5-lvl2-block:nth-child(' + (index + 1) + ') .pg5-lvl4-name-pl').textContent;
             // Выводим название растения в консоль
-            console.log(plantName);
+            console.log("Вывод пояснений к растению: " + plantName);
+            ShowExplanBlock(plantName);
         });
-    });
-    
+    });    
 }
 
+// Показывает модуль объяснений, пролистывает до него, и устанавливает название растения в нужное место
+function ShowExplanBlock(plantName) {
 
+    // Показывается модуль объяснения результата
+    blockExplanation.style.display = "block";
+
+    plantExplHeadText = document.querySelector('#plant-name-expl-module');
+    plantExplHeadText.textContent = plantName;
+    plantExplHeadText.scrollIntoView({behavior: "smooth"});
+
+    // !!! Вот здесь - запрос к БД, на все характеристики этого растения, по имени
+}
 
 
 
