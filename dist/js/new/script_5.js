@@ -295,7 +295,7 @@ function EndTextTest2() {
 
 
 // = true, если пришёл не пустой ответ от БД
-// Важно: Ответ также должен содержать 3 или больше растений !!!!!
+// Важно: Ответ также должен содержать 3 или больше растений !!!
 boolisRequestGood = true;
 
 MainState = 0
@@ -320,6 +320,12 @@ function DisplayAnswerForPodbor() {
 
     // С курсором мышки проверить дополнительно
 
+    //Виден только блок ввода характеристик
+    blockCurrentAnswer.style.display = "none";
+    blockNotCurrentAnswer.style.display = "none";
+    blockExplanation.style.display = "none";
+    blockElementLoad.style.display = "none";
+
     // Видны все элементы
     // blockElementLoad.style.display = "grid";
     // blockCurrentAnswer.style.display = "block";
@@ -337,17 +343,17 @@ function DisplayAnswerForPodbor() {
     // blockElementLoad.style.cursor = 'wait';
 
     // Результаты с 3мя карточками
-    blockMainInputCharact.style.display = "none";
-    blockNotCurrentAnswer.style.display = "none";
-    blockElementLoad.style.display = "none";
-    blockExplanation.style.display = "none";
+    // blockMainInputCharact.style.display = "none";
+    // blockNotCurrentAnswer.style.display = "none";
+    // blockElementLoad.style.display = "none";
+    // blockExplanation.style.display = "none";
 
     // Пустой результат
-    blockMainInputCharact.style.display = "none";
-    blockElementLoad.style.display = "none";
-    blockExplanation.style.display = "none";
-    blockCurrentAnswer.style.display = "none";
-    blockNotCurrentAnswer.style.display = "block";
+    // blockMainInputCharact.style.display = "none";
+    // blockElementLoad.style.display = "none";
+    // blockExplanation.style.display = "none";
+    // blockCurrentAnswer.style.display = "none";
+    // blockNotCurrentAnswer.style.display = "block";
 
     // Показывается модуль объяснения результата
     //blockExplanation.style.display = "block";
@@ -361,6 +367,33 @@ function DisplayAnswerForPodbor() {
         })
     })
 
+    buttStart = document.querySelector(".pg5-start-button");
+
+
+    buttStart.addEventListener('click', () => {
+        // Видна только загрузка
+        blockMainInputCharact.style.display = "none";
+        // blockCurrentAnswer.style.display = "none";
+        // blockNotCurrentAnswer.style.display = "none";
+        // blockExplanation.style.display = "none";
+        blockElementLoad.style.display = "grid";
+        document.body.style.cursor = 'wait';
+        blockElementLoad.style.cursor = 'wait';
+
+        setTimeout(function() {                         // !!! Убрать это от сюда
+            document.body.style.cursor = 'default';
+            blockElementLoad.style.cursor = 'default';
+            blockElementLoad.style.display = "none";
+
+            if(boolisRequestGood) {
+                // Хорошие результаты
+                blockCurrentAnswer.style.display = "block";
+            } else {
+                // Плохие результаты
+                blockNotCurrentAnswer.style.display = "block";
+            }
+        }, 500);
+    })
 }
 
 // Добавляет обработчик событий на оранжевые кнопки "Почему это растение попало в набор?"
