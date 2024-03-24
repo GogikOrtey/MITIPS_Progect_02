@@ -23,12 +23,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Обработчик для выбора цвета
     ColorLabelInput()
+
+    // Проверка массива
+    //EndTextTest1()
 });
 
 
 // Хранит значения, для каждого элемента
 let arrayOfCange = Array(12).fill(0);
-
+// Важно: отсчёт начинается с 1го элемента, а не с 0го
 
 
 function ProccessingInputActive_onElement(elementNumber) {
@@ -235,7 +238,17 @@ function ColorLabelInput() {
 }
 
 
+// function EndTextTest1() {
+//     document.querySelector('p.pg5-add-p-1#pg5-el-6').textContent = arrayOfCange;
 
+//     allInputs =  document.querySelectorAll("input");
+//     //console.log(allInputs);
+//     allInputs.forEach(elemINp => {
+//         elemINp.addEventListener('click', () => {
+//             document.querySelector('p.pg5-add-p-1#pg5-el-6').textContent = arrayOfCange;
+//         });
+//     });
+// }
 
 
 
