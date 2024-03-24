@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Получаю все названия растений, и вывожу их в консоль
-    SQL_RQ_FromSwever("select * from Allelopathy")
+    //SQL_RQ_FromSwever("select * from Allelopathy")
+    SQL_RQ_FromSwever("select * from MainTable_2")
 });
 
 // Запрос к БД растений:
@@ -28,7 +29,10 @@ function SQL_RQ_FromSwever(sql_2) {
             //console.log(data_inp);
             let decodeData = JSON.parse(data_inp); // Преобразуем строку JSON в объект JavaScript
             //console.log(decodeData);
-            console.log(ConvertJSON_to_massiv(decodeData, "allelopathy_description"))
+            resultMass = ConvertJSON_to_massiv(decodeData, "Название растения")
+            console.log(resultMass)
+
+            GetPlantList_andInsertFromLabel(resultMass);
         }
     })
 }
@@ -42,7 +46,26 @@ function ConvertJSON_to_massiv(response, selector) {
 }
 
 
+function GetPlantList_andInsertFromLabel(inputMass) {
+    // Получаем контейнер, в котором находятся элементы
+    const container = document.querySelector('.main-pl-list-cont-pg4');
 
+    // Удаляем все элементы .el-pl-cont-4
+    const elementsToRemove = container.querySelectorAll('.el-pl-cont-4');
+    for (const element of elementsToRemove) {
+      element.remove();
+    }
+
+    // Создаем новые элементы из массива значений
+    //const values = ['Нейтральная', 'Положительная', 'Отрицательная'];
+    for (const value of inputMass) {
+      const element = document.createElement('div');
+      element.classList.add('el-pl-cont-4');
+      element.textContent = value;
+      container.appendChild(element);
+    }
+
+}
 
 
 
