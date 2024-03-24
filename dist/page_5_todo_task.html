@@ -19,7 +19,7 @@
   </head>
   <body class="pg-5">
     <p class="pg4-p1">Решатель задач</p>
-    <div class="pg5-block-vew-pl-list">
+    <div class="pg5-block-vew-pl-list" id="main-block-input-charact">
       <p>Выберете и задайте значения, для одной или нескольких характерисик, и решатель подберёт набор растений на их основе:</p>
       <div class="pg5-div-triple-rows" id="pg5-el-1"><span class="lab-pg5">Освещение</span>
         <div class="pg5-input-cont">
@@ -139,7 +139,8 @@
       <div class="pg5-start-button"><span>Подобрать набор растений</span></div>
       <p class="pg5-add-p-1" id="pg5-el-6"><i>Выберете значение хотя бы в одном поле</i></p>
     </div>
-    <div class="pg5-block-vew-pl-list pg5-block-2">
+    <div class="loadd"> <img src="img/wave-load.gif"/><span>Подождите...</span></div>
+    <div class="pg5-block-vew-pl-list pg5-block-2" id="curr-answ">
       <p class="pg5-p1">Вот такие растения мы подобрали для вас:</p>
       <div class="pg5-lvl2-cont-1">
         <div class="pg5-lvl2-block">
@@ -208,14 +209,14 @@
       </div>
       <div class="pg5-start-button pg5-start-button-2"><span>Пройти ещё раз</span></div>
     </div>
-    <div class="pg5-block-vew-pl-list pg5-block-2 pg5-block-3">
+    <div class="pg5-block-vew-pl-list pg5-block-2 pg5-block-3" id="not-curr-answ">
       <p class="pg5-p1">Результаты:</p>
       <p>К сожалению, мы не смогли подобрать для вас набор растений, по указанным вами характеристикам.</p>
       <p>Пожалуйста, попробуйте ещё раз - выберете другие характеристики.</p>
       <p class="gr">Если это сообщение появляется слишком часто, укажите значения для 1-2 характеристик, не больше. И помните, чем больше цветов растения вы выберете - тем больше будет результатов.</p>
       <div class="pg5-start-button pg5-start-button-2"><span>Попробовать ещё раз</span></div>
     </div>
-    <div class="pg5-block-vew-pl-list pg5-block-2 pg5-block-4">
+    <div class="pg5-block-vew-pl-list pg5-block-2 pg5-block-4" id="expl-block">
       <p class="pg5-p1">Модуль объяснения результата:</p>
       <div class="pg5-block-4-name-of-palnt"><span>Растение с названием: </span><span class="pg-5-el-2">Кофейное дерево (кофе) </span></div>
       <p>Попало в набор, потому что имеет характеристики:</p>

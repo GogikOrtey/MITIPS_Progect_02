@@ -16,7 +16,7 @@ html
 
   body.pg-5
     p.pg4-p1 Решатель задач
-    .pg5-block-vew-pl-list
+    .pg5-block-vew-pl-list#main-block-input-charact
       p Выберете и задайте значения, для одной или нескольких характерисик, и решатель подберёт набор растений на их основе:
       .pg5-div-triple-rows#pg5-el-1
         span.lab-pg5 Освещение
@@ -155,12 +155,16 @@ html
       .pg5-start-button
         span Подобрать набор растений
       p.pg5-add-p-1#pg5-el-6 <i>Выберете значение хотя бы в одном поле</i>
-    .pg5-block-vew-pl-list.pg5-block-2
+    
+    
+    .loadd 
+      img(src="img/wave-load.gif")
+      span Подождите...
+    
+    
+    .pg5-block-vew-pl-list.pg5-block-2#curr-answ
       p.pg5-p1 Вот такие растения мы подобрали для вас:
       .pg5-lvl2-cont-1
-
-
-
         .pg5-lvl2-block
           .pg5-lvl3-block1
             p <b>Тип климата:</b>
@@ -209,7 +213,9 @@ html
         p Для того, что бы узнать, согласно каким именно характеристикам, в набор было помещено конкретное растение - <u>нажмите на кнопку пояснения</u>, ниже карточки растения.
       .pg5-start-button.pg5-start-button-2
         span Пройти ещё раз
-    .pg5-block-vew-pl-list.pg5-block-2.pg5-block-3
+
+
+    .pg5-block-vew-pl-list.pg5-block-2.pg5-block-3#not-curr-answ
       p.pg5-p1 Результаты:
       p К сожалению, мы не смогли подобрать для вас набор растений, по указанным вами характеристикам.
       p Пожалуйста, попробуйте ещё раз - выберете другие характеристики.
@@ -217,7 +223,7 @@ html
       .pg5-start-button.pg5-start-button-2
         span Попробовать ещё раз
 
-    .pg5-block-vew-pl-list.pg5-block-2.pg5-block-4
+    .pg5-block-vew-pl-list.pg5-block-2.pg5-block-4#expl-block
       p.pg5-p1 Модуль объяснения результата:
       .pg5-block-4-name-of-palnt
         span Растение с названием: 

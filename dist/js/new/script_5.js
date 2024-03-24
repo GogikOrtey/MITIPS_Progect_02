@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Скрывает или показывает кнопку начала подбора
     EndTextTest2()
 
-
+    // Добавляет обработчик для скрытия ввода характеристик, и показа блока результатов
+    DisplayAnswerForPodbor()
 });
 
 
@@ -246,7 +247,6 @@ function ColorLabelInput() {
 
 }
 
-
 // Эта функция просматривает все события нажатия на элементы, в блоке ввода характеристик
 // И если выбран хоть один элемент - она показывает синюю кнопку, по которой можно начать подбор растений
 function EndTextTest2() {
@@ -257,27 +257,33 @@ function EndTextTest2() {
         return mass.some(element => element > 0);
     }
 
+    // Ищу все элементы, по нажатию на которые может измениться число выбранных input элементов на форме
     allInputs =  document.querySelectorAll("input");
-    //console.log(allInputs);
-
     allRadioButtons =  document.querySelectorAll(".input-checkbox-container");
     allPointButtons =  document.querySelectorAll(".input-point-container");
     allResetButtons =  document.querySelectorAll(".pg5-block");
 
-    //allElements = allInputs + allRadioButtons
+    // Корректно совмещаю все элементы в один массив, для дальнейшего перебора
     allElements = [...allInputs, ...allRadioButtons, ...allPointButtons, ...allResetButtons];
     //console.log(allElements);
+
+    blueButtonOfStartPodbor = document.querySelector('.pg5-start-button');
+    textOfNotOnceInputSelected = document.querySelector('p.pg5-add-p-1#pg5-el-6');
+
+    blueButtonOfStartPodbor.style.display = "none"
 
     allElements.forEach(elemINp => {
         elemINp.addEventListener('click', () => {
             //document.querySelector('p.pg5-add-p-1#pg5-el-6').textContent = arrayOfCange;
 
-            //console.log(CheckArrayFull(arrayOfCange));
-
             if(CheckArrayFull(arrayOfCange) == true) {
-                console.log("Хотя бы один элемент выбран");
+                //console.log("Хотя бы один элемент выбран");
+                blueButtonOfStartPodbor.style.display = "grid";
+                textOfNotOnceInputSelected.style.display = "none";
             } else {
-                console.log("Ни один элемент не выбран");
+                //console.log("Ни один элемент не выбран");
+                blueButtonOfStartPodbor.style.display = "none";
+                textOfNotOnceInputSelected.style.display = "block";
             }
         });
     });
@@ -285,10 +291,36 @@ function EndTextTest2() {
 }
 
 
+// = true, если пришёл не пустой ответ от БД
+// Важно: Ответ также должен содержать 3 или больше растений !!!!!
+boolisRequestGood = true;
 
+// !!! Тут нужно будет допилить - собрать характеристики, отправить их в php на сервер
+// На сервере - собрать запрос, и прислать ответ
+// Код разбора ответа можно взять из старого скрипта
+// И только потом запускать эту функцию
+// А пока ответ идёт - показать только иконку загрузки
 
+// Добавляет обработчик для скрытия ввода характеристик, и показа блока результатов
+function DisplayAnswerForPodbor() {
 
+    blockMainInputCharact = document.querySelector("#main-block-input-charact");
+    blockElementLoad = document.querySelector(".loadd");
+    blockCurrentAnswer = document.querySelector("#curr-answ");
+    blockNotCurrentAnswer = document.querySelector("#not-curr-answ");
 
+    blockExplanation  = document.querySelector("#expl-block");
+
+    // blockElementLoad.style.display = "grid";
+    // blockCurrentAnswer.style.display = "block";
+    // blockNotCurrentAnswer.style.display = "block";
+    // blockExplanation.style.display = "block";
+
+    blockMainInputCharact.style.display = "none";
+    blockCurrentAnswer.style.display = "none";
+    blockNotCurrentAnswer.style.display = "none";
+    blockExplanation.style.display = "none";
+}
 
 
 
