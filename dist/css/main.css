@@ -1939,6 +1939,49 @@ body.pg-5 {
 #plant-name-expl-module {
   font-weight: bold;
 }
+.pg5-title-block {
+  position: relative;
+}
+.bg-pg5 {
+  box-shadow: none;
+}
+.bg-pg5 width 40px {
+  position: absolute;
+  top: 100px;
+}
+.pg5-title-block {
+  position: relative;
+}
+.bg-pg5 {
+  position: absolute;
+  z-index: -1;
+  top: 5px;
+  width: 800px;
+  height: 130px;
+  left: -130px;
+}
+.pg4-p1 {
+  position: relative;
+  z-index: 1;
+}
+p.pg4-p1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 50px;
+}
+.pg-5 .n_but {
+  box-shadow: none;
+}
+.pg-4 .n_but {
+  box-shadow: none;
+}
+@font-face {
+  font-family: 'Klukva';
+  src: url("fonts/mr_FloraG.ttf") format('opentype');
+}
+.pg4-p1 {
+  font-family: 'Klukva';
+}
 @media (min-width: 978px) {
   .pg5-block-vew-pl-list {
     width: 880px;
