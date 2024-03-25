@@ -1,11 +1,10 @@
 <?php
+  header('Access-Control-Allow-Origin: *');
+
   $servername = "gogortv0.beget.tech";
   $username = "gogortv0_db_pl_2";
   $password = "Nnd&4M%m";
   $dbname = "gogortv0_db_pl_2";
-
-  // Этот скрипт использовать только для получения данных
-  // Для добавления/удаления - использовать другой
 
   // Создаем соединение
   $conn = new mysqli($servername, $username, $password, $dbname);

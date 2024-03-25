@@ -36,7 +36,7 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
 
         // Подключаемся к php файлу на сервере
         type: "POST",
-        url: "https://gogortey.ru/res/getdata_2.php",
+        url: "https://gogortey.ru/res/execute_3.php",
         
         // Отправляем туда наш SQL-запрос
         data: { sql: sql_2 },
@@ -44,7 +44,12 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
         // Когда получим ответ:
         success: function(data_inp) {
             //console.log(data_inp);
-            let decodeData = JSON.parse(data_inp); // Преобразуем строку JSON в объект JavaScript
+            let decodeData
+            if(data_inp != "0 results[]") {
+                decodeData = JSON.parse(data_inp); // Преобразуем строку JSON в объект JavaScript
+            } else {
+                console.log(data_inp);
+            }
             
 
             if(mode == 1) {
@@ -70,6 +75,8 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
                 FullingDropListsForYellowBlock_ClimatType()
             
             } else if(mode == 5) {
+                // console.log(data_inp)
+                // console.log(decodeData);
                 resultMass = ConvertJSON_to_massiv(decodeData, selector)
                 KeyValues_GetAndInsertIntoTable_Return_3(resultMass)
                 massivColors = resultMass
@@ -363,7 +370,7 @@ function KeyValues_GetAndInsertIntoTable_Return_2(resultMass) {
 
 // Получение значений, и их вставка в таблицы, для ключевых признаков
 function KeyValues_GetAndInsertIntoTable_3() {
-    resultMass = SQL_RQ_FromSwever("SELECT * FROM `PlantColors`", "plant_color_description", 5)
+    resultMass = SQL_RQ_FromSwever("SELECT * FROM `PlantColors_2`", "plant_color_description", 5)
     //console.log(resultMass);
 }
 
