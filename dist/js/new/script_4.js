@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Получаю все названия растений, и вывожу их в консоль
     //SQL_RQ_FromSwever("select * from Allelopathy")
     SQL_RQ_FromSwever("select * from MainTable_2")
+
+    HideYellowBlock()
+    //ShowYellBlock()
 });
 
 // Запрос к БД растений:
@@ -45,7 +48,7 @@ function ConvertJSON_to_massiv(response, selector) {
     return result;
 }
 
-
+// Заполняем синий список названиями растений
 function GetPlantList_andInsertFromLabel(inputMass) {
     // Получаем контейнер, в котором находятся элементы
     const container = document.querySelector('.main-pl-list-cont-pg4');
@@ -65,7 +68,38 @@ function GetPlantList_andInsertFromLabel(inputMass) {
       container.appendChild(element);
     }
 
+    // Добавляет к каждому элементу обработчик событий, на показ жёлтого блока
+    ShowYellBlock();
 }
+
+// Скрывает жёлтый блок с вводом характеристик
+function HideYellowBlock() {
+    document.querySelector('#yell-block').style.display = "none"
+
+    document.querySelector('#key-haract').style.display = "none"
+    document.querySelector('#key-haract-button').addEventListener('click', () => {
+        document.querySelector('#key-haract').style.display = "grid"
+        document.querySelector('#key-haract-button').style.display = "none"
+    })
+}
+
+// Добавляет обработчик событий, на показ жёлтого блока
+function ShowYellBlock() {
+    reqButt = document.querySelectorAll(".el-pl-cont-4");
+    console.log(reqButt);
+
+    reqButt.forEach(elem => {
+        elem.addEventListener('click', () => {
+            console.log(elem.textContent);
+            document.querySelector('#yell-block').style.display = "grid"
+            document.querySelector('#yell-block #plant-name').textContent = elem.textContent
+        })
+    })
+}
+
+
+
+
 
 
 

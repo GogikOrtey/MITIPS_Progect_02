@@ -1630,6 +1630,10 @@ p.p-4-1 {
 .butt-4-close:active {
   border: solid #000 4px;
 }
+#key-haract-button {
+  margin-top: 0px;
+  background: #e3fc00;
+}
 @media (min-width: 1055px) {
   .block-vew-pl-list {
     width: 950px;
