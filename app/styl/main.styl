@@ -2113,14 +2113,44 @@ body.pg-4, body.pg-5
 		overflow-x: visible
 
 
-@media (min-width: 1450px) 
+@media (min-width: 1650px) 
 	//.block-vew-pl-list#block-vew-pl-list-first
 	.upper-block
 		width: 90%
 		display: grid
-		grid-template-columns: 1fr 1fr
+		grid-template-columns: auto auto // 1100px
+		//bord()		
 		.block-vew-pl-list#block-vew-pl-list-first
-			bord()
+			width 100%
+			max-width: 550px
+			margin 0px auto
+			margin-right 20px
+			//bord()
+			.cont-4-1
+				display: grid
+				grid-template-columns: 1fr
+				grid-template-rows: auto auto	
+				
+				.main-pl-list-cont-pg4
+					grid-row: 1
+					//margin 0px
+					
+				.right-container 
+					grid-row: 2
+					grid-column: 1; 
+					//bord()
+		.block-vew-pl-list.p-4-3-add#yell-block
+			margin auto
+			margin-left 20px
+			.cont-dooble-4-3
+				margin 5px
+			input, select
+				height 30px
+			span, input, select, option
+				//color red
+				font-size: 18px
+			input, select, option
+				font-size: 14px
 
 	p
 		//color red
