@@ -60,10 +60,12 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
                 // Обработка выделения элементов в синем блоке
                 ProcessSelectObjectForBlueBlock();
                 //console.log(resultMass)
+                
             } else if(mode == 2) {
                 resultMass = jsonToArray(decodeData)
                 console.log(resultMass);
-                SetAllInputValues(resultMass);
+                SetAllInputValues(resultMass);         
+                GrayingInputElement_Show()       
 
 
             } else if(mode == 3) {
@@ -155,6 +157,8 @@ function ShowYellBlock() {
 
 // Отдельно функция, которая показывает жёлтый блок
 function ShowYellowBlock_cont(elem) {
+    GrayingInputElement_Hide()
+
     bool_isChangeAnyInputValues = false;
     document.querySelector('.butt-4-close#b-4-not-edit').style.display = "block" 
     document.querySelector('#b-4-witch-not-save').style.display = "none"
@@ -554,6 +558,43 @@ function ProcessSelectObjectForBlueBlock() {
 }
 
 
+reqelement_oi1 = document.querySelectorAll("#yell-block input");
+reqelement_oi2 = document.querySelectorAll("#yell-block select");
+
+// function GrayingInputElement() {
+//     let resMass = [... reqelement_oi1, ... reqelement_oi2]
+
+//     console.log("Меняю цвет текста");
+
+//     resMass.forEach(element => {
+//         //element.style.setProperty('color', 'lightgray');
+//         element.style.setProperty('color', 'white');
+//         setTimeout(() => {
+//           element.style.setProperty('color', 'black');
+//         }, 200); 
+//       });
+// }
+function GrayingInputElement_Hide() {
+    let resMass = [... reqelement_oi1, ... reqelement_oi2]
+
+    console.log("Меняю цвет текста");
+
+    resMass.forEach(element => {
+        //element.style.setProperty('color', 'lightgray');
+        element.style.setProperty('color', 'white');
+    });
+}
+
+function GrayingInputElement_Show() {
+    let resMass = [... reqelement_oi1, ... reqelement_oi2]
+
+    console.log("Меняю цвет текста");
+
+    resMass.forEach(element => {
+        //element.style.setProperty('color', 'lightgray');
+        element.style.setProperty('color', 'black');
+    });
+}
 
 
 
