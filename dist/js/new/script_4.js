@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     HideYellowBlock()
     //ShowYellBlock()
+
+    SetCorrCahgeAnyValues()
+
+    // Обработчик сворачивания жёлтого блока
+    YellBlockHideFunc() 
 });
 
 
@@ -102,6 +107,11 @@ function ShowYellBlock() {
 
     reqButt.forEach(elem => {
         elem.addEventListener('click', () => {
+            bool_isChangeAnyInputValues = false;
+            document.querySelector('.butt-4-close#b-4-not-edit').style.display = "block" 
+            document.querySelector('#b-4-witch-not-save').style.display = "none"
+            document.querySelector('#b-4-witch-save').style.display = "none"   
+
             console.log(elem.textContent);
             document.querySelector('#yell-block').style.display = "grid"
             document.querySelector('#yell-block #param-1 input').value = elem.textContent
@@ -157,20 +167,71 @@ function SetAllInputValues(massAttr) {
                   option.selected = true;
                 }
             });
-        }
-    }
+        } else if(i == 17) {
+            console.log("mass[17] = " + massAttr[17]);
 
-    
+            const selectElement = document.querySelector(`#yell-block #param-17 select`);
+
+            Array.from(selectElement.options).forEach((option) => {
+                if(massAttr[17] == 0) {
+                    if (option.textContent == "Нет") {
+                        option.selected = true;
+                    }
+                }
+                if(massAttr[17] == 1) {
+                    if (option.textContent == "Да") {
+                        option.selected = true;
+                    }
+                }                
+            });
+        }
+    }    
 }
 
 function SetInputValue(id, value) {
     document.querySelector(`#yell-block #param-${id} input`).value = value;
 }
 
+bool_isChangeAnyInputValues = false;
+
+function SetCorrCahgeAnyValues() {
+    let mass1 = document.querySelectorAll('#yell-block input')
+    let mass2 = document.querySelectorAll('#yell-block select')
+
+    let resMass = [... mass1, ... mass2]
+    //console.log(resMass);
+
+    document.querySelector('.butt-4-close#b-4-not-edit').style.display = "block" 
+    document.querySelector('#b-4-witch-not-save').style.display = "none"
+    document.querySelector('#b-4-witch-save').style.display = "none"    
+
+    resMass.forEach(elem => {
+        elem.addEventListener('click', () => {
+            bool_isChangeAnyInputValues = true;
+
+            document.querySelector('.butt-4-close#b-4-not-edit').style.display = "none"         
+            document.querySelector('#b-4-witch-not-save').style.display = "block"
+            document.querySelector('#b-4-witch-save').style.display = "block"
+        })
+    })
+}
 
 
+// Обработчик сворачивания жёлтого блока
+function YellBlockHideFunc() {
+    let mass1 = document.querySelector('.butt-4-close#b-4-not-edit')  
+    let mass2 = document.querySelector('#b-4-witch-not-save')
 
+    let resMass = [mass1, mass2]
 
+    resMass.forEach(elem => {
+        elem.addEventListener('click', () => {
+            bool_isChangeAnyInputValues = false;
+
+            document.querySelector('#yell-block').style.display = "none" 
+        })
+    })
+}
 
 
 
