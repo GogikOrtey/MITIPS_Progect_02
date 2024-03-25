@@ -214,7 +214,37 @@ function SetAllInputValues(massAttr) {
                     }
                 }                
             });
-        }
+        } else if(i == 16) {
+            console.log("mass[16] = " + massAttr[16]);
+
+            const selectElement = document.querySelector(`#yell-block #param-16 select`);
+
+            Array.from(selectElement.options).forEach((option) => {
+                if (option.textContent === massAttr[16]) {
+                  option.selected = true;
+                }
+            });
+        } else if(i == 15) {
+            console.log("mass[15] = " + massAttr[15]);
+
+            const selectElement = document.querySelector(`#yell-block #param-15 select`);
+
+            Array.from(selectElement.options).forEach((option) => {
+                if (option.textContent === massAttr[15]) {
+                  option.selected = true;
+                }
+            });
+        } else if(i == 14) {
+            console.log("mass[14] = " + massAttr[14]);
+
+            const selectElement = document.querySelector(`#yell-block #param-14 select`);
+
+            Array.from(selectElement.options).forEach((option) => {
+                if (option.textContent === massAttr[14]) {
+                  option.selected = true;
+                }
+            });
+        } 
     }    
 }
 
