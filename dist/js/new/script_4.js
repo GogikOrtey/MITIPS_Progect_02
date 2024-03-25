@@ -9,14 +9,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Получаю все названия растений, и вывожу их в консоль
     //SQL_RQ_FromSwever("select * from Allelopathy")
-    SQL_RQ_FromSwever("select * from MainTable_2")
+    SQL_RQ_FromSwever("select * from MainTable_2", "Название растения", 1)
 
     HideYellowBlock()
     //ShowYellBlock()
 });
 
+
+
 // Запрос к БД растений:
-function SQL_RQ_FromSwever(sql_2) {
+function SQL_RQ_FromSwever(sql_2, selector, mode) {
     // Используем асинхронную функцию для запроса-ответа к серверу
     $.ajax({
 
@@ -31,11 +33,20 @@ function SQL_RQ_FromSwever(sql_2) {
         success: function(data_inp) {
             //console.log(data_inp);
             let decodeData = JSON.parse(data_inp); // Преобразуем строку JSON в объект JavaScript
-            //console.log(decodeData);
-            resultMass = ConvertJSON_to_massiv(decodeData, "Название растения")
-            console.log(resultMass)
+            
 
-            GetPlantList_andInsertFromLabel(resultMass);
+            if(mode == 1) {
+                resultMass = ConvertJSON_to_massiv(decodeData, selector)
+                GetPlantList_andInsertFromLabel(resultMass);
+                //console.log(resultMass)
+            } else if(mode == 2) {
+                resultMass = jsonToArray(decodeData)
+                // console.log("resultMass = ");
+                // console.log(resultMass);
+                console.log(decodeData);
+            } else {
+                console.log(decodeData);
+            }
         }
     })
 }
@@ -86,23 +97,59 @@ function HideYellowBlock() {
 // Добавляет обработчик событий, на показ жёлтого блока
 function ShowYellBlock() {
     reqButt = document.querySelectorAll(".el-pl-cont-4");
-    console.log(reqButt);
+    //console.log(reqButt);
 
     reqButt.forEach(elem => {
         elem.addEventListener('click', () => {
             console.log(elem.textContent);
             document.querySelector('#yell-block').style.display = "grid"
-            document.querySelector('#yell-block #plant-name').textContent = elem.textContent
+            document.querySelector('#yell-block #param-1 input').value = elem.textContent
+
+            //bool_setPlantList = false;
+            //SQL_RQ_FromSwever("select * from MainTable_2")
+
+            sql_req = "select * from MainTable_2 WHERE `Название растения` = '" + elem.textContent + "'";
+            console.log(sql_req);
+
+            SQL_RQ_FromSwever(sql_req, "", 2);
+
+            /*
+                Массив из JSON -> id элемента на странице
+                        
+                1 - 16
+                2 - 6
+                3 - 5
+                4 - 11
+                5 - 12
+                6 - 17
+                7 - 1
+                8 - 3
+                9 - 2
+                10 - 4
+                11 - 10
+                12 - 8
+                13 - 7
+                14 - 15
+                15 - 9
+                16 - 13
+                17 - 14
+            */
         })
     })
 }
 
+// Достаёт все значения из JSON формата, и переводит их в массив
+function jsonToArray(json) {
+    let array = [];
 
+    for (const element of json) {
+        array = Object.values(element)
+    }
 
-
-
-
-
+    console.log("Обработанный массив: ")
+    console.log(array)
+    return array;
+}
 
 
 
