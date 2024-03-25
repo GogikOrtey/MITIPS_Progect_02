@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Получение значений, и их вставка в таблицы, для ключевых признаков
     KeyValues_GetAndInsertIntoTable() 
 
+    
+    //ProcessSelectObjectForBlueBlock();
 
 });
 
@@ -55,6 +57,8 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
             if(mode == 1) {
                 resultMass = ConvertJSON_to_massiv(decodeData, selector)
                 GetPlantList_andInsertFromLabel(resultMass);
+                // Обработка выделения элементов в синем блоке
+                ProcessSelectObjectForBlueBlock();
                 //console.log(resultMass)
             } else if(mode == 2) {
                 resultMass = jsonToArray(decodeData)
@@ -144,24 +148,29 @@ function ShowYellBlock() {
 
     reqButt.forEach(elem => {
         elem.addEventListener('click', () => {
-            bool_isChangeAnyInputValues = false;
-            document.querySelector('.butt-4-close#b-4-not-edit').style.display = "block" 
-            document.querySelector('#b-4-witch-not-save').style.display = "none"
-            document.querySelector('#b-4-witch-save').style.display = "none"   
-
-            console.log(elem.textContent);
-            document.querySelector('#yell-block').style.display = "grid"
-            document.querySelector('#yell-block #param-1 input').value = elem.textContent
-
-            //bool_setPlantList = false;
-            //SQL_RQ_FromSwever("select * from MainTable_2")
-
-            sql_req = "select * from MainTable_2 WHERE `Название растения` = '" + elem.textContent + "'";
-            console.log(sql_req);
-
-            SQL_RQ_FromSwever(sql_req, "", 2);
+            ShowYellowBlock_cont(elem)
         })
     })
+}
+
+// Отдельно функция, которая показывает жёлтый блок
+function ShowYellowBlock_cont(elem) {
+    bool_isChangeAnyInputValues = false;
+    document.querySelector('.butt-4-close#b-4-not-edit').style.display = "block" 
+    document.querySelector('#b-4-witch-not-save').style.display = "none"
+    document.querySelector('#b-4-witch-save').style.display = "none"   
+
+    console.log(elem.textContent);
+    document.querySelector('#yell-block').style.display = "grid"
+    document.querySelector('#yell-block #param-1 input').value = elem.textContent
+
+    //bool_setPlantList = false;
+    //SQL_RQ_FromSwever("select * from MainTable_2")
+
+    sql_req = "select * from MainTable_2 WHERE `Название растения` = '" + elem.textContent + "'";
+    console.log(sql_req);
+
+    SQL_RQ_FromSwever(sql_req, "", 2);
 }
 
 // Достаёт все значения из JSON формата, и переводит их в массив
@@ -471,6 +480,78 @@ function FullingDropListsForYellowBlock_Color() {
 
 
 
+// Обработка выделения элементов в синем блоке
+function ProcessSelectObjectForBlueBlock() {
+    reqButt = document.querySelectorAll(".el-pl-cont-4");
+    //console.log(reqButt);
+
+    reqButt.forEach(elem => {
+        elem.addEventListener('click', () => {
+            //console.log("123");
+
+            // Удаляем выделение у старого элемента
+            const oldElem = document.querySelector(".el-blue-button-selected");
+            if (oldElem) {
+              oldElem.classList.remove('el-blue-button-selected');
+            }
+
+            // Добавляем выделение
+            elem.classList.add('el-blue-button-selected');
+            
+        })
+    })
+
+    let currentIndex = 0;
+    const elements = document.querySelectorAll('.el-pl-cont-4');
+    
+    function selectElement(index) {
+      // Удаляем выделение у старого элемента
+      const oldElem = document.querySelector(".el-blue-button-selected");
+      if (oldElem) {
+        oldElem.classList.remove('el-blue-button-selected');
+      }
+    
+      // Добавляем выделение
+      const elem = elements[index];
+      elem.classList.add('el-blue-button-selected');
+      //elem.scrollIntoView({ behavior: 'auto' });
+      //elem.scrollIntoView({ behavior: 'auto', inline: 'nearest'});
+
+
+    //   element.scrollTo({
+    //     top: elem.offsetTop,
+    //     behavior: 'auto',
+    //     inline: 'start'
+    //   });
+
+      ShowYellowBlock_cont(elem)
+    }
+
+
+    document.querySelector("#butt-go-top").addEventListener('click', () => {
+        goToFirst()
+    })
+
+    document.querySelector("#butt-go-bottom").addEventListener('click', () => {
+        goToLast()
+    })
+
+
+    
+    function goToFirst() {
+      currentIndex = 0;
+      selectElement(currentIndex);
+      const element = document.querySelector('.main-pl-list-cont-pg4');
+      element.scrollTop = 0;
+    }
+    
+    function goToLast() {
+      currentIndex = elements.length - 1;
+      selectElement(currentIndex);
+      const element = document.querySelector('.main-pl-list-cont-pg4');
+      element.scrollTop = element.scrollHeight;
+    }    
+}
 
 
 

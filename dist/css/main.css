@@ -1395,7 +1395,7 @@ body {
 }
 .main-pl-list-cont-pg4 {
   width: 90%;
-  height: 200px;
+  height: 400px;
   margin: 15px;
   overflow-y: auto;
   background-color: #00a3ff;
@@ -1633,6 +1633,9 @@ p.p-4-1 {
 #key-haract-button {
   margin-top: 0px;
   background: #e3fc00;
+}
+.el-blue-button-selected {
+  border: solid 3px #000;
 }
 @media (min-width: 1055px) {
   .block-vew-pl-list {
