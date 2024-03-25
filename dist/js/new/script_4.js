@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Обработчик сворачивания жёлтого блока
     YellBlockHideFunc() 
+
+
+
+    // Получение значений, и их вставка в таблицы, для ключевых признаков
+    KeyValues_GetAndInsertIntoTable() 
 });
 
 
@@ -46,10 +51,19 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
                 //console.log(resultMass)
             } else if(mode == 2) {
                 resultMass = jsonToArray(decodeData)
-                // console.log("resultMass = ");
-                // console.log(resultMass);
                 console.log(resultMass);
                 SetAllInputValues(resultMass);
+
+            } else if(mode == 3) {
+                resultMass = ConvertJSON_to_massiv(decodeData, selector)
+                KeyValues_GetAndInsertIntoTable_Return(resultMass)
+            } else if(mode == 4) {
+                resultMass = ConvertJSON_to_massiv(decodeData, selector)
+                KeyValues_GetAndInsertIntoTable_Return_2(resultMass)
+            } else if(mode == 5) {
+                resultMass = ConvertJSON_to_massiv(decodeData, selector)
+                KeyValues_GetAndInsertIntoTable_Return_3(resultMass)
+            
             } else {
                 console.log(decodeData);
             }
@@ -232,6 +246,110 @@ function YellBlockHideFunc() {
         })
     })
 }
+
+// Аллелопатия
+
+// Получение значений, и их вставка в таблицы, для ключевых признаков
+function KeyValues_GetAndInsertIntoTable() {
+    resultMass = SQL_RQ_FromSwever("SELECT * FROM `Allelopathy`", "allelopathy_description", 3)
+
+    KeyValues_GetAndInsertIntoTable_2();
+    KeyValues_GetAndInsertIntoTable_3();
+}
+
+// Дальше, из асинхронной функции вызывается эта функция
+function KeyValues_GetAndInsertIntoTable_Return(resultMass) {
+    console.log(resultMass);
+
+    // Получаем таблицу
+    const table = document.getElementById('a12');
+
+    // Очищаем тело таблицы
+    const tbody = table.querySelector('tbody');
+    while (tbody.firstChild) {
+      tbody.removeChild(tbody.firstChild);
+    }
+
+    // Добавляем новые строки
+    for (const value of resultMass) {
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.textContent = value;
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+    }
+}
+
+// Тип климата
+
+// Получение значений, и их вставка в таблицы, для ключевых признаков
+function KeyValues_GetAndInsertIntoTable_2() {
+    resultMass = SQL_RQ_FromSwever("SELECT * FROM `ClimateTypes`", "climate_type_name", 4)
+    //console.log(resultMass);
+}
+
+// Дальше, из асинхронной функции вызывается эта функция
+function KeyValues_GetAndInsertIntoTable_Return_2(resultMass) {
+    console.log(resultMass);
+
+    // Получаем таблицу
+    const table = document.getElementById('a14');
+
+    // Очищаем тело таблицы
+    const tbody = table.querySelector('tbody');
+    while (tbody.firstChild) {
+      tbody.removeChild(tbody.firstChild);
+    }
+
+    // Добавляем новые строки
+    for (const value of resultMass) {
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.textContent = value;
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+    }
+}
+
+// Цвет
+
+// Получение значений, и их вставка в таблицы, для ключевых признаков
+function KeyValues_GetAndInsertIntoTable_3() {
+    resultMass = SQL_RQ_FromSwever("SELECT * FROM `PlantColors`", "plant_color_description", 5)
+    //console.log(resultMass);
+}
+
+// Дальше, из асинхронной функции вызывается эта функция
+function KeyValues_GetAndInsertIntoTable_Return_3(resultMass) {
+    console.log(resultMass);
+
+    // Получаем таблицу
+    const table = document.getElementById('a16');
+
+    // Очищаем тело таблицы
+    const tbody = table.querySelector('tbody');
+    while (tbody.firstChild) {
+      tbody.removeChild(tbody.firstChild);
+    }
+
+    // Добавляем новые строки
+    for (const value of resultMass) {
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+      td.textContent = value;
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 
