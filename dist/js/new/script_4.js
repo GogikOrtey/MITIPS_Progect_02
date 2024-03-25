@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Получение значений, и их вставка в таблицы, для ключевых признаков
     KeyValues_GetAndInsertIntoTable() 
+
+
 });
 
 
@@ -54,22 +56,36 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
                 console.log(resultMass);
                 SetAllInputValues(resultMass);
 
+
             } else if(mode == 3) {
                 resultMass = ConvertJSON_to_massiv(decodeData, selector)
                 KeyValues_GetAndInsertIntoTable_Return(resultMass)
+                massAllelop = resultMass
+                FullingDropListsForYellowBlock_Allelop();
+            
             } else if(mode == 4) {
                 resultMass = ConvertJSON_to_massiv(decodeData, selector)
                 KeyValues_GetAndInsertIntoTable_Return_2(resultMass)
+                massClimat = resultMass
+                FullingDropListsForYellowBlock_ClimatType()
+            
             } else if(mode == 5) {
                 resultMass = ConvertJSON_to_massiv(decodeData, selector)
                 KeyValues_GetAndInsertIntoTable_Return_3(resultMass)
-            
+                massivColors = resultMass
+                FullingDropListsForYellowBlock_Color()
+
+
             } else {
                 console.log(decodeData);
             }
         }
     })
 }
+
+massAllelop = [];
+massClimat = [];
+massivColors = [];
 
 // Автоматическая функция, которая извлекает из каждой записи в JSON формате, данные
 // по одному (указанному) полю
@@ -247,6 +263,8 @@ function YellBlockHideFunc() {
     })
 }
 
+
+
 // Аллелопатия
 
 // Получение значений, и их вставка в таблицы, для ключевых признаков
@@ -341,6 +359,97 @@ function KeyValues_GetAndInsertIntoTable_Return_3(resultMass) {
       tbody.appendChild(tr);
     }
 }
+
+
+// // Наполнение выпадающих списков в жёлтом окне
+// function FullingDropListsForYellowBlock() {
+    
+// }
+
+function FullingDropListsForYellowBlock_Allelop() {
+    //console.log(massAllelop);
+
+    const selectAllel = document.getElementById('select-allel');
+
+    // Очистка существующих опций
+    while (selectAllel.firstChild) {
+      selectAllel.removeChild(selectAllel.firstChild);
+    }
+    
+    // Добавление новых опций из массива
+    massAllelop.forEach((allelop) => {
+      const option = document.createElement('option');
+      option.value = allelop;
+      option.textContent = allelop;
+      selectAllel.appendChild(option);
+    });
+    
+    // Установка первой опции как выбранной
+    selectAllel.selectedIndex = 0;
+}
+
+function FullingDropListsForYellowBlock_ClimatType() {
+    console.log(massClimat);
+
+    const selectAllel = document.getElementById('select-type-cl');
+
+    // Очистка существующих опций
+    while (selectAllel.firstChild) {
+      selectAllel.removeChild(selectAllel.firstChild);
+    }
+    
+    // Добавление новых опций из массива
+    massClimat.forEach((allelop) => {
+      const option = document.createElement('option');
+      option.value = allelop;
+      option.textContent = allelop;
+      selectAllel.appendChild(option);
+    });
+    
+    // Установка первой опции как выбранной
+    selectAllel.selectedIndex = 0;
+}
+
+function FullingDropListsForYellowBlock_Color() {
+    console.log(massivColors);
+
+    const selectAllel = document.getElementById('select-color');
+
+    // Очистка существующих опций
+    while (selectAllel.firstChild) {
+      selectAllel.removeChild(selectAllel.firstChild);
+    }
+    
+    // Добавление новых опций из массива
+    massivColors.forEach((allelop) => {
+      const option = document.createElement('option');
+      option.value = allelop;
+      option.textContent = allelop;
+      selectAllel.appendChild(option);
+    });
+    
+    // Установка первой опции как выбранной
+    selectAllel.selectedIndex = 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
