@@ -1651,6 +1651,16 @@ body.pg-5 {
     overflow-x: visible;
   }
 }
+@media (min-width: 1450px) {
+  .upper-block {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .upper-block .block-vew-pl-list#block-vew-pl-list-first {
+    border: solid #000 1px;
+  }
+}
 .pg5-block-vew-pl-list {
   height: auto;
   width: 90%;

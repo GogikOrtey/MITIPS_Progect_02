@@ -6,7 +6,7 @@ html
 
     //script(src="js/mainTerminal.js")
     // Возможно потом заменить на другой скрипт
-    script(src="js/new/script_4.js" defer) 
+    //script(src="js/new/script_4.js" defer) 
     
     header.header
       .bg-fone-header
@@ -17,115 +17,116 @@ html
 
   body.pg-4
     p.pg4-p1 Редактор базы знаний
-    .block-vew-pl-list
-      p Список всех записей о растениях:
+    .upper-block
+      .block-vew-pl-list#block-vew-pl-list-first
+        p Список всех записей о растениях:
 
-      .cont-4-1
-        .main-pl-list-cont-pg4
-          .el-pl-cont-4 блок 1
-          .el-pl-cont-4 блок 2
-          .el-pl-cont-4 блок 3
-          .el-pl-cont-4 блок 4
-          .el-pl-cont-4 блок 5
-        .right-container 
-          .butt-4-1#butt-go-top
-            span К первой записи
-          //- .butt-4-1#butt-go-last
-          //-   span Следующая запись
-          //- .butt-4-1#butt-go-first
-          //-   span Предыдущая запись
-          .butt-4-1#butt-go-bottom
-            span К последней записи
-      p.p-4-1 Выберете одно растение из списка, и вы сможете просмотреть все его характеристики, и отредактировать их.
-    .block-vew-pl-list.p-4-3-add#yell-block
-      p Все характеристики этой записи о растении:
-      .cont-dooble-4-3#param-1
-        span Название растения:
-        input(type="text")
-        span.add-4-4 text
-      .cont-dooble-4-3#param-2
-        span Минимальное освещение:
-        input(type="text", inputmode="numeric")
-        span.add-4-4 int
-      .cont-dooble-4-3#param-3
-        span Максимальное освещение:
-        input(type="text", inputmode="numeric")
-        span.add-4-4 int
-      .cont-dooble-4-3#param-4
-        span Переносимость прямого света:
-        select#select-light
-          option(value="yes") Да
-          option(value="no", selected) Нет
-          option(value="medium") Средне
-        span.add-4-4 select
-      .cont-dooble-4-3#param-5
-        span Влажность min (%):
-        input(type="text", inputmode="numeric")
-        span.add-4-4 int
-      .cont-dooble-4-3#param-6
-        span Влажность max (%):
-        input(type="text", inputmode="numeric")
-        span.add-4-4 int
-      .cont-dooble-4-3#param-7
-        span Температура min (℃):
-        input(type="text", inputmode="numeric")
-        span.add-4-4 int
-      .cont-dooble-4-3#param-8
-        span Температура max (℃):
-        input(type="text", inputmode="numeric")
-        span.add-4-4 int
-      .cont-dooble-4-3#param-9
-        span Тип растения:
-        select#select-home
-          option(value="yes", selected) Домашнее
-          option(value="no") Уличное
-        span.add-4-4 select
-      .cont-dooble-4-3#param-10
-        span Плодоносное?
-        select#select-plod
-          option(value="yes", selected) Да
-          option(value="no") Нет
-        span.add-4-4 select
-      .cont-dooble-4-3#param-11
-        span Выработка кислорода:
-        input(type="text", inputmode="numeric")
-        span.add-4-4 int
-      .cont-dooble-4-3#param-12
-        span Занимаемая площадь растения:
-        input(type="text", inputmode="numeric")
-        span.add-4-4 int
-      .cont-dooble-4-3#param-13
-        span Уход за растением (кол-во дней):
-        input(type="text", inputmode="numeric")
-        span.add-4-4 int 
-      .cont-dooble-4-3#param-14
-        span Цвет растения
-        select#select-color
-          option(value="1", selected) Зелёный
-        span.add-4-4 n-sel
-      .cont-dooble-4-3#param-15
-        span Тип климата
-        select#select-type-cl
-          option(value="1", selected) Тропический
-        span.add-4-4 n-sel
-      .cont-dooble-4-3#param-16
-        span Аллелопатия
-        select#select-allel
-          option(value="1", selected) Нейтральная
-        span.add-4-4 n-sel
-      .cont-dooble-4-3#param-17
-        span Известное растение?
-        select#select-compl
-          option(value="yes", selected) Да
-          option(value="no") Нет
-        span.add-4-4 select
-      .butt-4-close#b-4-not-edit 
-        p Свернуть
-      .butt-compl-4
-        .butt-4-close#b-4-witch-save
-          p Сохранить изменения 
-        .butt-4-close#b-4-witch-not-save
-          p Закрыть без изменений
+        .cont-4-1
+          .main-pl-list-cont-pg4
+            .el-pl-cont-4 блок 1
+            .el-pl-cont-4 блок 2
+            .el-pl-cont-4 блок 3
+            .el-pl-cont-4 блок 4
+            .el-pl-cont-4 блок 5
+          .right-container 
+            .butt-4-1#butt-go-top
+              span К первой записи
+            //- .butt-4-1#butt-go-last
+            //-   span Следующая запись
+            //- .butt-4-1#butt-go-first
+            //-   span Предыдущая запись
+            .butt-4-1#butt-go-bottom
+              span К последней записи
+        p.p-4-1 Выберете одно растение из списка, и вы сможете просмотреть все его характеристики, и отредактировать их.
+      .block-vew-pl-list.p-4-3-add#yell-block
+        p Все характеристики этой записи о растении:
+        .cont-dooble-4-3#param-1
+          span Название растения:
+          input(type="text")
+          span.add-4-4 text
+        .cont-dooble-4-3#param-2
+          span Минимальное освещение:
+          input(type="text", inputmode="numeric")
+          span.add-4-4 int
+        .cont-dooble-4-3#param-3
+          span Максимальное освещение:
+          input(type="text", inputmode="numeric")
+          span.add-4-4 int
+        .cont-dooble-4-3#param-4
+          span Переносимость прямого света:
+          select#select-light
+            option(value="yes") Да
+            option(value="no", selected) Нет
+            option(value="medium") Средне
+          span.add-4-4 select
+        .cont-dooble-4-3#param-5
+          span Влажность min (%):
+          input(type="text", inputmode="numeric")
+          span.add-4-4 int
+        .cont-dooble-4-3#param-6
+          span Влажность max (%):
+          input(type="text", inputmode="numeric")
+          span.add-4-4 int
+        .cont-dooble-4-3#param-7
+          span Температура min (℃):
+          input(type="text", inputmode="numeric")
+          span.add-4-4 int
+        .cont-dooble-4-3#param-8
+          span Температура max (℃):
+          input(type="text", inputmode="numeric")
+          span.add-4-4 int
+        .cont-dooble-4-3#param-9
+          span Тип растения:
+          select#select-home
+            option(value="yes", selected) Домашнее
+            option(value="no") Уличное
+          span.add-4-4 select
+        .cont-dooble-4-3#param-10
+          span Плодоносное?
+          select#select-plod
+            option(value="yes", selected) Да
+            option(value="no") Нет
+          span.add-4-4 select
+        .cont-dooble-4-3#param-11
+          span Выработка кислорода:
+          input(type="text", inputmode="numeric")
+          span.add-4-4 int
+        .cont-dooble-4-3#param-12
+          span Занимаемая площадь растения:
+          input(type="text", inputmode="numeric")
+          span.add-4-4 int
+        .cont-dooble-4-3#param-13
+          span Уход за растением (кол-во дней):
+          input(type="text", inputmode="numeric")
+          span.add-4-4 int 
+        .cont-dooble-4-3#param-14
+          span Цвет растения
+          select#select-color
+            option(value="1", selected) Зелёный
+          span.add-4-4 n-sel
+        .cont-dooble-4-3#param-15
+          span Тип климата
+          select#select-type-cl
+            option(value="1", selected) Тропический
+          span.add-4-4 n-sel
+        .cont-dooble-4-3#param-16
+          span Аллелопатия
+          select#select-allel
+            option(value="1", selected) Нейтральная
+          span.add-4-4 n-sel
+        .cont-dooble-4-3#param-17
+          span Известное растение?
+          select#select-compl
+            option(value="yes", selected) Да
+            option(value="no") Нет
+          span.add-4-4 select
+        .butt-4-close#b-4-not-edit 
+          p Свернуть
+        .butt-compl-4
+          .butt-4-close#b-4-witch-save
+            p Сохранить изменения 
+          .butt-4-close#b-4-witch-not-save
+            p Закрыть без изменений
 
     .block-vew-pl-list.p-4-2-add
       p + Создать новую запись о растении

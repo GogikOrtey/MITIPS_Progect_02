@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
     <!--script(src="js/mainTerminal.js")-->
     <!-- Возможно потом заменить на другой скрипт-->
-    <script src="js/new/script_4.js" defer="defer"> </script>
+    <!--script(src="js/new/script_4.js" defer) -->
     <header class="header">
       <div class="bg-fone-header"></div>
       <div class="head-title">
@@ -20,104 +20,106 @@
   </head>
   <body class="pg-4">
     <p class="pg4-p1">Редактор базы знаний</p>
-    <div class="block-vew-pl-list">
-      <p>Список всех записей о растениях:</p>
-      <div class="cont-4-1">
-        <div class="main-pl-list-cont-pg4">
-          <div class="el-pl-cont-4">блок 1</div>
-          <div class="el-pl-cont-4">блок 2</div>
-          <div class="el-pl-cont-4">блок 3</div>
-          <div class="el-pl-cont-4">блок 4</div>
-          <div class="el-pl-cont-4">блок 5</div>
+    <div class="upper-block">
+      <div class="block-vew-pl-list" id="block-vew-pl-list-first">
+        <p>Список всех записей о растениях:</p>
+        <div class="cont-4-1">
+          <div class="main-pl-list-cont-pg4">
+            <div class="el-pl-cont-4">блок 1</div>
+            <div class="el-pl-cont-4">блок 2</div>
+            <div class="el-pl-cont-4">блок 3</div>
+            <div class="el-pl-cont-4">блок 4</div>
+            <div class="el-pl-cont-4">блок 5</div>
+          </div>
+          <div class="right-container"> 
+            <div class="butt-4-1" id="butt-go-top"><span>К первой записи</span></div>
+            <div class="butt-4-1" id="butt-go-bottom"><span>К последней записи</span></div>
+          </div>
         </div>
-        <div class="right-container"> 
-          <div class="butt-4-1" id="butt-go-top"><span>К первой записи</span></div>
-          <div class="butt-4-1" id="butt-go-bottom"><span>К последней записи</span></div>
+        <p class="p-4-1">Выберете одно растение из списка, и вы сможете просмотреть все его характеристики, и отредактировать их.</p>
+      </div>
+      <div class="block-vew-pl-list p-4-3-add" id="yell-block">
+        <p>Все характеристики этой записи о растении:</p>
+        <div class="cont-dooble-4-3" id="param-1"><span>Название растения:</span>
+          <input type="text"/><span class="add-4-4">text</span>
         </div>
-      </div>
-      <p class="p-4-1">Выберете одно растение из списка, и вы сможете просмотреть все его характеристики, и отредактировать их.</p>
-    </div>
-    <div class="block-vew-pl-list p-4-3-add" id="yell-block">
-      <p>Все характеристики этой записи о растении:</p>
-      <div class="cont-dooble-4-3" id="param-1"><span>Название растения:</span>
-        <input type="text"/><span class="add-4-4">text</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-2"><span>Минимальное освещение:</span>
-        <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-3"><span>Максимальное освещение:</span>
-        <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-4"><span>Переносимость прямого света:</span>
-        <select id="select-light">
-          <option value="yes">Да</option>
-          <option value="no" selected="selected">Нет</option>
-          <option value="medium">Средне</option>
-        </select><span class="add-4-4">select</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-5"><span>Влажность min (%):</span>
-        <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-6"><span>Влажность max (%):</span>
-        <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-7"><span>Температура min (℃):</span>
-        <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-8"><span>Температура max (℃):</span>
-        <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-9"><span>Тип растения:</span>
-        <select id="select-home">
-          <option value="yes" selected="selected">Домашнее</option>
-          <option value="no">Уличное</option>
-        </select><span class="add-4-4">select</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-10"><span>Плодоносное?</span>
-        <select id="select-plod">
-          <option value="yes" selected="selected">Да</option>
-          <option value="no">Нет</option>
-        </select><span class="add-4-4">select</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-11"><span>Выработка кислорода:</span>
-        <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-12"><span>Занимаемая площадь растения:</span>
-        <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-13"><span>Уход за растением (кол-во дней):</span>
-        <input type="text" inputmode="numeric"/><span class="add-4-4">int </span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-14"><span>Цвет растения</span>
-        <select id="select-color">
-          <option value="1" selected="selected">Зелёный</option>
-        </select><span class="add-4-4">n-sel</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-15"><span>Тип климата</span>
-        <select id="select-type-cl">
-          <option value="1" selected="selected">Тропический</option>
-        </select><span class="add-4-4">n-sel</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-16"><span>Аллелопатия</span>
-        <select id="select-allel">
-          <option value="1" selected="selected">Нейтральная</option>
-        </select><span class="add-4-4">n-sel</span>
-      </div>
-      <div class="cont-dooble-4-3" id="param-17"><span>Известное растение?</span>
-        <select id="select-compl">
-          <option value="yes" selected="selected">Да</option>
-          <option value="no">Нет</option>
-        </select><span class="add-4-4">select</span>
-      </div>
-      <div class="butt-4-close" id="b-4-not-edit"> 
-        <p>Свернуть</p>
-      </div>
-      <div class="butt-compl-4">
-        <div class="butt-4-close" id="b-4-witch-save">
-          <p>Сохранить изменения </p>
+        <div class="cont-dooble-4-3" id="param-2"><span>Минимальное освещение:</span>
+          <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
         </div>
-        <div class="butt-4-close" id="b-4-witch-not-save">
-          <p>Закрыть без изменений</p>
+        <div class="cont-dooble-4-3" id="param-3"><span>Максимальное освещение:</span>
+          <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-4"><span>Переносимость прямого света:</span>
+          <select id="select-light">
+            <option value="yes">Да</option>
+            <option value="no" selected="selected">Нет</option>
+            <option value="medium">Средне</option>
+          </select><span class="add-4-4">select</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-5"><span>Влажность min (%):</span>
+          <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-6"><span>Влажность max (%):</span>
+          <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-7"><span>Температура min (℃):</span>
+          <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-8"><span>Температура max (℃):</span>
+          <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-9"><span>Тип растения:</span>
+          <select id="select-home">
+            <option value="yes" selected="selected">Домашнее</option>
+            <option value="no">Уличное</option>
+          </select><span class="add-4-4">select</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-10"><span>Плодоносное?</span>
+          <select id="select-plod">
+            <option value="yes" selected="selected">Да</option>
+            <option value="no">Нет</option>
+          </select><span class="add-4-4">select</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-11"><span>Выработка кислорода:</span>
+          <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-12"><span>Занимаемая площадь растения:</span>
+          <input type="text" inputmode="numeric"/><span class="add-4-4">int</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-13"><span>Уход за растением (кол-во дней):</span>
+          <input type="text" inputmode="numeric"/><span class="add-4-4">int </span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-14"><span>Цвет растения</span>
+          <select id="select-color">
+            <option value="1" selected="selected">Зелёный</option>
+          </select><span class="add-4-4">n-sel</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-15"><span>Тип климата</span>
+          <select id="select-type-cl">
+            <option value="1" selected="selected">Тропический</option>
+          </select><span class="add-4-4">n-sel</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-16"><span>Аллелопатия</span>
+          <select id="select-allel">
+            <option value="1" selected="selected">Нейтральная</option>
+          </select><span class="add-4-4">n-sel</span>
+        </div>
+        <div class="cont-dooble-4-3" id="param-17"><span>Известное растение?</span>
+          <select id="select-compl">
+            <option value="yes" selected="selected">Да</option>
+            <option value="no">Нет</option>
+          </select><span class="add-4-4">select</span>
+        </div>
+        <div class="butt-4-close" id="b-4-not-edit"> 
+          <p>Свернуть</p>
+        </div>
+        <div class="butt-compl-4">
+          <div class="butt-4-close" id="b-4-witch-save">
+            <p>Сохранить изменения </p>
+          </div>
+          <div class="butt-4-close" id="b-4-witch-not-save">
+            <p>Закрыть без изменений</p>
+          </div>
         </div>
       </div>
     </div>
