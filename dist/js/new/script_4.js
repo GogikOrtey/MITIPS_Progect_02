@@ -43,7 +43,8 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
                 resultMass = jsonToArray(decodeData)
                 // console.log("resultMass = ");
                 // console.log(resultMass);
-                console.log(decodeData);
+                console.log(resultMass);
+                SetAllInputValues(resultMass);
             } else {
                 console.log(decodeData);
             }
@@ -112,28 +113,6 @@ function ShowYellBlock() {
             console.log(sql_req);
 
             SQL_RQ_FromSwever(sql_req, "", 2);
-
-            /*
-                Массив из JSON -> id элемента на странице
-                        
-                1 - 16
-                2 - 6
-                3 - 5
-                4 - 11
-                5 - 12
-                6 - 17
-                7 - 1
-                8 - 3
-                9 - 2
-                10 - 4
-                11 - 10
-                12 - 8
-                13 - 7
-                14 - 15
-                15 - 9
-                16 - 13
-                17 - 14
-            */
         })
     })
 }
@@ -146,13 +125,47 @@ function jsonToArray(json) {
         array = Object.values(element)
     }
 
-    console.log("Обработанный массив: ")
-    console.log(array)
+    //console.log("Обработанный массив: ")
+    //console.log(array)
     return array;
 }
 
+function SetAllInputValues(massAttr) {
 
+    //SetInputValue(1, "000")
 
+    for (let i = 1; i < massAttr.length; i++) {
+        if(i != 4 && i != 9 && i != 10 && i < 14) {
+            SetInputValue(i, massAttr[i]);
+        } else if(i == 4) {
+            console.log("mass[4] = " + massAttr[4]);
+
+            const selectElement = document.querySelector(`#yell-block #param-4 select`);
+
+            Array.from(selectElement.options).forEach((option) => {
+                if (option.textContent === massAttr[4]) {
+                  option.selected = true;
+                }
+            });
+        } else if(i == 9) {
+            console.log("mass[9] = " + massAttr[9]);
+
+            const selectElement = document.querySelector(`#yell-block #param-9 select`);
+
+            Array.from(selectElement.options).forEach((option) => {
+                if (option.textContent === massAttr[9]) {
+                  option.selected = true;
+                }
+            });
+        }
+    }
+
+    
+}
+
+function SetInputValue(id, value) {
+    document.querySelector(`#yell-block #param-${id} input`).value = value;
+}
 
 
 
