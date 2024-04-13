@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //SQL_RQ_FromSwever("select * from Allelopathy")
     SQL_RQ_FromSwever("select * from MainTable_2", "Название растения", 1)
 
-    //HideYellowBlock() /// ------------------ Потом раскомментировать эту строчку
+    HideYellowBlock() /// ------------------ Потом раскомментировать эту строчку
     //ShowYellBlock()
 
     SetCorrCahgeAnyValues()
@@ -32,13 +32,83 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Обработка текста об ошибке, для полей ввода новых значений для ключевых признаков
     ProcessHideErrorTextForKeyAdds()
+
+    //ShowOrHideLoaderDisplay(false);    
+    //ShowOrHideLoaderDisplay(true);    
+
+
+
+    // let elements2 = document.querySelectorAll('.el-pl-cont-4:hover, .butt-4-1:hover, .el-pl-cont-4:hover span, .butt-4-1:hover span');
+    // elements2.forEach(function(element2) {
+    //     element2.style.setProperty('cursor', 'wait', 'important');
+    // });
+    
     
 });
 
 
 
+loader = document.querySelector(".loader");
+
+function ShowOrHideLoaderDisplay(isShow) {
+    if(isShow == true) {
+        loader.style.display = "flex";
+        console.log("Показываем загрузчик")
+    } else {
+        loader.style.display = "none";
+        console.log("Скрываем загрузчик")
+    }
+}
+
+
+
+function SetWaitCursor() {
+    document.body.style.cursor = 'wait';
+
+    let elements = document.querySelectorAll('body *');
+    elements.forEach(function(element) {
+        element.style.cursor = 'wait';
+    });
+}
+
+function SetDefaultCursor() {
+    document.body.style.cursor = 'default';
+
+    let elements = document.querySelectorAll('body *');
+    elements.forEach(function(element) {
+        element.style.cursor = 'default';
+    });
+
+    // Также, установка курсора типа pointer, для некоторых элементов (кнопок):
+    const targetElements = [
+        '.el-pl-cont-4', '.butt-4-1', '.n_but', '.p-4-2-add', '.butt-4-close',
+        '.loader', '.loader *' // Включаем элементы внутри .loader
+    ];
+  
+  // Функция для установки курсора "pointer"
+  function setPointerCursor(elements) {
+    elements.forEach(function(selector) {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(function(element) {
+        element.style.cursor = 'pointer';
+      });
+    });
+  }
+  
+  // Вызов функции
+  setPointerCursor(targetElements);
+}
+
+
 // Запрос к БД растений:
 function SQL_RQ_FromSwever(sql_2, selector, mode) {
+    // Показывает окно загрузки, только если это не операция обновления жёлтого окна свойств растения
+    if(mode != 2) ShowOrHideLoaderDisplay(true)
+
+    if(mode == 2) {
+        SetWaitCursor()
+    }
+
     // Используем асинхронную функцию для запроса-ответа к серверу
     $.ajax({
 
@@ -106,6 +176,11 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
 
             } else {
                 console.log(decodeData);
+            }
+            
+            ShowOrHideLoaderDisplay(false); // Скрывает окно загрузки, когда все элементы были получены и обработаны
+            if(mode == 2) {
+                SetDefaultCursor()
             }
         }
     })
@@ -710,13 +785,13 @@ function PostReqToAddColotTypeValue() {
 
 
 
+// ----------
 
 
 
 
 
-
-
+// В синем списке сделать сортировку по возрастанию 1го поля - имени
 
 
 

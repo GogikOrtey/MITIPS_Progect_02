@@ -2170,6 +2170,41 @@ body.pg-4, body.pg-5
 
 
 
+.loader
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	background-color: rgba(255, 255, 255, 0.9)
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+	z-index: 9999
+
+	img
+		// width: 50px
+		// height: 50px
+		width: min(20vw, 20vh)
+		height: min(20vw, 20vh)
+
+		box-shadow: none
+
+	p
+		font-size: 26px
+		margin-top: 10px
+
+.loader:hover
+	cursor: wait
+
+.loader *
+	cursor: wait
+
+
+
+
+
 // ------------------------------------------------------------------- //
 //						 											   //
 //  			        PAGE New 5 Решатель задач        	     	   //
