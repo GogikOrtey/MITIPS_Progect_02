@@ -41,7 +41,7 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
 
         // Подключаемся к php файлу на сервере
         type: "POST",
-        url: "https://gogortey.ru/res/execute_3.php",
+        url: "https://gogortey.ru/res/execute_4.php",
         
         // Отправляем туда наш SQL-запрос
         data: { sql: sql_2 },
