@@ -43,21 +43,25 @@ document.addEventListener('DOMContentLoaded', function() {
     //     element2.style.setProperty('cursor', 'wait', 'important');
     // });
     
+    // Функция обработки нажатия на зелёную кнопку создания новой записи растения
+    ProcButtonCreateNewValForPlants()
     
 });
 
 
 
-loader = document.querySelector(".loader");
+
+loader = document.querySelector(".loader"); ///////////////////////////////////////////////////////
+// B также изменить в стилях
 
 function ShowOrHideLoaderDisplay(isShow) {
-    if(isShow == true) {
-        loader.style.display = "flex";
-        console.log("Показываем загрузчик")
-    } else {
-        loader.style.display = "none";
-        console.log("Скрываем загрузчик")
-    }
+    // if(isShow == true) {
+    //     loader.style.display = "flex";
+    //     console.log("Показываем загрузчик")
+    // } else {
+    //     loader.style.display = "none";
+    //     console.log("Скрываем загрузчик")
+    // }
 }
 
 
@@ -84,16 +88,16 @@ function SetDefaultCursor() {
         '.el-pl-cont-4', '.butt-4-1', '.n_but', '.p-4-2-add', '.butt-4-close',
         '.loader', '.loader *' // Включаем элементы внутри .loader
     ];
-  
-  // Функция для установки курсора "pointer"
-  function setPointerCursor(elements) {
-    elements.forEach(function(selector) {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach(function(element) {
-        element.style.cursor = 'pointer';
-      });
-    });
-  }
+
+    // Функция для установки курсора "pointer"
+    function setPointerCursor(elements) {
+        elements.forEach(function (selector) {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(function (element) {
+                element.style.cursor = 'pointer';
+            });
+        });
+    }
   
   // Вызов функции
   setPointerCursor(targetElements);
@@ -786,6 +790,71 @@ function PostReqToAddColotTypeValue() {
 
 
 // ----------
+
+
+// Обработчик создания новой записи
+
+
+// Функция обработки нажатия на зелёную кнопку создания новой записи растения
+function ProcButtonCreateNewValForPlants() {
+    buttonAddNewVal = document.querySelector('#add-new-plant-val')
+
+    buttonAddNewVal.addEventListener('click', () => { 
+        ProcesiShowYellowBlockForCreateNewPlantValue();
+    })
+}
+
+// Функция показа жёлтого блока, для создания новой записи о растении
+function ProcesiShowYellowBlockForCreateNewPlantValue() {
+    yellBlock = document.querySelector('#yell-block')
+
+    yellBlock.style.display = "grid"
+
+    // Очищаю значения в полях:
+
+    const numericInputs = document.querySelectorAll('#yell-block input[inputmode="numeric"]');
+
+    for (const input of numericInputs) {
+        input.value = '';
+    }
+
+    document.querySelector('#yell-block input').value = ''
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1715,6 +1715,7 @@ body.pg-5 {
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  display: none;
 }
 .loader img {
   width: 20vh;
