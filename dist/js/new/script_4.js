@@ -54,14 +54,17 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
                 try { decodeData = JSON.parse(data_inp);} // Преобразуем строку JSON в объект JavaScript
                 catch {
                     console.error("Ошибка при декодировании ответа из JSON формата: Сервер отправил нетипичный ответ.")
-                    console.error("На запрос: '" + sql_2 + "', cервер отправил некорректный ответ: " + data_inp);
+                    if(data_inp != "Неверный запрос: ") {
+                        console.error("На запрос: '" + sql_2 + "', cервер отправил некорректный ответ: " + data_inp);
+                    }
                 }
             } else {
-                console.error("На запрос: '" + sql_2 + "', cервер отправил некорректный ответ: " + data_inp);
+                //console.error("На запрос: '" + sql_2 + "', cервер отправил некорректный ответ: " + data_inp);
             }
             
             if(mode == 0) { // Когда запрос не требует ответа
                 console.log("Запрос выполнен, получен ответ: " + data_inp)
+
             } else if(mode == 1) {
                 resultMass = ConvertJSON_to_massiv(decodeData, selector)
                 GetPlantList_andInsertFromLabel(resultMass);
@@ -73,8 +76,7 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
                 resultMass = jsonToArray(decodeData)
                 console.log(resultMass);
                 SetAllInputValues(resultMass);         
-                GrayingInputElement_Show()       
-
+                GrayingInputElement_Show()     
 
             } else if(mode == 3) {
                 resultMass = ConvertJSON_to_massiv(decodeData, selector)
@@ -96,6 +98,8 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
                 massivColors = resultMass
                 FullingDropListsForYellowBlock_Color()
 
+            } else if(mode == 10) {
+                KeyValues_GetAndInsertIntoTable();
 
             } else {
                 console.log(decodeData);
@@ -637,9 +641,9 @@ function PostReqToAddAllelopValue() {
 
     //console.log("SQL_reqToAddAllelopElem = " + SQL_reqToAddAllelopElem);
 
-    SQL_RQ_FromSwever(SQL_reqToAddAllelopElem, "", 0);
+    SQL_RQ_FromSwever(SQL_reqToAddAllelopElem, "", 10);
 
-    KeyValues_GetAndInsertIntoTable();
+    //KeyValues_GetAndInsertIntoTable();
 }
 
 
