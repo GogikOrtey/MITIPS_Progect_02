@@ -50,10 +50,14 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
         success: function(data_inp) {
             //console.log(data_inp);
             let decodeData
-            if(data_inp != "0 results[]") {
-                decodeData = JSON.parse(data_inp); // Преобразуем строку JSON в объект JavaScript
+            if(data_inp != "0 results[]" && data_inp != "Неверный запрос: ") {
+                try { decodeData = JSON.parse(data_inp);} // Преобразуем строку JSON в объект JavaScript
+                catch {
+                    console.error("Ошибка при декодировании ответа из JSON формата: Сервер отправил нетипичный ответ.")
+                    console.error("На запрос: '" + sql_2 + "', cервер отправил некорректный ответ: " + data_inp);
+                }
             } else {
-                console.log(data_inp);
+                console.error("На запрос: '" + sql_2 + "', cервер отправил некорректный ответ: " + data_inp);
             }
             
             if(mode == 0) { // Когда запрос не требует ответа
@@ -608,7 +612,7 @@ function GrayingInputElement_Show() {
 function ProcessClickToButtonADDAnOther() {
     buttAllelop = document.querySelector('#allelop-butt-add')
     buttClType = document.querySelector('#cl-type-butt-add')
-    buttAddColor = document.querySelector('#color-butt-add')
+    buttAddColor = document.querySelector('.color-butt-add')
 
     buttAllelop.addEventListener('click', () => { 
         PostReqToAddAllelopValue();
