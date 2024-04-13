@@ -1732,6 +1732,23 @@ body.pg-5 {
 .loader * {
   cursor: wait;
 }
+#save-new-value {
+  background: #23ff0f;
+  border: none;
+}
+#save-new-value:active {
+  filter: brightness(85%);
+}
+#yell-bl-error-add {
+  color: #f00;
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: -10px;
+  display: none;
+}
+.error-inpur-value {
+  background: #f00;
+}
 .pg5-block-vew-pl-list {
   height: auto;
   width: 90%;

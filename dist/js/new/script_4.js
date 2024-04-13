@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //SQL_RQ_FromSwever("select * from Allelopathy")
     SQL_RQ_FromSwever("select * from MainTable_2", "Название растения", 1)
 
-    HideYellowBlock() /// ------------------ Потом раскомментировать эту строчку
+    //HideYellowBlock() /// ------------------ Потом раскомментировать эту строчку
     //ShowYellBlock()
 
     SetCorrCahgeAnyValues()
@@ -235,10 +235,13 @@ function HideYellowBlock() {
         document.querySelector('#key-haract').style.display = "grid"
         document.querySelector('#key-haract-button').style.display = "none"
     })
+
+    document.querySelector('#yell-block #save-new-value').style.display = "none"
 }
 
 // Добавляет обработчик событий, на показ жёлтого блока
 function ShowYellBlock() {
+    document.querySelector('#yell-block #save-new-value').style.display = "none"
     reqButt = document.querySelectorAll(".el-pl-cont-4");
     //console.log(reqButt);
 
@@ -802,6 +805,14 @@ function ProcButtonCreateNewValForPlants() {
     buttonAddNewVal.addEventListener('click', () => { 
         ProcesiShowYellowBlockForCreateNewPlantValue();
     })
+
+
+    // Обработчик нажатия на кнопку "Сохранить", при создании новой записи о растении
+    buttonAddNewVal = document.querySelector('#save-new-value')
+
+    buttonAddNewVal.addEventListener('click', () => { 
+        ProcButtonClickToSaveNewValue();
+    })
 }
 
 // Функция показа жёлтого блока, для создания новой записи о растении
@@ -819,8 +830,68 @@ function ProcesiShowYellowBlockForCreateNewPlantValue() {
     }
 
     document.querySelector('#yell-block input').value = ''
+
+    // Устанавливаю значение цвета как "Зелёный", по умолчанию
+
+    const colorSelect = document.getElementById('select-color');
+    const greenOption = colorSelect.querySelector('option[value="Зелёный"]');
+
+    if (greenOption) {
+        greenOption.selected = true;
+    }
+
+    document.querySelector('#yell-block #save-new-value').style.display = "grid"
+    document.querySelector('#yell-block #b-4-not-edit').style.display = "none"
 }
 
+// При нажатии на кнопку "Сохранить", при создании новой записи о растении
+function ProcButtonClickToSaveNewValue() {
+    //console.log("Сохраняем запись о растении")
+
+    bool_isEqErrorValues = false;
+
+    numericInputs = document.querySelectorAll('#yell-block input[inputmode="numeric"]');
+    elemTextInput = document.querySelector('#param-1 input');
+
+    //numericInputs = [... numericInputs, elemTextInput]
+
+    for (const input of numericInputs) {
+        const value = parseFloat(input.value.trim()); // Преобразовать значение в число с обрезкой пробелов
+
+        // Проверка того, что бы все числовые поля имел значение целого числа, были на NaN, и были не пустыми
+        if (isNaN(value) || !value || !Number.isInteger(value)) {
+            // Если значение NaN, пустое или не целое число
+            input.classList.add('error-inpur-value'); // Добавить класс ошибки к полю
+            bool_isEqErrorValues = true;
+        } else {
+            input.classList.remove('error-inpur-value'); // Удалить класс ошибки из поля
+        }
+
+        // При фокусе на элемент input, убираю с него класс ошибки - красное выделение
+        input.addEventListener('focus', () => {
+            input.classList.remove('error-inpur-value'); // Удалить класс ошибки при фокусе
+        });
+    }
+
+    // Проверка текстового поля названия растения
+    if (elemTextInput.value == "") {
+        elemTextInput.classList.add('error-inpur-value'); // Добавить класс ошибки к полю
+        bool_isEqErrorValues = true;
+    } else {
+        elemTextInput.classList.remove('error-inpur-value'); // Удалить класс ошибки из поля
+    }
+
+    elemTextInput.addEventListener('focus', () => {
+        elemTextInput.classList.remove('error-inpur-value'); // Удалить класс ошибки при фокусе
+    });
+
+    // Показываю красный текст с ошибкой, если есть хотя бы одна ошибка
+    if (bool_isEqErrorValues == true) {
+        document.querySelector('#yell-bl-error-add').style.display = "inline"
+    } else {
+        // Ошибок нет, всё заполнено корректно
+    }
+}
 
 
 
