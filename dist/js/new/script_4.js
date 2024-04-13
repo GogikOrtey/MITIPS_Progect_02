@@ -328,7 +328,8 @@ function YellBlockHideFunc() {
     })
 }
 
-
+// Печатаются ли в консоли получаемые от сервера значения таблиц, которые далее выводятся на странице
+bool_isPrintGivetTablesValues = false
 
 // Аллелопатия
 
@@ -342,7 +343,7 @@ function KeyValues_GetAndInsertIntoTable() {
 
 // Дальше, из асинхронной функции вызывается эта функция
 function KeyValues_GetAndInsertIntoTable_Return(resultMass) {
-    console.log(resultMass);
+    if(bool_isPrintGivetTablesValues) console.log(resultMass);
 
     // Получаем таблицу
     const table = document.getElementById('a12');
@@ -373,7 +374,7 @@ function KeyValues_GetAndInsertIntoTable_2() {
 
 // Дальше, из асинхронной функции вызывается эта функция
 function KeyValues_GetAndInsertIntoTable_Return_2(resultMass) {
-    console.log(resultMass);
+    if(bool_isPrintGivetTablesValues) console.log(resultMass);
 
     // Получаем таблицу
     const table = document.getElementById('a14');
@@ -404,7 +405,7 @@ function KeyValues_GetAndInsertIntoTable_3() {
 
 // Дальше, из асинхронной функции вызывается эта функция
 function KeyValues_GetAndInsertIntoTable_Return_3(resultMass) {
-    console.log(resultMass);
+    if(bool_isPrintGivetTablesValues) console.log(resultMass);
 
     // Получаем таблицу
     const table = document.getElementById('a16');
@@ -454,7 +455,7 @@ function FullingDropListsForYellowBlock_Allelop() {
 }
 
 function FullingDropListsForYellowBlock_ClimatType() {
-    console.log(massClimat);
+    if(bool_isPrintGivetTablesValues) console.log(massClimat);
 
     const selectAllel = document.getElementById('select-type-cl');
 
@@ -476,7 +477,7 @@ function FullingDropListsForYellowBlock_ClimatType() {
 }
 
 function FullingDropListsForYellowBlock_Color() {
-    console.log(massivColors);
+    if(bool_isPrintGivetTablesValues) console.log(massivColors);
 
     const selectAllel = document.getElementById('select-color');
 
@@ -613,7 +614,7 @@ function GrayingInputElement_Show() {
 
 
 
-// ---------
+// ---------  Код для обработки добавления ключевых признаков
 
 
 errTextAllelop = document.querySelector('#allelop .err-4-4-2')
@@ -641,16 +642,16 @@ function ProcessClickToButtonADDAnOther() {
         PostReqToAddAllelopValue();
     })
 
-    // buttClType.addEventListener('click', () => { 
-        
-    // })
+    buttClType.addEventListener('click', () => { 
+        PostReqToAddClTypeValue();
+    })
 
-    // buttAddColor.addEventListener('click', () => { 
-        
-    // })
+    buttAddColor.addEventListener('click', () => { 
+        PostReqToAddColotTypeValue();
+    })
 }
 
-// Посылаю на сервер запрос, на добавление нового признака аллелопатии
+// Посылаю на сервер запрос, на добавление нового признака - аллелопатии
 function PostReqToAddAllelopValue() {
     textNewAllelopPr = document.querySelector('#allelop input').value
 
@@ -665,7 +666,45 @@ function PostReqToAddAllelopValue() {
     
         SQL_RQ_FromSwever(SQL_reqToAddAllelopElem, "", 10);
     
-        //KeyValues_GetAndInsertIntoTable(); // - это вызывается после SQL запроса
+        //KeyValues_GetAndInsertIntoTable(); // - это вызывается после SQL запроса, это обновление всех 3х таблиц
+    }
+}
+
+// Посылаю на сервер запрос, на добавление нового признака - типа климата
+function PostReqToAddClTypeValue() {
+    textNewPr = document.querySelector('#cl-type input').value
+
+    if(textNewPr == "") {
+        errTextClType.style.display = "block"
+    } else {
+        errTextClType.style.display = "none"
+        SQL_reqToAddAllelopElem = "INSERT INTO `ClimateTypes` (`climate_type_name`) VALUES ('" + 
+        textNewPr + "');";
+    
+        //console.log("SQL_reqToAddAllelopElem = " + SQL_reqToAddAllelopElem);
+    
+        SQL_RQ_FromSwever(SQL_reqToAddAllelopElem, "", 10);
+    
+        //KeyValues_GetAndInsertIntoTable(); // - это вызывается после SQL запроса, это обновление всех 3х таблиц
+    }
+}
+
+// Посылаю на сервер запрос, на добавление нового признака - цвета
+function PostReqToAddColotTypeValue() {
+    textNewPr = document.querySelector('#color-type input').value
+
+    if(textNewPr == "") {
+        errTextColorType.style.display = "block"
+    } else {
+        errTextColorType.style.display = "none"
+        SQL_reqToAddAllelopElem = "INSERT INTO `PlantColors_2` (`plant_color_description`) VALUES ('" + 
+        textNewPr + "');";
+    
+        //console.log("SQL_reqToAddAllelopElem = " + SQL_reqToAddAllelopElem);
+    
+        SQL_RQ_FromSwever(SQL_reqToAddAllelopElem, "", 10);
+    
+        //KeyValues_GetAndInsertIntoTable(); // - это вызывается после SQL запроса, это обновление всех 3х таблиц
     }
 }
 
