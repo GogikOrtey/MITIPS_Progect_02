@@ -1698,6 +1698,11 @@ body.pg-5 {
     font-size: 14px;
   }
 }
+.err-4-4-2 {
+  color: #c00;
+  font-weight: bold;
+  margin-top: 10px;
+}
 .pg5-block-vew-pl-list {
   height: auto;
   width: 90%;

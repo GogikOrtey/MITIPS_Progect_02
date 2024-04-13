@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обработчик нажатия на кнопки "Добавить", для блоков Аллелопатии, типа климата, и цвета
     ProcessClickToButtonADDAnOther();
 
+    // Обработка текста об ошибке, для полей ввода новых значений для ключевых признаков
+    ProcessHideErrorTextForKeyAdds()
+    
 });
 
 
@@ -612,6 +615,22 @@ function GrayingInputElement_Show() {
 
 // ---------
 
+
+errTextAllelop = document.querySelector('#allelop .err-4-4-2')
+errTextClType = document.querySelector('#cl-type .err-4-4-2')
+errTextColorType = document.querySelector('#color-type .err-4-4-2')
+
+
+// Обработка текста об ошибке, для полей ввода новых значений для ключевых признаков
+function ProcessHideErrorTextForKeyAdds() {
+    //.err-4-4-2
+    
+    errTextAllelop.style.display = "none"
+    errTextClType.style.display = "none"
+    errTextColorType.style.display = "none"
+}
+
+
 // Обработчик нажатия на кнопки "Добавить", для блоков Аллелопатии, типа климата, и цвета
 function ProcessClickToButtonADDAnOther() {
     buttAllelop = document.querySelector('#allelop-butt-add')
@@ -633,20 +652,22 @@ function ProcessClickToButtonADDAnOther() {
 
 // Посылаю на сервер запрос, на добавление нового признака аллелопатии
 function PostReqToAddAllelopValue() {
-    // Вот тут нужно получить значение из поля на странице
-    str_newAllelopPr = "FFF"
+    textNewAllelopPr = document.querySelector('#allelop input').value
 
-    SQL_reqToAddAllelopElem = "INSERT INTO `Allelopathy` (`allelopathy_description`) VALUES ('" + 
-    str_newAllelopPr + "');";
-
-    //console.log("SQL_reqToAddAllelopElem = " + SQL_reqToAddAllelopElem);
-
-    SQL_RQ_FromSwever(SQL_reqToAddAllelopElem, "", 10);
-
-    //KeyValues_GetAndInsertIntoTable();
+    if(textNewAllelopPr == "") {
+        errTextAllelop.style.display = "block"
+    } else {
+        errTextAllelop.style.display = "none"
+        SQL_reqToAddAllelopElem = "INSERT INTO `Allelopathy` (`allelopathy_description`) VALUES ('" + 
+        textNewAllelopPr + "');";
+    
+        //console.log("SQL_reqToAddAllelopElem = " + SQL_reqToAddAllelopElem);
+    
+        SQL_RQ_FromSwever(SQL_reqToAddAllelopElem, "", 10);
+    
+        //KeyValues_GetAndInsertIntoTable(); // - это вызывается после SQL запроса
+    }
 }
-
-
 
 
 
