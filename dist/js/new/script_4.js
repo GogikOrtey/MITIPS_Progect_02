@@ -229,11 +229,13 @@ function GetPlantList_andInsertFromLabel(inputMass) {
 // Скрывает жёлтый блок с вводом характеристик
 function HideYellowBlock() {
     document.querySelector('#yell-block').style.display = "none"
+    bool_isAddModYellBlock = false
 
     document.querySelector('#key-haract').style.display = "none"
     document.querySelector('#key-haract-button').addEventListener('click', () => {
         document.querySelector('#key-haract').style.display = "grid"
         document.querySelector('#key-haract-button').style.display = "none"
+        bool_isAddModYellBlock = false
     })
 
     document.querySelector('#yell-block #save-new-value').style.display = "none"
@@ -243,6 +245,7 @@ function HideYellowBlock() {
 function ShowYellBlock() {
     document.querySelector('#yell-block #save-new-value').style.display = "none"
     reqButt = document.querySelectorAll(".el-pl-cont-4");
+    bool_isAddModYellBlock = false
     //console.log(reqButt);
 
     reqButt.forEach(elem => {
@@ -252,9 +255,22 @@ function ShowYellBlock() {
     })
 }
 
+// Функция очистки жёлтого блока от элементов, которые появляются при создании новой записи
+function ClearYellBlockWitchAddNewElem() {
+    console.log("Чистим жёлтый блок")
+    document.querySelector('#yell-block #save-new-value').style.display = "none"
+    document.querySelector('#yell-block #yell-bl-error-add').style.display = "none"
+
+    for (const input of numericInputsMassAdd) {
+        input.classList.remove('error-inpur-value');
+    }
+}
+
 // Отдельно функция, которая показывает жёлтый блок
 function ShowYellowBlock_cont(elem) {
     GrayingInputElement_Hide()
+    bool_isAddModYellBlock = false;
+    ClearYellBlockWitchAddNewElem()
 
     bool_isChangeAnyInputValues = false;
     document.querySelector('.butt-4-close#b-4-not-edit').style.display = "block" 
@@ -386,9 +402,11 @@ function SetCorrCahgeAnyValues() {
         elem.addEventListener('click', () => {
             bool_isChangeAnyInputValues = true;
 
-            document.querySelector('.butt-4-close#b-4-not-edit').style.display = "none"         
-            document.querySelector('#b-4-witch-not-save').style.display = "block"
-            document.querySelector('#b-4-witch-save').style.display = "block"
+            document.querySelector('.butt-4-close#b-4-not-edit').style.display = "none"      
+            if(bool_isAddModYellBlock == false) {
+                document.querySelector('#b-4-witch-not-save').style.display = "block"
+                document.querySelector('#b-4-witch-save').style.display = "block"
+            }
         })
     })
 }
@@ -793,9 +811,10 @@ function PostReqToAddColotTypeValue() {
 
 
 // ----------
-
-
 // Обработчик создания новой записи
+
+
+bool_isAddModYellBlock = false;
 
 
 // Функция обработки нажатия на зелёную кнопку создания новой записи растения
@@ -804,6 +823,7 @@ function ProcButtonCreateNewValForPlants() {
 
     buttonAddNewVal.addEventListener('click', () => { 
         ProcesiShowYellowBlockForCreateNewPlantValue();
+        bool_isAddModYellBlock = true;
     })
 
 
@@ -844,16 +864,16 @@ function ProcesiShowYellowBlockForCreateNewPlantValue() {
     document.querySelector('#yell-block #b-4-not-edit').style.display = "none"
 }
 
+numericInputs = document.querySelectorAll('#yell-block input[inputmode="numeric"]');
+elemTextInput = document.querySelector('#param-1 input');
+
+numericInputsMassAdd = [... numericInputs, elemTextInput]
+
 // При нажатии на кнопку "Сохранить", при создании новой записи о растении
 function ProcButtonClickToSaveNewValue() {
     //console.log("Сохраняем запись о растении")
 
     bool_isEqErrorValues = false;
-
-    numericInputs = document.querySelectorAll('#yell-block input[inputmode="numeric"]');
-    elemTextInput = document.querySelector('#param-1 input');
-
-    //numericInputs = [... numericInputs, elemTextInput]
 
     for (const input of numericInputs) {
         const value = parseFloat(input.value.trim()); // Преобразовать значение в число с обрезкой пробелов
