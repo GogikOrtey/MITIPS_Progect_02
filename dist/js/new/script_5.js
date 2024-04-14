@@ -429,6 +429,70 @@ function ShowExplanBlock(plantName) {
 
 
 
+// ---------
+// Играюсь с заголовком
+
+function transformString(inputString) {
+    if (inputString.length !== 14) {
+        return "Длина строки должна быть ровно 14 символов";
+    }
+
+    let lowerCaseString = inputString.toLowerCase();
+    let randomIndexes = [];
+    
+    while (randomIndexes.length < 3) {
+        let randomIndex = Math.floor(Math.random() * 14);
+        if (!randomIndexes.includes(randomIndex)) {
+            randomIndexes.push(randomIndex);
+        }
+    }
+
+    let transformedString = lowerCaseString.split('').map((char, index) => {
+        if (randomIndexes.includes(index)) {
+            return char.toUpperCase();
+        }
+        return char;
+    }).join('');
+
+    return transformedString;
+}
+
+// Играюсь с заголовком
+setInterval(function () {
+    //console.log('Таймер сработал!');
+    // RandomLetterForHtach() // <----------------------------------- Раскомментировать строчку
+}, 1500);
+
+// // Пример использования
+// let inputString = "РешателЬ заДач";
+// let result = transformString(inputString);
+// console.log(result);
+
+htach = document.querySelector('.pg4-p1');
+
+function RandomLetterForHtach() {
+    htach.textContent = transformString(htach.textContent)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
