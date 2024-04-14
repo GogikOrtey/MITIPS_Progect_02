@@ -112,8 +112,45 @@ function KeyValues_GetAndInsertIntoTable_3() {
 function Return_KeyValues_GetAndInsertIntoTable_3(resultMass) {
     console.log("Все растения:")
     console.log(resultMass)
+
+    createCheckboxesFromArray(resultMass, 'color-checkbox');
 }
 
+
+function createCheckboxesFromArray(array, containerId) {
+    const parent = document.getElementById('color-checkbox');
+
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.error(`Container with id ${containerId} not found`);
+        return;
+    }
+
+    array.forEach((value, index) => {
+        const checkboxContainer = document.createElement('div');
+        checkboxContainer.classList.add('input-checkbox-container');
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `checkbox-${index}`;
+        checkbox.value = value;
+
+        const label = document.createElement('label');
+        label.htmlFor = `checkbox-${index}`;
+        label.textContent = value;
+
+        checkboxContainer.appendChild(checkbox);
+        checkboxContainer.appendChild(label);
+
+        container.appendChild(checkboxContainer);
+    });
+}
+
+//const resultMass = ['Белый', 'Жёлтый', 'Зелёный', 'Красный', 'Оранжевый', 'Пёстрый', 'Пурпурный', 'Разноцветный', 'Розовый', 'Синий', 'Фиолетовый'];
 
 
 
