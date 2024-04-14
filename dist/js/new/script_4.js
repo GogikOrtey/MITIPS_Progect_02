@@ -149,12 +149,14 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
             if(mode == 0) { // Когда запрос не требует ответа
                 console.log("Запрос выполнен, получен ответ: " + data_inp)
 
-            } else if(mode == 1) {
+            } else if((mode == 1) || (mode == 12)) {
                 resultMass = ConvertJSON_to_massiv(decodeData, selector)
                 GetPlantList_andInsertFromLabel(resultMass);
                 // Обработка выделения элементов в синем блоке
                 ProcessSelectObjectForBlueBlock();
                 //console.log(resultMass)
+
+                if(mode == 12) FindCreatedPlantValue();
                 
             } else if(mode == 2) {
                 resultMass = jsonToArray(decodeData)
@@ -877,6 +879,7 @@ numericInputs = document.querySelectorAll('#yell-block input[inputmode="numeric"
 elemTextInput = document.querySelector('#param-1 input');
 
 numericInputsMassAdd = [... numericInputs, elemTextInput]
+nameNewPlantValue = ""
 
 // При нажатии на кнопку "Сохранить", при создании новой записи о растении
 function ProcButtonClickToSaveNewValue() {
@@ -904,6 +907,8 @@ function ProcButtonClickToSaveNewValue() {
         });
     }
 
+    nameNewPlantValue = elemTextInput.value
+
     // Проверка текстового поля названия растения
     if (elemTextInput.value == "") {
         elemTextInput.classList.add('error-inpur-value'); // Добавить класс ошибки к полю
@@ -918,6 +923,7 @@ function ProcButtonClickToSaveNewValue() {
 
     // Показываю красный текст с ошибкой, если есть хотя бы одна ошибка
     if (bool_isEqErrorValues == true) {
+        document.querySelector('#yell-bl-error-add').textContent = "Сначала заполните все поля корректно"
         document.querySelector('#yell-bl-error-add').style.display = "inline"
     } else {
         // Ошибок нет, всё заполнено корректно
@@ -941,10 +947,14 @@ function CheckIncludeValueFromMainTablePlant(str_plantName) {
 
 function Returned_CheckIncludeValueFromMainTablePlant(inp_data) {
     if (inp_data == "0 results[]") {
-        console.log("Ошибки нет, создаём новую запись")
+        //console.log("Ошибки нет, создаём новую запись")
         PutAllValuesTogether() 
+        elemTextError.style.display = "none"
     } else {
         console.error("Ошибка, растение с таким именем уже есть в БД!")
+        elemTextError = document.querySelector('#yell-bl-error-add');
+        elemTextError.textContent = "Ошибка, растение с таким именем уже есть в БД!"
+        elemTextError.style.display = "inline"
     }
 }
 
@@ -994,12 +1004,37 @@ function PutAllValuesTogether() {
     SQL_RQ_FromSwever(str_SQL_Final, "", 0);
 
     // Скрыть жёлтый блок
+    bool_isChangeAnyInputValues = false;
+    document.querySelector('#yell-block').style.display = "none" 
 
     // Обновить все записи в синем блоке
-    SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 1)
+    SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 12)
+
     
-    // Выделить в синем блоке только что созданную запись
-        // И нужно открыть жёлтый блок на этой записи
+}
+
+
+// Ищет только что созданный элемент в синем окне, и выделяет его
+function FindCreatedPlantValue() {
+    // Вызывается из SQL запроса №12
+
+    mass_allElementsForBlueBlock = document.querySelectorAll('.main-pl-list-cont-pg4 .el-pl-cont-4')
+
+    mass_allElementsForBlueBlock.forEach(elem => {
+        if(elem.textContent == nameNewPlantValue) {
+            // Удаляем выделение у старого элемента
+            const oldElem = document.querySelector(".el-blue-button-selected");
+            if (oldElem) {
+                oldElem.classList.remove('el-blue-button-selected');
+            }
+
+            // Добавляем выделение
+            elem.classList.add('el-blue-button-selected');
+
+            // Открываем жёлтый блок на этом элементе
+            ShowYellowBlock_cont(elem)
+        }
+    })
 }
 
 
@@ -1007,18 +1042,7 @@ function PutAllValuesTogether() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-// Проверка на уникальность названия растения
+// Показать сообщение о том, что запись успешно создана
 
 
 
@@ -1046,7 +1070,15 @@ function PutAllValuesTogether() {
 
 
 
-// В синем списке сделать сортировку по возрастанию 1го поля - имени
+
+
+
+
+
+
+
+
+
 
 
 
