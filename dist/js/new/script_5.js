@@ -777,6 +777,25 @@ function ProcessAllPlantsMass(resultMass) {
     document.querySelector("#plant-name-1-img").src = "img/all-plants-photo/Растение " + resultMass[randInt_1] + ".jpg"
     document.querySelector("#plant-name-2-img").src = "img/all-plants-photo/Растение " + resultMass[randInt_2] + ".jpg"
     document.querySelector("#plant-name-3-img").src = "img/all-plants-photo/Растение " + resultMass[randInt_3] + ".jpg"
+
+
+    function ErrorImageCon(img) {
+        // Обработка ошибки
+        // Создаем массив с именами файлов изображений
+        let imageNames = Array.from({length: 13}, (_, i) => `img/plant-image/P_${String(i+1).padStart(2, '0')}.png`);
+    
+        // Перемешиваем массив
+        imageNames.sort(() => Math.random() - 0.5);
+    
+        img.src = imageNames[0];
+    
+        //console.log('Ошибка при загрузке изображения "' + item.plant_name + '"');
+    }
+
+    // Если картинки с нужным именем не нашлось
+    document.querySelector("#plant-name-1-img").onerror = function() { ErrorImageCon(document.querySelector("#plant-name-1-img")) }; 
+    document.querySelector("#plant-name-2-img").onerror = function() { ErrorImageCon(document.querySelector("#plant-name-2-img")) }; 
+    document.querySelector("#plant-name-3-img").onerror = function() { ErrorImageCon(document.querySelector("#plant-name-3-img")) }; 
 }
 
 
