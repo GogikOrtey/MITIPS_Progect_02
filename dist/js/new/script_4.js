@@ -137,6 +137,11 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
                 return
             }
 
+            if(mode == 14) {
+                Returned_CheckIncludeValueFromMainTablePlant_2(data_inp)
+                return
+            }
+
             if(data_inp != "0 results[]" && data_inp != "Неверный запрос: ") {
                 try { decodeData = JSON.parse(data_inp);} // Преобразуем строку JSON в объект JavaScript
                 catch {
@@ -973,7 +978,34 @@ function Returned_CheckIncludeValueFromMainTablePlant(inp_data) {
     }
 }
 
+// Проверяет, существует ли такое растение в БД, с таким именем, 2я процедура для создания новой записи
+function CheckIncludeValueFromMainTablePlant_2(str_plantName) {
+    SQL_req = 'SELECT * FROM MainTable_2 WHERE `Название растения` = "' + str_plantName + '"';
+
+    SQL_RQ_FromSwever(SQL_req, "", 14);
+    //console.log("SQL_req = " + SQL_req)
+}
+
+
+function Returned_CheckIncludeValueFromMainTablePlant_2(inp_data) {
+    elemTextError = document.querySelector('#yell-bl-error-add');
+
+    if (inp_data == "0 results[]") {
+        //console.log("Ошибки нет, создаём новую запись")
+        //bool_isUpdateHaract = false;
+        //PutAllValuesTogether() 
+        NextFunc_1()
+        elemTextError.style.display = "none"
+    } else {
+        console.error("Ошибка, введённое название растения не уникально.")        
+        elemTextError.textContent = "Ошибка, введённое название растения не уникально."
+        elemTextError.style.display = "inline"
+    }
+}
+
 bool_isUpdateHaract = false;
+
+str_SQL_Final_PutAllValuesTogether = ""
 
 // Процедура, где я собираю все значения из полей в SQL запрос, для создания новой записи
 function PutAllValuesTogether() {
@@ -1013,6 +1045,7 @@ function PutAllValuesTogether() {
     str_addedValues += ")"
 
     str_SQL_Final = SQL_reqPar + str_addedValues
+    str_SQL_Final_PutAllValuesTogether = str_SQL_Final
 
     console.log("str_SQL_Final = " + str_SQL_Final)
 
@@ -1039,6 +1072,8 @@ function PutAllValuesTogether() {
         if(nameCurrentPlant != newNamePlant.value) {
             console.log("Название растения было изменено!")
 
+            CheckIncludeValueFromMainTablePlant_2(newNamePlant.value)
+
             // Если название записи было изменено
                 // Проверяем, уникально ли оно
                 // Если не уникально - выводим ошибку, перед кнопкой
@@ -1046,18 +1081,7 @@ function PutAllValuesTogether() {
             // Далее обновляем синий блок
             // И находим там запись с новым названием
 
-            // Удаляем запись по названию растения
-            SQL_reqDeleteVal = 'DELETE FROM `MainTable_2` WHERE `Название растения` = "';
-            //  + '";'
-            SQL_reqDeleteVal += nameCurrentPlant
-            SQL_reqDeleteVal += '";'
-
-            console.log("SQL_reqDeleteVal = " + SQL_reqDeleteVal)
-            SQL_RQ_FromSwever(SQL_reqDeleteVal, "", 0);
-
-            // Создаём новую запись с набором характеристик
-            SQL_RQ_FromSwever(str_SQL_Final, "", 13);
-
+            // NextFunc_1() // - вызывается через Returned_CheckIncludeValueFromMainTablePlant_2()
 
         } else {
 
@@ -1085,6 +1109,20 @@ function PutAllValuesTogether() {
             document.querySelector(".cucsessMessage").style.display = "none"
         }, 3000);    
     }
+}
+
+function NextFunc_1() {
+    // Удаляем запись по названию растения
+    SQL_reqDeleteVal = 'DELETE FROM `MainTable_2` WHERE `Название растения` = "';
+    //  + '";'
+    SQL_reqDeleteVal += nameCurrentPlant
+    SQL_reqDeleteVal += '";'
+
+    console.log("SQL_reqDeleteVal = " + SQL_reqDeleteVal)
+    SQL_RQ_FromSwever(SQL_reqDeleteVal, "", 0);
+
+    // Создаём новую запись с набором характеристик
+    SQL_RQ_FromSwever(str_SQL_Final_PutAllValuesTogether, "", 13);
 }
 
 
