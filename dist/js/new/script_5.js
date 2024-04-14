@@ -503,7 +503,7 @@ function DisplayAnswerForPodbor() {
         console.log(arrayOfCange)
 
         // Видна только загрузка
-        // blockMainInputCharact.style.display = "none"; // < ------------------------------ Раскомментировать !
+        blockMainInputCharact.style.display = "none"; // < ------------------------------ Раскомментировать !
         // blockCurrentAnswer.style.display = "none";
         // blockNotCurrentAnswer.style.display = "none";
         // blockExplanation.style.display = "none";
@@ -598,7 +598,7 @@ function transformString(inputString) {
 // Играюсь с заголовком
 setInterval(function () {
     //console.log('Таймер сработал!');
-    // RandomLetterForHtach() // <----------------------------------- Раскомментировать строчку
+    RandomLetterForHtach() // <----------------------------------- Раскомментировать строчку
 }, 1500);
 
 // // Пример использования
