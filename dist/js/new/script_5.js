@@ -109,14 +109,15 @@ function KeyValues_GetAndInsertIntoTable_3() {
     //console.log(resultMass);
 }
 
+// Выводит в консоль список всех цветов
 function Return_KeyValues_GetAndInsertIntoTable_3(resultMass) {
-    console.log("Все растения:")
+    console.log("Все цвета:")
     console.log(resultMass)
 
     createCheckboxesFromArray(resultMass, 'color-checkbox');
 }
 
-
+// Заполняет список цветов названиями цветов с сервера
 function createCheckboxesFromArray(array, containerId) {
     const parent = document.getElementById('color-checkbox');
 
@@ -499,7 +500,9 @@ function DisplayAnswerForPodbor() {
         document.body.style.cursor = 'wait';
         blockElementLoad.style.cursor = 'wait';
 
-        setTimeout(function() {                         // !!! Убрать это от сюда
+        GetValuesFromHaract();
+
+        setTimeout(function() {                        
             document.body.style.cursor = 'default';
             blockElementLoad.style.cursor = 'default';
             blockElementLoad.style.display = "none";
@@ -596,6 +599,54 @@ function RandomLetterForHtach() {
 
 
 
+// ---------
+// Пишу блок объяснений
+
+str_finalAnsw = "" // Что получится в финале объяснений
+
+// Выбирает все выбранные харктеристики, и приписывает их значения в модуль объяснений, ко всем растениям
+function GetValuesFromHaract() {
+    if (arrayOfCange[1] != 0) {
+        str_finalAnsw += arrayOfCange[1] + " ∈ Освещение, "
+    } if (arrayOfCange[2] != 0) {
+        str_finalAnsw += 'Переносимость прямого света = "'
+        if (arrayOfCange[2] == 1) str_finalAnsw += "Да"
+        if (arrayOfCange[2] == 2) str_finalAnsw += "Средне"
+        if (arrayOfCange[2] == 3) str_finalAnsw += "Нет"
+        str_finalAnsw += '", '
+    } if (arrayOfCange[3] != 0) {
+        str_finalAnsw += arrayOfCange[3] + " ∈ Относительная влажность, "
+    } if (arrayOfCange[4] != 0) {
+        str_finalAnsw += arrayOfCange[4] + " ∈ Температура, "
+    } if (arrayOfCange[5] != 0) {
+        str_finalAnsw += 'Тип растения = "'
+        if (arrayOfCange[5] == 1) str_finalAnsw += "Домашнее"
+        if (arrayOfCange[5] == 2) str_finalAnsw += "Уличное"
+        str_finalAnsw += '", '
+    } if (arrayOfCange[6] != 0) {
+        str_finalAnsw += 'Плодоносное? = "'
+        if (arrayOfCange[6] == 1) str_finalAnsw += "Да"
+        if (arrayOfCange[6] == 2) str_finalAnsw += "Нет"
+        str_finalAnsw += '", '
+    } if (arrayOfCange[7] != 0) {
+        str_finalAnsw += arrayOfCange[7] + " ∈ Выработка кислорода, "
+    } if (arrayOfCange[8] != 0) {
+        str_finalAnsw += arrayOfCange[8] + " ∈ Занимаемая площадь, "
+    } if (arrayOfCange[9] != 0) {
+        str_finalAnsw += arrayOfCange[9] + " ∈ Уход за растением (кол-во дней), "
+    } if (arrayOfCange[11] != 0) {
+        str_finalAnsw += 'Известное растение? = "'
+        if (arrayOfCange[11] == 1) str_finalAnsw += "Да"
+        if (arrayOfCange[11] == 2) str_finalAnsw += "Нет"
+        str_finalAnsw += '", '
+    }
+
+    str_finalAnsw = str_finalAnsw.slice(0, -2);
+
+    console.log("Результат: " + str_finalAnsw)
+
+    document.querySelector("#p-result-answer").textContent = str_finalAnsw
+}
 
 
 
