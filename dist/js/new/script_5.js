@@ -2,6 +2,8 @@
 // Ждём, пока DOM-модель загрузится
 document.addEventListener('DOMContentLoaded', function() { 
 
+    KeyValues_GetAndInsertIntoTable_3()
+
     // Задаём событие по клику, на элемент на Кнопка назад
     document.querySelector('.butt_back.n_but').addEventListener('click', function() {
         window.location.href = 'index.html';
@@ -38,10 +40,87 @@ document.addEventListener('DOMContentLoaded', function() {
     OrangeButonActive()
 });
 
+// ---------
 
 // Хранит значения, для каждого элемента
 let arrayOfCange = Array(12).fill(0);
 // Важно: отсчёт начинается с 1го элемента, а не с 0го
+
+// ---------
+
+// Автоматическая функция, которая извлекает из каждой записи в JSON формате, данные
+// по одному (указанному) полю
+// response - ответ в формате JSON, selector - то поле, из которого мы извлекаем данные в массив
+function ConvertJSON_to_massiv(response, selector) {
+    const result = response.map(item => item[selector]);
+    return result;
+}
+
+// Запрос к БД растений:
+function SQL_RQ_FromServer2(sql_2, selector, mode) {
+    // Используем асинхронную функцию для запроса-ответа к серверу
+    $.ajax({
+
+        // Подключаемся к php файлу на сервере
+        type: "POST",
+        url: "https://gogortey.ru/res/execute_4.php",
+        
+        // Отправляем туда наш SQL-запрос
+        data: { sql: sql_2 },
+
+        // Когда получим ответ:
+        success: function(data_inp) {
+            //console.log(data_inp);
+            let decodeData
+
+            if(data_inp != "0 results[]" && data_inp != "Неверный запрос: ") {
+                try { decodeData = JSON.parse(data_inp);} // Преобразуем строку JSON в объект JavaScript
+                catch {
+                    console.error("Ошибка при декодировании ответа из JSON формата: Сервер отправил нетипичный ответ.")
+                    if(data_inp != "Неверный запрос: ") {
+                        console.error("На запрос: '" + sql_2 + "', cервер отправил некорректный ответ: " + data_inp);
+                    }
+                }
+            }
+            
+            if(mode == 0) { // Когда запрос не требует ответа
+                console.log("Запрос выполнен, получен ответ: " + data_inp)
+
+            } else if(mode == 1) {
+                // console.log(data_inp)
+                // console.log(decodeData);
+                resultMass = ConvertJSON_to_massiv(decodeData, selector)
+                Return_KeyValues_GetAndInsertIntoTable_3(resultMass)
+
+            } else {
+                console.log(decodeData);
+            }
+        }
+    })
+}
+
+
+// ---------
+// Загрузка элементов цвета
+
+// Получение значений, и их вставка в таблицы, для ключевых признаков
+function KeyValues_GetAndInsertIntoTable_3() {
+    resultMass = SQL_RQ_FromServer2("SELECT * FROM `PlantColors_2`", "plant_color_description", 1)
+    //console.log(resultMass);
+}
+
+function Return_KeyValues_GetAndInsertIntoTable_3(resultMass) {
+    console.log("Все растения:")
+    console.log(resultMass)
+}
+
+
+
+
+
+
+// ---------
+// Обработчик элементов input
 
 
 // Обработка элементов типа input range:
@@ -371,8 +450,11 @@ function DisplayAnswerForPodbor() {
 
 
     buttStart.addEventListener('click', () => {
+        console.log("Все значения указанных характеристик:")
+        console.log(arrayOfCange)
+
         // Видна только загрузка
-        blockMainInputCharact.style.display = "none";
+        // blockMainInputCharact.style.display = "none"; // < ------------------------------ Раскомментировать !
         // blockCurrentAnswer.style.display = "none";
         // blockNotCurrentAnswer.style.display = "none";
         // blockExplanation.style.display = "none";
