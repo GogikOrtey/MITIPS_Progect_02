@@ -873,6 +873,8 @@ numericInputsMassAdd = [... numericInputs, elemTextInput]
 function ProcButtonClickToSaveNewValue() {
     //console.log("Сохраняем запись о растении")
 
+    PutAllValuesTogether() // ----- Удалить эту строчку
+
     bool_isEqErrorValues = false;
 
     for (const input of numericInputs) {
@@ -911,17 +913,40 @@ function ProcButtonClickToSaveNewValue() {
     } else {
         // Ошибок нет, всё заполнено корректно
         document.querySelector('#yell-bl-error-add').style.display = "none"
-        PutAllValuesTogether()
+        //PutAllValuesTogether() // ----- Убрать комментарий
     }
 }
 
+mass_allInputElementValue = []
+
 // Процедура, где я собираю все значения из полей в SQL запрос, для создания новой записи
 function PutAllValuesTogether() {
-// SQL запрос: INSERT INTO `MainTable_2` (`Название растения`, `Освещение min`, `Освещение max`, `Переносимость прямого света`, `Влажность min`, `Влажность max`, `Температура min`, `Температура max`, `Тип растения`, `Плодоносное`, `Выработка кислорода`, `Занимаемая площадь растения`, `Уход за растениями (кол-во дней)`, `Цвет растения`, `Тип климата`, `Аллелопатия`, `Известное растение?`) VALUES ('_1', '2', '2', 'Нет', '50', '50', '20', '20', 'Домашнее', '1', '5', '5', '5', 'Зелёный', 'Умеренный', 'Положительная', '0')
-// Нужно последовательно собрать с всех input элементов значения, быть аккуратным с плодоносным и известным, вставить их в этот запрос, и отправить на сервер
+    // SQL запрос: INSERT INTO `MainTable_2` (`Название растения`, `Освещение min`, `Освещение max`, `Переносимость прямого света`, `Влажность min`, `Влажность max`, `Температура min`, `Температура max`, `Тип растения`, `Плодоносное`, `Выработка кислорода`, `Занимаемая площадь растения`, `Уход за растениями (кол-во дней)`, `Цвет растения`, `Тип климата`, `Аллелопатия`, `Известное растение?`) VALUES ('_1', '2', '2', 'Нет', '50', '50', '20', '20', 'Домашнее', '1', '5', '5', '5', 'Зелёный', 'Умеренный', 'Положительная', '0')
+    // Нужно последовательно собрать с всех input элементов значения, быть аккуратным с плодоносным и известным, вставить их в этот запрос, и отправить на сервер
 
-// Но сначала проверить, есть ли растение с таким названием в нашей БД
+    // Но сначала проверить, есть ли растение с таким названием в нашей БД
+
+    mass_allInputEl =  document.querySelectorAll('#yell-block input, #yell-block select')
+
+    for(i = 0; i < mass_allInputEl.length; i++) {
+        if(mass_allInputEl[i].tagName.toLowerCase() == "input") {
+            mass_allInputElementValue[i] = mass_allInputEl[i].value
+        } else {
+            //console.log("Обрабатываем индекс " + i)
+            mass_allInputElementValue[i] = mass_allInputEl[i].options[mass_allInputEl[i].selectedIndex].textContent;
+        }
+    }
+
+    console.log("mass_allInputElementValue = ")
+    console.log(mass_allInputElementValue)
+
 }
+
+
+
+
+
+
 
 
 
