@@ -2098,6 +2098,15 @@ p.pg4-p1 {
 .pg4-p1 {
   font-family: 'Klukva';
 }
+.color-block-yellow {
+  background: #ffd600;
+}
+.color-block-green {
+  background: #6fff00;
+}
+.color-block-blue {
+  background: #00c8ff;
+}
 @media (min-width: 978px) {
   .pg5-block-vew-pl-list {
     width: 880px;

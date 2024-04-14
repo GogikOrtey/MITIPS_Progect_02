@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Добавляет обработчик событий на оранжевые кнопки "Почему это растение попало в набор?"
     OrangeButonActive()
+    
+    // Устанавливает одно из 3х значений типа климата
+    UpdateClimatTypeVal()
 });
 
 // ---------
@@ -427,6 +430,7 @@ MainState = 0
 
 // Добавляет обработчик для скрытия ввода характеристик, и показа блока результатов
 function DisplayAnswerForPodbor() {
+    UpdateClimatTypeVal()
 
     blockMainInputCharact = document.querySelector("#main-block-input-charact");
     blockElementLoad = document.querySelector(".loadd");
@@ -643,14 +647,47 @@ function GetValuesFromHaract() {
 
     str_finalAnsw = str_finalAnsw.slice(0, -2);
 
-    console.log("Результат: " + str_finalAnsw)
+    //console.log("Результат: " + str_finalAnsw)
 
     document.querySelector("#p-result-answer").textContent = str_finalAnsw
 }
 
 
 
+// --------
+// Выбор типа климата для набора
 
+mass_climatTypes = ["Субтропический", "Умеренный", "Тропический"]
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+int_randomVal = getRandomInt(1, 3);
+//console.log("int_randomVal = " + int_randomVal); 
+
+function UpdateClimatTypeVal() {
+    blocksOfClType = document.querySelectorAll(".clim-type-block")
+    //console.log("Устанавливаю климат")
+
+    blocksOfClType.forEach(elem => {
+        elem.textContent = mass_climatTypes[int_randomVal - 1]
+    })
+
+    blocksOfClType_2 = document.querySelectorAll(".clim-block-main")
+
+    blocksOfClType_2.forEach(elem => {
+        if(int_randomVal == 1) {
+            elem.classList.add('color-block-green');
+        } else if(int_randomVal == 2) {
+            elem.classList.add('color-block-blue');
+        } else {
+            elem.classList.add('color-block-yellow');
+        }
+    })
+}
 
 
 
