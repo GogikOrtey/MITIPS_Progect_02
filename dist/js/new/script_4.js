@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Получаю все названия растений, и вывожу их в консоль
     //SQL_RQ_FromSwever("select * from Allelopathy")
-    SQL_RQ_FromSwever("select * from MainTable_2", "Название растения", 1)
+    // SQL_RQ_FromSwever("select * from MainTable_2", "Название растения", 1)
+    SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 1)
 
     //HideYellowBlock() /// ------------------ Потом раскомментировать эту строчку
     //ShowYellBlock()
@@ -127,6 +128,12 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
         success: function(data_inp) {
             //console.log(data_inp);
             let decodeData
+
+            if(mode == 11) {
+                Returned_CheckIncludeValueFromMainTablePlant(data_inp)
+                return
+            }
+
             if(data_inp != "0 results[]" && data_inp != "Неверный запрос: ") {
                 try { decodeData = JSON.parse(data_inp);} // Преобразуем строку JSON в объект JavaScript
                 catch {
@@ -177,6 +184,8 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
 
             } else if(mode == 10) {
                 KeyValues_GetAndInsertIntoTable();
+            // } else if(mode == 11) {
+            //     KeyValues_GetAndInsertIntoTable();
 
             } else {
                 console.log(decodeData);
@@ -873,7 +882,7 @@ numericInputsMassAdd = [... numericInputs, elemTextInput]
 function ProcButtonClickToSaveNewValue() {
     //console.log("Сохраняем запись о растении")
 
-    PutAllValuesTogether() // ----- Удалить эту строчку
+    //PutAllValuesTogether() 
 
     bool_isEqErrorValues = false;
 
@@ -913,18 +922,37 @@ function ProcButtonClickToSaveNewValue() {
     } else {
         // Ошибок нет, всё заполнено корректно
         document.querySelector('#yell-bl-error-add').style.display = "none"
-        //PutAllValuesTogether() // ----- Убрать комментарий
+        //PutAllValuesTogether() 
+
+        // Сначала проверяю, существует ли такое растение в БД, с таким именем
+        CheckIncludeValueFromMainTablePlant(elemTextInput.value)
     }
 }
 
 mass_allInputElementValue = []
 
+// Проверяет, существует ли такое растение в БД, с таким именем
+function CheckIncludeValueFromMainTablePlant(str_plantName) {
+    SQL_req = 'SELECT * FROM MainTable_2 WHERE `Название растения` = "' + str_plantName + '"';
+
+    SQL_RQ_FromSwever(SQL_req, "", 11);
+    //console.log("SQL_req = " + SQL_req)
+}
+
+function Returned_CheckIncludeValueFromMainTablePlant(inp_data) {
+    if (inp_data == "0 results[]") {
+        console.log("Ошибки нет, создаём новую запись")
+        PutAllValuesTogether() 
+    } else {
+        console.error("Ошибка, растение с таким именем уже есть в БД!")
+    }
+}
+
+
+
 // Процедура, где я собираю все значения из полей в SQL запрос, для создания новой записи
 function PutAllValuesTogether() {
     // SQL запрос: INSERT INTO `MainTable_2` (`Название растения`, `Освещение min`, `Освещение max`, `Переносимость прямого света`, `Влажность min`, `Влажность max`, `Температура min`, `Температура max`, `Тип растения`, `Плодоносное`, `Выработка кислорода`, `Занимаемая площадь растения`, `Уход за растениями (кол-во дней)`, `Цвет растения`, `Тип климата`, `Аллелопатия`, `Известное растение?`) VALUES ('_1', '2', '2', 'Нет', '50', '50', '20', '20', 'Домашнее', '1', '5', '5', '5', 'Зелёный', 'Умеренный', 'Положительная', '0')
-    // Нужно последовательно собрать с всех input элементов значения, быть аккуратным с плодоносным и известным, вставить их в этот запрос, и отправить на сервер
-
-    // Но сначала проверить, есть ли растение с таким названием в нашей БД
 
     mass_allInputEl =  document.querySelectorAll('#yell-block input, #yell-block select')
 
@@ -932,7 +960,6 @@ function PutAllValuesTogether() {
         if(mass_allInputEl[i].tagName.toLowerCase() == "input") {
             mass_allInputElementValue[i] = mass_allInputEl[i].value
         } else {
-            //console.log("Обрабатываем индекс " + i)
             mass_allInputElementValue[i] = mass_allInputEl[i].options[mass_allInputEl[i].selectedIndex].textContent;
         }
     }
@@ -940,6 +967,39 @@ function PutAllValuesTogether() {
     console.log("mass_allInputElementValue = ")
     console.log(mass_allInputElementValue)
 
+    SQL_reqPar = "INSERT INTO `MainTable_2` (`Название растения`, `Освещение min`, `Освещение max`, `Переносимость прямого света`, `Влажность min`, `Влажность max`, `Температура min`, `Температура max`, `Тип растения`, `Плодоносное`, `Выработка кислорода`, `Занимаемая площадь растения`, `Уход за растениями (кол-во дней)`, `Цвет растения`, `Тип климата`, `Аллелопатия`, `Известное растение?`) VALUES ("
+    str_addedValues = ""
+
+    for(i = 0; i < mass_allInputElementValue.length; i++) {
+        if(i != 9 && i != 16) {
+            str_addedValues += "'" + mass_allInputElementValue[i] + "', "
+        } else {
+            // Исключения для признаков с булевым значением
+            if(mass_allInputElementValue[i] == "Да") {
+                str_addedValues += "'1', "
+            } else {
+                str_addedValues += "'0', "
+            }
+        }
+    }
+
+    // Убираю запятую и пробел в конце строки
+    str_addedValues = str_addedValues.slice(0, -2);
+    str_addedValues += ")"
+
+    str_SQL_Final = SQL_reqPar + str_addedValues
+
+    console.log("str_SQL_Final = " + str_SQL_Final)
+
+    SQL_RQ_FromSwever(str_SQL_Final, "", 0);
+
+    // Скрыть жёлтый блок
+
+    // Обновить все записи в синем блоке
+    SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 1)
+    
+    // Выделить в синем блоке только что созданную запись
+        // И нужно открыть жёлтый блок на этой записи
 }
 
 
