@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Функция обработки нажатия на зелёную кнопку создания новой записи растения
     ProcButtonCreateNewValForPlants()
     
+    // Обработка нажатия на кнопку "Сохранить изменения", которая появляется при фокусе на любое поле ввода в жёлтом блоке
+    ProcButtonSaveChangeToHaract()
+
 });
 
 
@@ -951,6 +954,7 @@ function CheckIncludeValueFromMainTablePlant(str_plantName) {
 function Returned_CheckIncludeValueFromMainTablePlant(inp_data) {
     if (inp_data == "0 results[]") {
         //console.log("Ошибки нет, создаём новую запись")
+        bool_isUpdateHaract = false;
         PutAllValuesTogether() 
         elemTextError.style.display = "none"
     } else {
@@ -961,7 +965,7 @@ function Returned_CheckIncludeValueFromMainTablePlant(inp_data) {
     }
 }
 
-
+bool_isUpdateHaract = false;
 
 // Процедура, где я собираю все значения из полей в SQL запрос, для создания новой записи
 function PutAllValuesTogether() {
@@ -1004,14 +1008,47 @@ function PutAllValuesTogether() {
 
     console.log("str_SQL_Final = " + str_SQL_Final)
 
-    SQL_RQ_FromSwever(str_SQL_Final, "", 0);
+    if(bool_isUpdateHaract == false) {
+        // Если мы создаём новую запись
+        SQL_RQ_FromSwever(str_SQL_Final, "", 0);
 
-    // Скрывает жёлтый блок
-    bool_isChangeAnyInputValues = false;
-    document.querySelector('#yell-block').style.display = "none" 
+        // Скрывает жёлтый блок
+        bool_isChangeAnyInputValues = false;
+        document.querySelector('#yell-block').style.display = "none" 
+    
+        // Обновляет все записи в синем блоке
+        SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 12)
+    } else {
+        console.log("Обновляем значения уже существуюущей записи")
+        // Если мы обновляем значения уже существуюущей
 
-    // Обновляет все записи в синем блоке
-    SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 12)
+        // !!! Проверка на изменение имени
+
+        // Удаляем запись по названию растения
+        SQL_reqDeleteVal = 'DELETE FROM `MainTable_2` WHERE `Название растения` = "';
+        //  + '";'
+        SQL_reqDeleteVal += document.querySelector('#param-1 input').value
+        SQL_reqDeleteVal += '";'
+
+        //console.log("SQL_reqDeleteVal = " + SQL_reqDeleteVal)
+        SQL_RQ_FromSwever(SQL_reqDeleteVal, "", 0);
+
+        // Создаём новую запись с набором характеристик
+        SQL_RQ_FromSwever(str_SQL_Final, "", 0);
+
+        // Обновляет все записи в синем блоке
+        //SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 12)
+
+        // Переоткрываем жёлтый блок на этом элементе
+        //ShowYellowBlock_cont(elem)
+        document.querySelector(".cucsessMessage").textContent = "Запись успешно изменена!"
+        document.querySelector(".cucsessMessage").style.display = "inline"
+
+        // Через 3 секунды скроет запись об успешном создании записи
+        setTimeout(function () {
+            document.querySelector(".cucsessMessage").style.display = "none"
+        }, 3000);    
+    }
 }
 
 
@@ -1048,7 +1085,20 @@ function FindCreatedPlantValue() {
 
 
 
+// ----------
+// Сохранение изменений в записи
 
+// Обработка нажатия на кнопку "Сохранить изменения", которая появляется при фокусе на любое поле ввода в жёлтом блоке
+function ProcButtonSaveChangeToHaract() {
+    document.querySelector("#b-4-witch-save").addEventListener('click', () => {
+        SaveCangedHaract()
+    })
+}
+
+function SaveCangedHaract() {
+    bool_isUpdateHaract = true;
+    PutAllValuesTogether();
+}
 
 
 
