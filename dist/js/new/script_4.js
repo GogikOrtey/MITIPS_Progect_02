@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // SQL_RQ_FromSwever("select * from MainTable_2", "Название растения", 1)
     SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 1)
 
-    //HideYellowBlock() /// ------------------ Потом раскомментировать эту строчку
+    HideYellowBlock() /// ------------------ Потом раскомментировать эту строчку
     //ShowYellBlock()
 
     SetCorrCahgeAnyValues()
@@ -279,6 +279,7 @@ function ClearYellBlockWitchAddNewElem() {
 
 // Отдельно функция, которая показывает жёлтый блок
 function ShowYellowBlock_cont(elem) {
+    document.querySelector(".cucsessMessage").style.display = "none"
     GrayingInputElement_Hide()
     bool_isAddModYellBlock = false;
     ClearYellBlockWitchAddNewElem()
@@ -835,6 +836,8 @@ function ProcButtonCreateNewValForPlants() {
     buttonAddNewVal.addEventListener('click', () => { 
         ProcesiShowYellowBlockForCreateNewPlantValue();
         bool_isAddModYellBlock = true;
+        document.querySelector('#b-4-witch-not-save').style.display = "none"
+        document.querySelector('#b-4-witch-save').style.display = "none"
     })
 
 
@@ -1003,14 +1006,12 @@ function PutAllValuesTogether() {
 
     SQL_RQ_FromSwever(str_SQL_Final, "", 0);
 
-    // Скрыть жёлтый блок
+    // Скрывает жёлтый блок
     bool_isChangeAnyInputValues = false;
     document.querySelector('#yell-block').style.display = "none" 
 
-    // Обновить все записи в синем блоке
+    // Обновляет все записи в синем блоке
     SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 12)
-
-    
 }
 
 
@@ -1030,9 +1031,17 @@ function FindCreatedPlantValue() {
 
             // Добавляем выделение
             elem.classList.add('el-blue-button-selected');
+            elem.scrollIntoView({behavior: "smooth"});
 
             // Открываем жёлтый блок на этом элементе
             ShowYellowBlock_cont(elem)
+            document.querySelector(".cucsessMessage").textContent = "Запись успешно добавлена!"
+            document.querySelector(".cucsessMessage").style.display = "inline"
+
+            // Через 3 секунды скроет запись об успешном создании записи
+            setTimeout(function () {
+                document.querySelector(".cucsessMessage").style.display = "none"
+            }, 3000);              
         }
     })
 }
@@ -1042,7 +1051,7 @@ function FindCreatedPlantValue() {
 
 
 
-// Показать сообщение о том, что запись успешно создана
+
 
 
 

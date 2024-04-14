@@ -1749,6 +1749,15 @@ body.pg-5 {
 .error-inpur-value {
   background: #f00;
 }
+.cucsessMessage {
+  color: #00bc00;
+  font-weight: bold;
+  margin-top: -20px;
+  display: none;
+}
+.hatters {
+  margin-bottom: 30px;
+}
 .pg5-block-vew-pl-list {
   height: auto;
   width: 90%;
