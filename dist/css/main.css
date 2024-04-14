@@ -1715,7 +1715,6 @@ body.pg-5 {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  display: none;
 }
 .loader img {
   width: 20vh;
@@ -1757,6 +1756,9 @@ body.pg-5 {
 }
 .hatters {
   margin-bottom: 30px;
+}
+.add-footer {
+  color: #00a3ff;
 }
 .pg5-block-vew-pl-list {
   height: auto;

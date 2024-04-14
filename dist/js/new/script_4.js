@@ -59,13 +59,13 @@ loader = document.querySelector(".loader"); ////////////////////////////////////
 // B также изменить в стилях
 
 function ShowOrHideLoaderDisplay(isShow) {
-    // if(isShow == true) {
-    //     loader.style.display = "flex";
-    //     console.log("Показываем загрузчик")
-    // } else {
-    //     loader.style.display = "none";
-    //     console.log("Скрываем загрузчик")
-    // }
+    if(isShow == true) {
+        loader.style.display = "flex";
+        console.log("Показываем загрузчик")
+    } else {
+        loader.style.display = "none";
+        console.log("Скрываем загрузчик")
+    }
 }
 
 
@@ -943,6 +943,7 @@ function ProcButtonClickToSaveNewValue() {
     if (bool_isEqErrorValues == true) {
         document.querySelector('#yell-bl-error-add').textContent = "Сначала заполните все поля корректно"
         document.querySelector('#yell-bl-error-add').style.display = "inline"
+        ShowOrHideLoaderDisplay(false)
     } else {
         // Ошибок нет, всё заполнено корректно
         document.querySelector('#yell-bl-error-add').style.display = "none"
@@ -975,6 +976,7 @@ function Returned_CheckIncludeValueFromMainTablePlant(inp_data) {
         console.error("Ошибка, растение с таким именем уже есть в БД!")        
         elemTextError.textContent = "Ошибка, растение с таким именем уже есть в БД!"
         elemTextError.style.display = "inline"
+        ShowOrHideLoaderDisplay(false)
     }
 }
 
@@ -1000,6 +1002,7 @@ function Returned_CheckIncludeValueFromMainTablePlant_2(inp_data) {
         console.error("Ошибка, введённое название растения не уникально.")        
         elemTextError.textContent = "Ошибка, введённое название растения не уникально."
         elemTextError.style.display = "inline"
+        ShowOrHideLoaderDisplay(false)
     }
 }
 
@@ -1103,6 +1106,7 @@ function PutAllValuesTogether() {
         //ShowYellowBlock_cont(elem)
         document.querySelector(".cucsessMessage").textContent = "Запись успешно изменена!"
         document.querySelector(".cucsessMessage").style.display = "inline"
+        document.querySelector('#yell-bl-error-add').style.display = "none"
 
         // Через 3 секунды скроет запись об успешном создании записи
         setTimeout(function () {
@@ -1148,6 +1152,7 @@ function FindCreatedPlantValue() {
             ShowYellowBlock_cont(elem)
             document.querySelector(".cucsessMessage").textContent = "Запись успешно добавлена!"
             document.querySelector(".cucsessMessage").style.display = "inline"
+            document.querySelector('#yell-bl-error-add').style.display = "none"
 
             // Через 3 секунды скроет запись об успешном создании записи
             setTimeout(function () {
