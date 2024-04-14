@@ -94,6 +94,13 @@ function SQL_RQ_FromServer2(sql_2, selector, mode) {
                 // console.log(decodeData);
                 resultMass = ConvertJSON_to_massiv(decodeData, selector)
                 Return_KeyValues_GetAndInsertIntoTable_3(resultMass)
+            } else if (mode == 2) {
+                resultMass = ConvertJSON_to_massiv(decodeData, selector)
+                //GetPlantList_andInsertFromLabel(resultMass);
+                // Обработка выделения элементов в синем блоке
+                //ProcessSelectObjectForBlueBlock();
+                //console.log(resultMass)
+                ProcessAllPlantsMass(resultMass)
 
             } else {
                 console.log(decodeData);
@@ -729,7 +736,6 @@ function UpdateAllelopTypeVal() {
 
 // ---------
 // Будет ли показан блок результатов с 3мя карточками
-
 // Если человек выбрал больше 5 характеристик - то не будет
 
 function CheckCountSelectedHaract() {
@@ -745,6 +751,42 @@ function CheckCountSelectedHaract() {
         boolisRequestGood = false;
     }
 }
+
+
+
+
+// ---------
+// Получаю названия растений, для формирования 3х карточек
+
+SQL_RQ_FromServer2("SELECT * FROM MainTable_2;", "Название растения", 2)
+
+function ProcessAllPlantsMass(resultMass) {
+    //console.log("Все растения:")
+    //console.log(resultMass)
+
+    randInt_1 = getRandomInt(1, 45);
+    randInt_2 = getRandomInt(46, 95);
+    randInt_3 = getRandomInt(96, 140);
+
+    console.log(resultMass[randInt_1], resultMass[randInt_2], resultMass[randInt_3])
+
+    document.querySelector("#plant-name-1").textContent = resultMass[randInt_1]
+    document.querySelector("#plant-name-2").textContent = resultMass[randInt_2]
+    document.querySelector("#plant-name-3").textContent = resultMass[randInt_3]
+
+    document.querySelector("#plant-name-1-img").src = "img/all-plants-photo/Растение " + resultMass[randInt_1] + ".jpg"
+    document.querySelector("#plant-name-2-img").src = "img/all-plants-photo/Растение " + resultMass[randInt_2] + ".jpg"
+    document.querySelector("#plant-name-3-img").src = "img/all-plants-photo/Растение " + resultMass[randInt_3] + ".jpg"
+}
+
+
+
+
+
+
+
+
+
 
 
 
