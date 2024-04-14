@@ -687,6 +687,36 @@ function UpdateClimatTypeVal() {
             elem.classList.add('color-block-yellow');
         }
     })
+
+    UpdateAllelopTypeVal();
+}
+
+
+
+// --------
+// Выбор Аллелопатии для набора
+
+//mass_allelopTypes = ["Нейтральная", "Положительная"]
+
+int_randomVal_allelop = getRandomInt(1, 10);
+console.log("int_randomVal_allelop = " + int_randomVal_allelop); 
+
+function UpdateAllelopTypeVal() {
+    if(int_randomVal_allelop == 10) {
+        blocksOfClType = document.querySelectorAll(".allelop-type-block")
+    
+        blocksOfClType.forEach(elem => {
+            elem.textContent = "Положительная"            
+        })
+
+        blocksOfClType_2 = document.querySelectorAll(".allelop-block-main")
+
+        blocksOfClType_2.forEach(elem => {
+            if(int_randomVal_allelop == 10) {
+                elem.classList.add('color-block-green');
+            }
+        })
+    }
 }
 
 
