@@ -166,6 +166,8 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
                 console.log(resultMass);
                 SetAllInputValues(resultMass);         
                 GrayingInputElement_Show()     
+                nameCurrentPlant = document.querySelector('#param-1 input').value
+                console.log("nameCurrentPlant = " + nameCurrentPlant)
 
             } else if(mode == 3) {
                 resultMass = ConvertJSON_to_massiv(decodeData, selector)
@@ -189,8 +191,10 @@ function SQL_RQ_FromSwever(sql_2, selector, mode) {
 
             } else if(mode == 10) {
                 KeyValues_GetAndInsertIntoTable();
-            // } else if(mode == 11) {
-            //     KeyValues_GetAndInsertIntoTable();
+
+            } else if(mode == 13) {
+                // Обновляет все записи в синем блоке
+                SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 12)
 
             } else {
                 console.log(decodeData);
@@ -280,8 +284,11 @@ function ClearYellBlockWitchAddNewElem() {
     }
 }
 
+nameCurrentPlant = ""
+
 // Отдельно функция, которая показывает жёлтый блок
 function ShowYellowBlock_cont(elem) {
+    
     document.querySelector(".cucsessMessage").style.display = "none"
     GrayingInputElement_Hide()
     bool_isAddModYellBlock = false;
@@ -952,14 +959,15 @@ function CheckIncludeValueFromMainTablePlant(str_plantName) {
 }
 
 function Returned_CheckIncludeValueFromMainTablePlant(inp_data) {
+    elemTextError = document.querySelector('#yell-bl-error-add');
+
     if (inp_data == "0 results[]") {
         //console.log("Ошибки нет, создаём новую запись")
         bool_isUpdateHaract = false;
         PutAllValuesTogether() 
         elemTextError.style.display = "none"
     } else {
-        console.error("Ошибка, растение с таким именем уже есть в БД!")
-        elemTextError = document.querySelector('#yell-bl-error-add');
+        console.error("Ошибка, растение с таким именем уже есть в БД!")        
         elemTextError.textContent = "Ошибка, растение с таким именем уже есть в БД!"
         elemTextError.style.display = "inline"
     }
@@ -1024,20 +1032,48 @@ function PutAllValuesTogether() {
 
         // !!! Проверка на изменение имени
 
-        // Удаляем запись по названию растения
-        SQL_reqDeleteVal = 'DELETE FROM `MainTable_2` WHERE `Название растения` = "';
-        //  + '";'
-        SQL_reqDeleteVal += document.querySelector('#param-1 input').value
-        SQL_reqDeleteVal += '";'
+        newNamePlant = document.querySelector('#param-1 input');
 
-        //console.log("SQL_reqDeleteVal = " + SQL_reqDeleteVal)
-        SQL_RQ_FromSwever(SQL_reqDeleteVal, "", 0);
+        //console.log("nameCurrentPlant = " + nameCurrentPlant + ", newNamePlant = " + newNamePlant.value)
 
-        // Создаём новую запись с набором характеристик
-        SQL_RQ_FromSwever(str_SQL_Final, "", 0);
+        if(nameCurrentPlant != newNamePlant.value) {
+            console.log("Название растения было изменено!")
 
-        // Обновляет все записи в синем блоке
-        //SQL_RQ_FromSwever("SELECT * FROM MainTable_2 ORDER BY `Название растения` ASC;", "Название растения", 12)
+            // Если название записи было изменено
+                // Проверяем, уникально ли оно
+                // Если не уникально - выводим ошибку, перед кнопкой
+            // Если уникально, то изменяем его
+            // Далее обновляем синий блок
+            // И находим там запись с новым названием
+
+            // Удаляем запись по названию растения
+            SQL_reqDeleteVal = 'DELETE FROM `MainTable_2` WHERE `Название растения` = "';
+            //  + '";'
+            SQL_reqDeleteVal += nameCurrentPlant
+            SQL_reqDeleteVal += '";'
+
+            console.log("SQL_reqDeleteVal = " + SQL_reqDeleteVal)
+            SQL_RQ_FromSwever(SQL_reqDeleteVal, "", 0);
+
+            // Создаём новую запись с набором характеристик
+            SQL_RQ_FromSwever(str_SQL_Final, "", 13);
+
+
+        } else {
+
+
+            // Удаляем запись по названию растения
+            SQL_reqDeleteVal = 'DELETE FROM `MainTable_2` WHERE `Название растения` = "';
+            //  + '";'
+            SQL_reqDeleteVal += document.querySelector('#param-1 input').value
+            SQL_reqDeleteVal += '";'
+
+            //console.log("SQL_reqDeleteVal = " + SQL_reqDeleteVal)
+            SQL_RQ_FromSwever(SQL_reqDeleteVal, "", 0);
+
+            // Создаём новую запись с набором характеристик
+            SQL_RQ_FromSwever(str_SQL_Final, "", 0);
+        }
 
         // Переоткрываем жёлтый блок на этом элементе
         //ShowYellowBlock_cont(elem)
@@ -1059,7 +1095,7 @@ function FindCreatedPlantValue() {
     mass_allElementsForBlueBlock = document.querySelectorAll('.main-pl-list-cont-pg4 .el-pl-cont-4')
 
     mass_allElementsForBlueBlock.forEach(elem => {
-        if(elem.textContent == nameNewPlantValue) {
+        if(elem.textContent == document.querySelector('#param-1 input').value) {
             // Удаляем выделение у старого элемента
             const oldElem = document.querySelector(".el-blue-button-selected");
             if (oldElem) {
