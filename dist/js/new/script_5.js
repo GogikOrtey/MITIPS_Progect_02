@@ -505,6 +505,7 @@ function DisplayAnswerForPodbor() {
         blockElementLoad.style.cursor = 'wait';
 
         GetValuesFromHaract();
+        CheckCountSelectedHaract()
 
         setTimeout(function() {                        
             document.body.style.cursor = 'default';
@@ -517,6 +518,10 @@ function DisplayAnswerForPodbor() {
             } else {
                 // Плохие результаты
                 blockNotCurrentAnswer.style.display = "block";
+                blockMainInputCharact.style.display = "none";
+                blockElementLoad.style.display = "none";
+                blockExplanation.style.display = "none";
+                blockCurrentAnswer.style.display = "none";
             }
         }, 500);
     })
@@ -719,6 +724,27 @@ function UpdateAllelopTypeVal() {
     }
 }
 
+
+
+
+// ---------
+// Будет ли показан блок результатов с 3мя карточками
+
+// Если человек выбрал больше 5 характеристик - то не будет
+
+function CheckCountSelectedHaract() {
+    int_counter = 0;
+
+    for(i = 1; i < arrayOfCange.length; i++) {
+        if(arrayOfCange[i] != 0) int_counter++
+    }
+
+    console.log("int_counter = " + int_counter)
+
+    if(int_counter > 5) {
+        boolisRequestGood = false;
+    }
+}
 
 
 
